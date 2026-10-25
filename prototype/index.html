@@ -6,19 +6,20 @@
 <meta name="theme-color" content="#350b19">
 <meta name="robots" content="noindex,nofollow">
 <title>Академия вкуса — прототип</title>
-<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="vitrina.css">
 <style>
 :root{
-  --bg:#350b19; --panel:#471223; --deep:#280711; --gold:#f4cf72; --white:#fff; --soft:#eee4e8; --line:#6a3445;
+  --bg:#260e16; --panel:#321c25; --deep:#1c0910; --gold:#f2eee6; --white:#f2eee6; --soft:#cfc6c3; --line:rgba(242,238,230,.3);
   --ok:#7fcf94; --warn:#f0b35a; --bad:#ff8c98;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
-body{min-height:100vh;font-family:Manrope,Arial,sans-serif;font-size:14px;line-height:1.6;color:var(--white);background:#1d0510;padding-top:44px}
+body{min-height:100vh;font-family:AcademySans,Arial,sans-serif;font-size:14px;line-height:1.6;color:var(--white);background:#1d0510;padding-top:44px}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 input,textarea,select{font:inherit;color:inherit}
 a{color:var(--gold)}
-h1,h2,h3{font-family:Prata,Georgia,serif;font-weight:400}
+h1,h2,h3{font-family:AcademySerif,Georgia,serif;font-weight:400}
 .hide{display:none!important}
 .soft{color:var(--soft)}
 .gold{color:var(--gold)}
@@ -32,11 +33,11 @@ svg.i{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-widt
 #demo select{background:var(--deep);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:12px;flex:1;max-width:320px;min-width:0}
 
 /* кнопки */
-.primary{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:54px;padding:15px 20px;border:0;border-radius:12px;background:var(--gold);color:var(--deep);text-decoration:none;font:700 14px/1.6 Manrope,Arial,sans-serif;text-align:left}
+.primary{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:54px;padding:15px 20px;border:0;border-radius:12px;background:var(--gold);color:var(--deep);text-decoration:none;font:700 14px/1.6 AcademySans,Arial,sans-serif;text-align:left}
 .primary.center{justify-content:center}
 .primary.sm{min-height:44px;padding:10px 16px;width:auto;font-size:13px}
 .primary[disabled]{opacity:.5;cursor:default}
-.ghost{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;padding:12px 18px;border:1px solid var(--line);border-radius:12px;color:var(--white);font:600 13px/1.6 Manrope;background:transparent}
+.ghost{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:50px;padding:12px 18px;border:1px solid var(--line);border-radius:12px;color:var(--white);font:600 13px/1.6 AcademySans;background:transparent}
 .ghost.sm{min-height:40px;width:auto;padding:8px 14px;font-size:12px}
 .danger{background:#a8323f!important;color:#fff!important}
 .link{color:var(--gold);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
@@ -74,94 +75,10 @@ select.in option{color:#222}
 .kv span:first-child{color:var(--soft)}
 .banner{border:1px solid var(--warn);border-radius:12px;padding:12px 14px;font-size:12.5px;background:rgba(240,179,90,.1);margin:6px 0 12px}
 
-/* ============ ЛЕНДИНГ (стиль клиента) ============ */
-.col{width:100%;max-width:440px;margin:0 auto;background:var(--bg);min-height:calc(100vh - 44px);position:relative}
-.kn-top{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:21px 24px;background:var(--bg)}
-.kn-author{font:500 12px/1.6 Manrope;letter-spacing:.02em}
-.kn-author span{display:block;color:var(--gold);font-size:11px;letter-spacing:.13em;text-transform:uppercase}
-.kn-login-link{color:var(--white);font-size:12px;text-decoration:none;padding:11px 17px;border:1px solid var(--line);border-radius:24px;display:inline-flex;align-items:center;gap:8px;min-height:44px;white-space:nowrap}
-.kn-login-link svg{width:14px;height:14px}
-.kn-hero{position:relative;isolation:isolate;min-height:650px;display:flex;align-items:flex-end;background:var(--bg)}
-.kn-hero-photo{position:absolute;top:0;left:0;width:100%;height:auto;z-index:-3}
-.kn-hero::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,transparent 0%,transparent 31%,#350b1933 45%,#350b19d9 69%,var(--bg) 99%)}
-.kn-hero-content{padding:230px 26px 28px;width:100%}
-.kn-hero .eyebrow{margin:0 0 15px}
-.kn-h1{font:400 53px/1.15 Prata,Georgia,serif;letter-spacing:-.035em;margin:0 0 16px}
-.kn-h1 span{display:block;color:var(--gold);background:linear-gradient(120deg,#ffe9aa,#f4cf72 48%,#e6b94b);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.kn-lead{font:400 14px/1.7 Manrope;margin:0 0 20px;max-width:335px}
-.kn-text-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:13px 0 0;font-size:12px;text-decoration:none;color:var(--white)}
-.kn-text-link svg{width:14px;height:14px}
-.kn-section{padding:34px 26px;border-top:1px solid var(--line)}
-.kn-section.raised{background:var(--panel)}
-.kn-section h2{font:400 28px/1.35 Prata,Georgia,serif;letter-spacing:-.025em;margin:0 0 22px}
-.kn-section h2 span{color:var(--gold)}
-.kn-section .eyebrow{margin-bottom:12px}
-.kn-section p{font-size:13px;line-height:1.85;color:var(--soft);margin:0 0 18px}
-.kn-benefits{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.kn-benefit{padding:19px 16px;background:var(--panel);border:1px solid var(--line);border-radius:14px}
-.kn-benefit svg{color:var(--gold);width:22px;height:22px;margin-bottom:12px}
-.kn-benefit h3{font:600 13px/1.55 Manrope;margin:0 0 7px}
-.kn-benefit p{font-size:11px;line-height:1.8;margin:0}
-.kn-note{display:flex;gap:10px;padding-top:19px;margin:0!important;color:var(--white)!important;font-size:12px!important}
-.kn-note svg{color:var(--gold);width:18px;height:18px;flex:none;margin-top:3px}
-.kn-about-head{display:flex;gap:16px;align-items:center;margin-bottom:18px}
-.kn-about-photo{width:69px;height:84px;object-fit:cover;object-position:25% 2%;border-radius:10px;flex:none}
-.kn-about-head h2{font-size:22px;margin:0 0 5px}
-.kn-about-head p{font-size:11px;line-height:1.6;margin:0;color:var(--gold)}
-.kn-examples{display:grid;gap:12px}
-.kn-example{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:20px}
-.kn-fmt{color:var(--gold);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:13px}
-.kn-fmt svg{width:16px;height:16px}
-.kn-example h3{font:400 22px/1.45 Prata,Georgia,serif;margin:0 0 9px}
-.kn-example p{font-size:12px;line-height:1.8;margin:0}
-.kn-week{display:grid;gap:8px}
-.kn-wd{display:flex;gap:14px;align-items:center;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
-.kn-wd b{font:400 15px Prata,serif;color:var(--gold);min-width:30px}
-.kn-wd span{font-size:12.5px;line-height:1.5}
-.kn-wd em{font-style:normal;display:block;font-size:11px;color:var(--soft)}
-.kn-steps{list-style:none;margin:0;padding:0;display:grid;gap:22px}
-.kn-steps li{display:flex;gap:16px;align-items:flex-start}
-.kn-no{font:400 28px/1.3 Prata,Georgia,serif;color:var(--gold);min-width:39px}
-.kn-steps b{font-size:13px;font-weight:600;line-height:1.65}
-.kn-steps p{font-size:12px;line-height:1.8;margin:6px 0 0}
-.kn-tariff{padding:25px 21px;background:var(--bg);border:1px solid var(--gold);border-radius:17px}
-.kn-tariff-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}
-.kn-tariff-top b{color:var(--gold);font:500 11px/1.6 Manrope;letter-spacing:.1em;text-transform:uppercase}
-.kn-tariff-top svg{color:var(--gold);width:19px;height:19px}
-.kn-periods{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
-.kn-periods button{padding:10px 4px;border:1px solid var(--line);border-radius:10px;font-size:12px;line-height:1.3;color:var(--soft);text-align:center}
-.kn-periods button.on{border-color:var(--gold);color:var(--gold);background:rgba(244,207,114,.08)}
-.kn-price{font:400 40px/1.2 Prata,Georgia,serif;margin:0 0 6px}
-.kn-pnote{font-size:11px!important;line-height:1.7!important;margin:0 0 22px!important}
-.kn-list{list-style:none;padding:0;margin:0 0 23px;display:grid;gap:13px}
-.kn-list li{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.65}
-.kn-list svg{color:var(--gold);width:16px;height:16px;flex:none;margin-top:2px}
-.kn-renewal{padding-top:22px}
-.kn-renewal h3{color:var(--gold);font:500 13px/1.7 Manrope;margin:0 0 8px}
-.kn-renewal p{font-size:11px;line-height:1.85;margin:0}
-.kn-faq details{border-top:1px solid var(--line)}
-.kn-faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0;min-height:54px;font:500 13px/1.8 Manrope;cursor:pointer}
-.kn-faq summary::-webkit-details-marker{display:none}
-.kn-faq summary::after{content:'+';color:var(--gold);font-size:22px;line-height:1;flex:none}
-.kn-faq details[open] summary::after{content:'−'}
-.kn-faq details p{font-size:12px;line-height:1.9;margin:0 0 20px}
-.kn-support{display:flex;align-items:flex-start;gap:15px}
-.kn-support>svg{width:24px;height:24px;color:var(--gold);flex:none;margin-top:3px}
-.kn-support h2{font-size:24px;margin-bottom:11px}
-.kn-support p{font-size:12px;line-height:1.8;margin-bottom:0}
-.kn-contact{display:block;font:500 12px/1.7 Manrope;color:var(--gold);margin-top:12px}
-.kn-footer{padding:26px;background:var(--deep);border-top:1px solid var(--line)}
-.kn-footer-name{font:400 23px/1.5 Prata,serif;margin-bottom:7px}
-.kn-footer-by{font-size:11px;color:var(--soft);margin-bottom:22px}
-.kn-docs{display:flex;flex-wrap:wrap;gap:4px 18px}
-.kn-doc{font:400 11px/1.7 Manrope;color:var(--soft);text-decoration:underline;text-underline-offset:4px;text-align:left;padding:10px 0;min-height:44px}
-.kn-fnote{font-size:11px;line-height:1.8;color:var(--soft);margin:15px 0 0}
-.agebar{margin:0 24px 6px;padding:11px 14px;border:1px solid var(--warn);border-radius:12px;background:rgba(240,179,90,.1);font-size:12.5px;text-align:center}
-
 /* ============ ПРИЛОЖЕНИЕ ============ */
 .app{padding:0 20px 110px}
 .hdr{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 0 6px}
-.brand{font:400 31px/1.2 Prata,serif;letter-spacing:-.02em}
+.brand{font:400 31px/1.2 AcademySerif,serif;letter-spacing:-.02em}
 .brand span{color:var(--gold)}
 .by{font-size:12px;color:var(--soft);margin-top:2px}
 .hbtns{display:flex;gap:10px}
@@ -170,10 +87,10 @@ select.in option{color:#222}
 .hello{font-size:12.5px;color:var(--soft);margin:8px 0 18px}
 .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .tile{position:relative;height:128px;border-radius:16px;overflow:hidden;border:1px solid var(--line);text-align:left;background-color:var(--panel);background-repeat:no-repeat}
-.tile::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(53,11,25,.25),rgba(40,7,17,.9))}
-.tile .ic{position:absolute;top:10px;left:10px;width:32px;height:32px;border-radius:9px;background:rgba(40,7,17,.75);border:1px solid var(--line);display:grid;place-items:center;color:var(--gold)}
+.tile::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,14,22,.25),rgba(28,9,16,.9))}
+.tile .ic{position:absolute;top:10px;left:10px;width:32px;height:32px;border-radius:9px;background:rgba(28,9,16,.75);border:1px solid var(--line);display:grid;place-items:center;color:var(--gold)}
 .tile .ic svg{width:17px;height:17px}
-.tile b{position:absolute;left:11px;right:8px;bottom:10px;font:600 13px/1.3 Manrope}
+.tile b{position:absolute;left:11px;right:8px;bottom:10px;font:600 13px/1.3 AcademySans}
 .search{display:flex;align-items:center;gap:10px;margin:20px 0 6px;padding:0 16px;min-height:52px;border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--gold)}
 .search input{flex:1;background:none;border:0;outline:none;color:var(--white);font-size:14px;min-width:0}
 .search input::placeholder{color:#b9a3ab}
@@ -190,28 +107,28 @@ select.in option{color:#222}
 .days button.has i{background:var(--gold)}
 .days button.on.has i{background:var(--deep)}
 .item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--panel);margin-bottom:10px}
-.item b{font:600 14px/1.5 Manrope;display:block}
+.item b{font:600 14px/1.5 AcademySans;display:block}
 .item span.s{font-size:12px;color:var(--soft);display:block}
 .item .go{color:var(--gold)}
 .item.nolink{opacity:.85;cursor:default}
-.item .tm{font:400 17px Prata,serif;color:var(--gold);min-width:50px}
-.feature{position:relative;min-height:330px;border-radius:20px;overflow:hidden;border:1px solid var(--line);display:flex;align-items:flex-end;text-align:left;width:100%;background:var(--panel) url(img/hero.jpg) no-repeat;background-size:230% auto;background-position:22% 6%}
-.feature::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(53,11,25,.1) 0%,rgba(53,11,25,.55) 45%,rgba(40,7,17,.97) 100%)}
-.feature .pill{position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:rgba(40,7,17,.72);border:1px solid var(--line);font-size:12px;font-weight:500}
+.item .tm{font:400 17px AcademySerif,serif;color:var(--gold);min-width:50px}
+.feature{position:relative;min-height:330px;border-radius:20px;overflow:hidden;border:1px solid var(--line);display:flex;align-items:flex-end;text-align:left;width:100%;background:var(--panel) url(img/v2/01-hero-kristina.jpg) no-repeat;background-size:230% auto;background-position:22% 6%}
+.feature::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,14,22,.1) 0%,rgba(38,14,22,.55) 45%,rgba(28,9,16,.97) 100%)}
+.feature .pill{position:absolute;top:16px;left:16px;display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border-radius:999px;background:rgba(28,9,16,.72);border:1px solid var(--line);font-size:12px;font-weight:500}
 .feature .pill svg{width:15px;height:15px;color:var(--gold)}
 .feature .in-f{position:relative;padding:22px 20px 20px;width:100%}
-.feature h3{font:400 34px/1.15 Prata,serif;letter-spacing:-.02em;margin:8px 0 18px}
+.feature h3{font:400 34px/1.15 AcademySerif,serif;letter-spacing:-.02em;margin:8px 0 18px}
 .feature .meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--soft)}
 .feature .meta b{color:var(--gold);display:inline-flex;gap:6px;align-items:center;font-size:13px}
 .lcards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .lcard{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--panel);text-align:left}
-.lcard .ph{height:128px;background-color:var(--deep);background-repeat:no-repeat;background-image:url(img/hero.jpg)}
+.lcard .ph{height:128px;background-color:var(--deep);background-repeat:no-repeat;background-image:url(img/v2/01-hero-kristina.jpg)}
 .lcard .tx{padding:14px 14px 16px}
 .lcard .tx small{display:block;font-size:11px;color:var(--soft);margin-bottom:6px}
-.lcard .tx b{font:400 17px/1.35 Prata,serif}
+.lcard .tx b{font:400 17px/1.35 AcademySerif,serif}
 .meet{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:20px}
 .meet .eyebrow{display:flex;gap:10px;align-items:center;margin-bottom:12px}
-.meet h3{font:400 27px/1.25 Prata,serif;margin-bottom:14px}
+.meet h3{font:400 27px/1.25 AcademySerif,serif;margin-bottom:14px}
 .meet p{font-size:12px;color:var(--soft);margin-bottom:16px}
 .handy{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .hbtn{display:flex;align-items:center;gap:12px;padding:18px 16px;border:1px solid var(--line);border-radius:14px;background:var(--panel);font-size:13px;font-weight:500;text-align:left}
@@ -225,10 +142,10 @@ select.in option{color:#222}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--soft)}
 .chip.on{background:var(--gold);border-color:var(--gold);color:var(--deep);font-weight:700}
-.dayh{font:400 17px Prata,serif;margin:20px 0 10px;display:flex;gap:10px;align-items:center}
-.dayh .today{font:700 10px Manrope;letter-spacing:.1em;background:var(--gold);color:var(--deep);padding:3px 9px;border-radius:999px}
+.dayh{font:400 17px AcademySerif,serif;margin:20px 0 10px;display:flex;gap:10px;align-items:center}
+.dayh .today{font:700 10px AcademySans;letter-spacing:.1em;background:var(--gold);color:var(--deep);padding:3px 9px;border-radius:999px}
 .video{aspect-ratio:16/9;border-radius:16px;background:linear-gradient(135deg,#5a1830,#1d0510);border:1px solid var(--line);display:grid;place-items:center;position:relative;overflow:hidden}
-.video .play{width:64px;height:64px;border-radius:50%;background:rgba(244,207,114,.15);border:1.5px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
+.video .play{width:64px;height:64px;border-radius:50%;background:rgba(242,238,230,.15);border:1.5px solid var(--gold);display:grid;place-items:center;color:var(--gold)}
 .video .cap{position:absolute;left:14px;bottom:10px;font-size:12px;color:var(--soft)}
 .prose p{margin-bottom:12px;font-size:13.5px;line-height:1.85;color:var(--soft)}
 .heart{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:12.5px;font-weight:600}
@@ -249,13 +166,13 @@ select.in option{color:#222}
 .mrow .ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:11px;border:1px solid var(--line);color:var(--gold);flex:none}
 h2.sec{font-size:22px;margin:28px 0 12px}
 .q{margin-bottom:18px}
-.q h3{font:400 19px/1.35 Prata,serif;margin-bottom:10px}
+.q h3{font:400 19px/1.35 AcademySerif,serif;margin-bottom:10px}
 .opt{display:flex;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer;background:var(--panel);font-size:13px}
 .opt input{accent-color:var(--gold)}
 .opt.on{border-color:var(--gold)}
 .steps{display:grid;gap:14px}
 .steps>div{display:flex;gap:14px}
-.steps>div>b{font:400 24px Prata,serif;color:var(--gold);min-width:34px}
+.steps>div>b{font:400 24px AcademySerif,serif;color:var(--gold);min-width:34px}
 
 /* модальные окна */
 #modal{position:fixed;inset:0;z-index:80;background:rgba(10,2,6,.78);display:none;align-items:flex-end;justify-content:center}
@@ -279,7 +196,7 @@ h2.sec{font-size:22px;margin:28px 0 12px}
 #age{position:fixed;inset:0;z-index:95;background:rgba(20,3,10,.6);backdrop-filter:blur(3px);display:grid;place-items:center;padding:20px;text-align:center}
 #age .box{max-width:380px;width:100%;background:var(--panel);border:1px solid var(--gold);border-radius:20px;padding:28px 22px;animation:up .25s ease}
 #age h2{font-size:28px;margin:14px 0 10px;letter-spacing:-.02em}
-#age .seal{width:72px;height:72px;margin:0 auto;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font:400 26px Prata,serif;color:var(--gold)}
+#age .seal{width:72px;height:72px;margin:0 auto;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font:400 26px AcademySerif,serif;color:var(--gold)}
 #age p{font-size:12.5px;color:var(--soft);margin-bottom:22px;line-height:1.8}
 
 /* ============ АДМИНКА (схема «Шпаргалки»: сайдбар, на телефоне — узкий бар слева) ============ */
@@ -287,7 +204,7 @@ h2.sec{font-size:22px;margin:28px 0 12px}
 .side{position:sticky;top:44px;height:calc(100vh - 44px);width:256px;flex:none;display:flex;flex-direction:column;overflow-y:auto;padding:20px 14px;background:linear-gradient(180deg,#2b0a16 0%,#1d0510 100%);border-right:1px solid var(--line)}
 .brand-a{padding:0 8px 18px}
 .eb{display:block;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
-.brand-a b,.rail-head b{font:400 19px/1.2 Prata,serif;color:#fff;display:block}
+.brand-a b,.rail-head b{font:400 19px/1.2 AcademySerif,serif;color:#fff;display:block}
 .gt{padding:6px 10px 4px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .sep{height:1px;background:rgba(255,255,255,.1);margin:10px 0}
 .nl{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border-radius:9px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.8);text-align:left}
@@ -306,14 +223,14 @@ h2.sec{font-size:22px;margin:28px 0 12px}
 .suser .btns{display:flex;gap:8px;margin-top:12px}
 .suser .btns button{flex:1;height:34px;border:1px solid var(--line);border-radius:9px;font-size:12px;color:var(--soft)}
 .amain{flex:1;min-width:0}
-.topbar{position:sticky;top:44px;z-index:20;height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 20px;background:rgba(53,11,25,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.topbar{position:sticky;top:44px;z-index:20;height:52px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 20px;background:rgba(38,14,22,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
 .crumb{display:flex;gap:8px;align-items:center;font-size:13px;min-width:0}
 .crumb span{color:var(--soft)}
 .crumb b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .apage{max-width:1100px;margin:0 auto;padding:24px 20px 60px}
 .aph{display:flex;flex-wrap:wrap;gap:12px 16px;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
-.aph .ico{width:38px;height:38px;border-radius:11px;background:rgba(244,207,114,.12);color:var(--gold);display:grid;place-items:center;flex:none}
-.aph h1{font:400 28px/1.2 Prata,serif;letter-spacing:-.02em}
+.aph .ico{width:38px;height:38px;border-radius:11px;background:rgba(242,238,230,.12);color:var(--gold);display:grid;place-items:center;flex:none}
+.aph h1{font:400 28px/1.2 AcademySerif,serif;letter-spacing:-.02em}
 .aph p{font-size:13px;color:var(--soft);margin-top:8px;max-width:62ch}
 .rail,.rail-dim{display:none}
 
@@ -330,12 +247,12 @@ table.t{width:100%;border-collapse:collapse;font-size:13px}
 .dcard .l2{font-size:12px;color:var(--soft);margin-top:6px}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:8px}
 .kpi{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
-.kpi b{display:block;font:400 26px Prata,serif}
+.kpi b{display:block;font:400 26px AcademySerif,serif}
 .kpi span{font-size:11.5px;color:var(--soft)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .dr-dim{position:fixed;inset:44px 0 0 0;z-index:55;background:rgba(0,0,0,.5)}
 .drawer{position:fixed;top:44px;right:0;bottom:0;width:min(480px,100%);z-index:60;background:var(--deep);border-left:1px solid var(--line);overflow:auto;padding:20px;animation:up .2s}
-.drawer h2{font:400 24px Prata,serif}
+.drawer h2{font:400 24px AcademySerif,serif}
 .denied{opacity:.4;pointer-events:none}
 .mini{display:inline-flex;gap:4px}
 .mini i{font-style:normal;font-size:10.5px;font-weight:600;padding:2px 6px;border-radius:6px;border:1px solid var(--line);color:var(--soft)}
@@ -367,6 +284,21 @@ table.t{width:100%;border-collapse:collapse;font-size:13px}
   .rail:not(.open) .suser .u{justify-content:center}
   .drawer{width:100%}
 }
+
+/* --- правки под новый визуал --- */
+.primary{box-shadow:0 0 10px rgba(242,238,230,.55),0 0 25px rgba(242,238,230,.38),0 0 42px rgba(242,238,230,.18)}
+.primary.danger,.primary[disabled],.primary.denied,.denied .primary{box-shadow:none}
+.primary:hover{box-shadow:0 0 12px rgba(242,238,230,.65),0 0 30px rgba(242,238,230,.45),0 0 48px rgba(242,238,230,.22)}
+.sumline{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin:14px 0 16px;background:rgba(242,238,230,.05)}
+.sumline b:last-child{font:400 22px AcademySerif,serif;white-space:nowrap}
+.timer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;margin:14px 0;background:rgba(242,238,230,.05)}
+.timer b{font:400 36px AcademySerif,serif;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.timer b.low{color:var(--bad)}
+.subscription__note{font-size:12px;line-height:1.6;margin:12px 0 0;color:var(--white)}
+body.landing{padding-top:0}
+body.landing #demo{top:8px;left:8px;right:auto;width:auto;height:34px;padding:0 6px;gap:0;border:1px solid rgba(242,238,230,.35);border-radius:999px;background:rgba(20,3,10,.72);backdrop-filter:blur(6px)}
+body.landing #demo b{display:none}
+body.landing #demo select{max-width:170px;font-size:11px;padding:4px 8px;border:0;border-radius:999px;background:transparent}
 </style>
 </head>
 <body>
@@ -375,6 +307,7 @@ table.t{width:100%;border-collapse:collapse;font-size:13px}
 <div id="modal"><div class="box" id="modalBox"></div></div>
 <div id="toast"></div>
 
+<script src="vitrina.js"></script>
 <script>
 /* ============ ИКОНКИ ============ */
 var IC = {
@@ -412,10 +345,9 @@ function ic(n,s){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"'+
 
 /* ============ ДАННЫЕ (демо) ============ */
 var TARIFFS=[
-  {id:'m1',name:'1 месяц',short:'1 мес',months:1,price:1900},
-  {id:'m3',name:'3 месяца',short:'3 мес',months:3,price:4900},
-  {id:'m6',name:'6 месяцев',short:'6 мес',months:6,price:8900},
-  {id:'y1',name:'1 год',short:'1 год',months:12,price:15900}
+  {id:'m1',name:'1 месяц',short:'1 мес',months:1,price:990,old:2490},
+  {id:'m2',name:'2 месяца',short:'2 мес',months:2,price:1881,old:4980},
+  {id:'m3',name:'3 месяца',short:'3 мес',months:3,price:2673,old:7470}
 ];
 var TYPE={lecture:['Лекция + практика','play'],cards:['Карточки + практика','clip'],mini:['Мини-лекция','video'],check:['Чек-лист','ccheck'],guide:['Гид','file'],recipe:['Рецепт и сочетание','utensils'],record:['Запись эфира','video']};
 var LIB=[
@@ -440,19 +372,19 @@ var DAYS=[['Пн',12],['Вт',13],['Ср',14],['Чт',15],['Пт',16],['Сб',17
 var TODAY=12;
 var EVENTS=[
  {id:1,day:12,time:'',type:'pub',title:'Старт. Что я люблю сейчас?',sub:'Приветствие + анкета',go:{view:'taste'}},
- {id:2,day:13,time:'12:00',type:'pub',title:'Откуда берутся ароматы',sub:'Мини-лекция',go:{lib:3}},
- {id:3,day:14,time:'20:00',type:'live',title:'Эфир: как мы чувствуем вино',sub:'Лекция + практика',go:{lib:1},link:'https://example.com/live/3'},
- {id:4,day:15,time:'10:00',type:'pub',title:'Сенсорная калибровка',sub:'Карточки + практика',go:{lib:2}},
- {id:5,day:16,time:'19:30',type:'event',title:'Вечер вопросов в чате',sub:'Без отдельной страницы'},
- {id:6,day:17,time:'18:00',type:'live',title:'Эфир: разбор недели',sub:'Прямой эфир',go:{lib:8},link:'https://example.com/live/6'},
- {id:7,day:18,time:'11:00',type:'pub',title:'Итоги недели 1: моя карта вкуса',sub:'Чек-лист',go:{lib:4}}
+ {id:2,day:13,time:'12:00',type:'pub',title:'Как мы чувствуем вино',sub:'Лекция (в записи)',go:{lib:1}},
+ {id:3,day:14,time:'',type:'pub',title:'Сенсорная калибровка',sub:'Карточки + практика',go:{lib:2}},
+ {id:4,day:15,time:'20:00',type:'live',title:'А у вас как?',sub:'Разборы · прямой эфир',go:{lib:7},link:'https://example.com/live/4'},
+ {id:5,day:16,time:'19:30',type:'event',title:'Какое вино выберете вы?',sub:'Игра в чате'},
+ {id:6,day:17,time:'18:00',type:'live',title:'Моя карта вкуса',sub:'Разборы · прямой эфир',go:{lib:3},link:'https://example.com/live/6'},
+ {id:7,day:18,time:'',type:'pub',title:'Итоги недели',sub:'Неделя 1',go:{lib:4}}
 ];
 var FINAL={id:99,title:'Готовим вместе. Финал месяца',sub:'Неделя 4 · Суббота',text:'Дата, время и формат уточняются.'};
 var MEMBERS=[
- {id:1,name:'Анна Смирнова',email:'anna@mail.ru',plan:'3 месяца',until:'14.01.2027',status:'active',autopay:true,m:{tg:1,max:0,vk:1},card:'Visa •• 4242',mkt:'05.10.2026',pay:[['05.10.2026','4 900 ₽','Успешно','1']]},
- {id:2,name:'Мария Козлова',email:'maria@gmail.com',plan:'1 месяц',until:'16.10.2026',status:'grace',autopay:true,m:{tg:1,max:0,vk:0},card:'МИР •• 7788',mkt:null,pay:[['16.09.2026','1 900 ₽','Успешно','1'],['16.10.2026','1 900 ₽','Не прошло','2']]},
- {id:3,name:'Ольга Петрова',email:'olga@yandex.ru',plan:'1 год',until:'02.07.2027',status:'active',autopay:true,m:{tg:0,max:1,vk:0},card:'Mastercard •• 1190',mkt:'02.07.2026',pay:[['02.07.2026','15 900 ₽','Успешно','1']]},
- {id:4,name:'Ирина Волкова',email:'irina@mail.ru',plan:'6 месяцев',until:'30.09.2026',status:'expired',autopay:false,m:{tg:0,max:0,vk:0},card:'Visa •• 9034',mkt:null,pay:[['30.03.2026','8 900 ₽','Успешно','1']]},
+ {id:1,name:'Анна Смирнова',email:'anna@mail.ru',plan:'2 месяца',until:'05.12.2026',status:'active',autopay:true,m:{tg:1,max:0,vk:1},card:'Visa •• 4242',mkt:'05.10.2026',pay:[['05.10.2026','1 881 ₽','Успешно','1']]},
+ {id:2,name:'Мария Козлова',email:'maria@gmail.com',plan:'1 месяц',until:'16.10.2026',status:'grace',autopay:true,m:{tg:1,max:0,vk:0},card:'МИР •• 7788',mkt:null,pay:[['16.09.2026','990 ₽','Успешно','1'],['16.10.2026','990 ₽','Не прошло','2']]},
+ {id:3,name:'Ольга Петрова',email:'olga@yandex.ru',plan:'3 месяца',until:'02.01.2027',status:'active',autopay:true,m:{tg:0,max:1,vk:0},card:'Mastercard •• 1190',mkt:'02.10.2026',pay:[['02.10.2026','2 673 ₽','Успешно','1']]},
+ {id:4,name:'Ирина Волкова',email:'irina@mail.ru',plan:'2 месяца',until:'30.09.2026',status:'expired',autopay:false,m:{tg:0,max:0,vk:0},card:'Visa •• 9034',mkt:null,pay:[['01.08.2026','1 881 ₽','Успешно','1']]},
  {id:5,name:'Елена Орлова',email:'elena@gmail.com',plan:'вручную (доступ выдан)',until:'31.12.2026',status:'active',autopay:false,m:{tg:1,max:1,vk:1},card:'—',mkt:'11.10.2026',pay:[]},
  {id:6,name:'Светлана Белова',email:'sveta@mail.ru',plan:'—',until:'—',status:'none',autopay:false,m:{tg:0,max:0,vk:0},card:'—',mkt:null,pay:[]}
 ];
@@ -483,7 +415,7 @@ var TASTE_Q=[
 
 /* ============ СОСТОЯНИЕ ============ */
 var S={role:'visitor',view:'landing',ageOk:false,under18:false,day:TODAY,libType:'all',q:'',topic:'Общий',tab:'members',openMember:null,openTicket:null,rail:false,
- autopay:true,mess:{tg:true,max:false,vk:false},mkt:true,tariff:'m3',join:null,fav:{1:true},taste:null,tq:{},
+ autopay:true,mess:{tg:true,max:false,vk:false},mkt:true,tariff:'m1',join:null,fav:{1:true},taste:null,tq:{},
  myTickets:[{id:1,subj:'Как подключить MAX?',st:'done',msgs:[['u','Как подключить MAX?'],['s','Профиль → Мессенджеры → «Подключить».']]}],chatDel:{},sent:[],emailDemo:''};
 function isStaff(){return ['moderator','admin','techspec','owner'].indexOf(S.role)>-1}
 function can(p){
@@ -497,7 +429,7 @@ function rub(n){return n.toLocaleString('ru-RU')+' ₽'}
 function perMonth(t){return rub(Math.round(t.price/t.months))}
 function toast(t){var el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove('on')},2400)}
 function openModal(h){$('#modalBox').innerHTML=h;$('#modal').classList.add('on')}
-function closeModal(){$('#modal').classList.remove('on')}
+function closeModal(){stopTimer();$('#modal').classList.remove('on')}
 function go(v,extra){S.view=v;if(extra)for(var k in extra)S[k]=extra[k];render();window.scrollTo(0,0)}
 function tById(id){return TARIFFS.filter(function(t){return t.id===id})[0]}
 function libById(id){return LIB.filter(function(x){return x.id===id})[0]}
@@ -505,8 +437,8 @@ function dayName(d){return DAYS.filter(function(x){return x[1]===d})[0][0]}
 
 /* ============ РЕНДЕР ============ */
 function render(){
- var app=$('#app'),a=$('#age');a&&a.remove();
- if(S.role==='visitor'){app.innerHTML='<div class="col">'+landing()+'</div>';if(!S.ageOk&&!S.under18)document.body.insertAdjacentHTML('beforeend',ageGate());return}
+ var app=$('#app'),a=$('#age');a&&a.remove();document.body.classList.toggle('landing',S.role==='visitor');
+ if(S.role==='visitor'){app.innerHTML=landing();afterLanding();if(!S.ageOk&&!S.under18)document.body.insertAdjacentHTML('beforeend',ageGate());return}
  if(S.view==='admin'){app.innerHTML=admin();return}
  app.innerHTML=shell();
  var e=$('#msgsEnd');if(e)e.scrollIntoView({block:'end'});
@@ -518,63 +450,17 @@ function ageGate(){
  '<button class="ghost" style="margin-top:10px" data-act="age" data-v="0">Нет, только посмотреть</button></div></div>';
 }
 
-/* ----- лендинг-витрина ----- */
-function landing(){
- var t=tById(S.tariff);
- var periods=TARIFFS.map(function(x){return '<button data-act="ptariff" data-t="'+x.id+'" class="'+(x.id===S.tariff?'on':'')+'">'+x.short+'</button>'}).join('');
- var week=EVENTS.map(function(e){return '<div class="kn-wd"><b>'+dayName(e.day)+'</b><span>'+esc(e.title)+'<em>'+(e.time?e.time+' · ':'')+esc(e.sub)+'</em></span></div>'}).join('');
- function ex(icon,fmt,h,p){return '<div class="kn-example"><div class="kn-fmt">'+ic(icon)+fmt+'</div><h3>'+h+'</h3><p>'+p+'</p></div>'}
- function ben(icon,h,p){return '<div class="kn-benefit">'+ic(icon)+'<h3>'+h+'</h3><p>'+p+'</p></div>'}
- function li(tx){return '<li>'+ic('check')+tx+'</li>'}
- function faq(q,a){return '<details><summary>'+q+'</summary><p>'+a+'</p></details>'}
- return ''+
- '<header class="kn-top"><div class="kn-author">Кристина Никитичева<span>Академия вкуса</span></div><button class="kn-login-link" data-act="login">'+ic('user',14)+'Войти</button></header>'+
- (S.under18?'<div class="agebar">Вступление доступно с 18 лет. Витрину можно смотреть. <span class="link" data-act="reage">Мне уже есть 18</span></div>':'')+
- '<section class="kn-hero"><img class="kn-hero-photo" src="img/hero.jpg" alt="Кристина Никитичева дегустирует вино" width="1024" height="1536"><div class="kn-hero-content">'+
- '<p class="eyebrow">Вино · Гастрономия · Общение</p><h1 class="kn-h1">Академия<span>вкуса.</span></h1>'+
- '<p class="kn-lead">Разбирайся в вине. Готовь вкуснее.<br>Открывай новые сочетания<br>вместе со мной.</p>'+
- '<button class="primary" data-act="scroll" data-t="kn-subscription">Присоединиться'+ic('up',18)+'</button>'+
- '<button class="kn-text-link" data-act="scroll" data-t="kn-included">Посмотреть, что внутри'+ic('right',14)+'</button></div></section>'+
-
- '<section class="kn-section" id="kn-included"><p class="eyebrow">Твой доступ</p><h2>Что входит<br>в <span>подписку</span></h2><div class="kn-benefits">'+
- ben('video','Эфиры','Живые встречи со мной и записи в библиотеке.')+ben('book','Библиотека','Вино, рецепты, сочетания и весь опубликованный архив.')+
- ben('cal','Календарь','Программа недели и переход к событиям.')+ben('chat','Чат','Вопросы и обсуждения с участниками Академии.')+
- '</div><p class="kn-note">'+ic('check',18)+'<span>Все опубликованные материалы доступны на время активной подписки. Управление подпиской и поддержка — в профиле.</span></p></section>'+
-
- '<section class="kn-section raised" id="kn-about"><div class="kn-about-head"><img class="kn-about-photo" src="img/about.jpg" alt="Кристина Никитичева" width="69" height="84"><div><h2>Кристина<br>Никитичева</h2><p>Сомелье и винный эксперт</p></div></div>'+
- '<p style="margin:0">Я собираю здесь то, что помогает понимать свой вкус: вино, гастрономию, сочетания и удовольствие от еды. Будем разбираться, готовить, пробовать и обсуждать вместе.</p></section>'+
-
- '<section class="kn-section" id="kn-examples"><p class="eyebrow">Форматы и примеры тем</p><h2>Открывать.<br>Пробовать. <span>Понимать.</span></h2><div class="kn-examples">'+
- ex('play','Видео и разборы','Как понять свой вкус','Учимся замечать, что нравится в бокале, и выбирать вино осознаннее.')+
- ex('utensils','Рецепты и сочетания','Ужин и вино','Рецепт, подача и объяснение того, как собрать сочетание.')+
- ex('file','Гиды и материалы','Вино для себя','Ориентиры для выбора, которые можно сохранить и использовать.')+'</div></section>'+
-
- '<section class="kn-section raised" id="kn-week"><p class="eyebrow">Календарь</p><h2>Неделя <span>в Академии</span></h2><p>Так выглядит программа недели внутри. Каждое событие открывается: эфир со ссылкой, материал в библиотеке или чат.</p><div class="kn-week">'+week+'</div></section>'+
-
- '<section class="kn-section" id="kn-how"><p class="eyebrow">Начать просто</p><h2>Как всё <span>устроено</span></h2><ol class="kn-steps">'+
- '<li><span class="kn-no">01</span><div><b>Выбираешь подписку</b><p>Знакомишься со стоимостью, сроком и условиями продления.</p></div></li>'+
- '<li><span class="kn-no">02</span><div><b>Входишь по email и оплачиваешь</b><p>Подтверждаешь адрес и переходишь к защищённой оплате.</p></div></li>'+
- '<li><span class="kn-no">03</span><div><b>Открываешь приложение</b><p>После подтверждения оплаты доступны библиотека, события и чат.</p></div></li></ol></section>'+
-
- '<section class="kn-section raised" id="kn-subscription"><p class="eyebrow">Присоединиться</p><h2>Твоя <span>подписка</span></h2><div class="kn-tariff">'+
- '<div class="kn-tariff-top"><b>Полный доступ</b>'+ic('wine',19)+'</div><div class="kn-periods">'+periods+'</div>'+
- '<div class="kn-price" id="kn-price">'+rub(t.price)+'</div><p class="kn-pnote" id="kn-pnote">'+perMonth(t)+' в месяц · цены демонстрационные, итоговые утвердит заказчик</p>'+
- '<ul class="kn-list">'+li('Весь опубликованный архив')+li('Эфиры и программа событий')+li('Чат и общение')+li('Личный кабинет и поддержка')+'</ul>'+
- '<button class="primary" data-act="join">Оформить подписку'+ic('right',18)+'</button>'+
- '<div class="kn-renewal"><h3>Автоматическое продление</h3><p>Следующая оплата — по окончании оплаченного периода. Автопродление можно отключить в профиле. Уже оплаченный доступ сохранится до конца срока.</p></div></div></section>'+
-
- '<section class="kn-section" id="kn-questions"><p class="eyebrow">До присоединения</p><h2>Частые <span>вопросы</span></h2><div class="kn-faq">'+
- faq('Мне нужен Telegram?','Нет. Материалы, эфиры и чат работают в приложении. Бота в Telegram, MAX или ВКонтакте можно подключить для напоминаний об эфирах и оплате.')+
- faq('Будут доступны старые материалы?','Да. Активная подписка открывает весь опубликованный архив, включая материалы, вышедшие до твоего присоединения.')+
- faq('Что делать, если пропущу эфир?','Опубликованная запись появится в библиотеке и будет связана с событием.')+
- faq('Как отключить автопродление?','В своём профиле. После отключения новые списания не запускаются, а оплаченный доступ сохраняется до конца текущего периода.')+
- faq('Нужно устанавливать приложение?','Можно пользоваться обычным браузером. Установка на главный экран телефона доступна в поддерживаемых браузерах.')+
- faq('Куда обратиться, если не могу войти?','Используй контакт поддержки внизу страницы. Помощь с оплатой и входом доступна до оформления подписки.')+'</div></section>'+
-
- '<section class="kn-section" id="kn-help"><div class="kn-support">'+ic('head',24)+'<div><h2>Нужна помощь?</h2><p>Вопросы об оплате, подписке или входе — в поддержку.</p><span class="kn-contact">[Контакт поддержки]</span></div></div></section>'+
- '<footer class="kn-footer"><div class="kn-footer-name">Академия вкуса</div><div class="kn-footer-by">Кристина Никитичева</div><div class="kn-docs">'+
- '<button class="kn-doc" data-act="doc" data-d="offer">Оферта</button><button class="kn-doc" data-act="doc" data-d="pd">Политика данных</button><button class="kn-doc" data-act="doc" data-d="cons">Согласия</button></div>'+
- '<p class="kn-fnote">Рекламная рассылка — по отдельному необязательному согласию. 18+ · Чрезмерное употребление алкоголя вредит вашему здоровью.</p></footer>';
+/* ----- лендинг-витрина: вёрстка клиента (vitrina.css и vitrina.js), логика прототипа ----- */
+function landing(){return '<div class="vt">'+VITRINA_HTML+'</div>'}
+function afterLanding(){
+ var r=document.querySelector('input[name="subscription-months"][value="'+S.tariff.slice(1)+'"]');if(r)r.checked=true;
+ var btn=document.querySelector('.subscription [data-act=checkout]');
+ if(btn&&S.under18){
+  btn.disabled=true;btn.style.opacity='.5';
+  var p=document.createElement('p');p.className='subscription__note';
+  p.innerHTML='Вступление в клуб доступно с 18 лет. <span class="link" data-act="reage">Мне уже есть 18</span>';
+  btn.insertAdjacentElement('afterend',p);
+ }
 }
 
 /* ----- оболочка приложения ----- */
@@ -593,7 +479,7 @@ function hdr(){
 }
 function paywall(){
  return hdr()+'<div class="paper stack" style="text-align:center;margin-top:24px"><div style="color:var(--gold)">'+ic('lock',34)+'</div><h2 style="font-size:26px">Подписка закончилась</h2>'+
- '<p class="muted">Эфиры, библиотека и чат доступны только участникам. Профиль и история платежей остаются с вами.</p>'+
+ '<p class="muted">На время активной подписки вам доступны все материалы клуба: архив прошлых месяцев и новые публикации. Сейчас подписка не активна. Профиль и история платежей остаются с вами.</p>'+
  '<button class="primary center" data-act="renew">Возобновить подписку</button><button class="ghost" data-act="go" data-v="profile">Открыть профиль</button></div>';
 }
 function back(v,t){return '<button class="back" data-act="go" data-v="'+v+'">‹ '+t+'</button>'}
@@ -601,22 +487,22 @@ function sech(h,more){return '<div class="sech"><h2>'+h+'</h2>'+(more||'')+'</di
 function moreLink(t,v){return '<button class="more" data-act="go" data-v="'+v+'">'+t+ic('right',15)+'</button>'}
 
 /* главная */
-function tile(bg,icon,label,v){return '<button class="tile" style="background-image:url(img/hero.jpg);background-size:'+bg[0]+';background-position:'+bg[1]+'" data-act="go" data-v="'+v+'"><span class="ic">'+ic(icon)+'</span><b>'+label+'</b></button>'}
+function tile(bg,icon,label,v){return '<button class="tile" style="background-image:url('+bg[0]+');background-size:'+bg[1]+';background-position:'+bg[2]+'" data-act="go" data-v="'+v+'"><span class="ic">'+ic(icon)+'</span><b>'+label+'</b></button>'}
 function home(){
  var d=S.day||TODAY,evs=EVENTS.filter(function(e){return e.day===d});
  var days=DAYS.map(function(x){var has=EVENTS.some(function(e){return e.day===x[1]});return '<button class="'+(d===x[1]?'on ':'')+(has?'has':'')+'" data-act="day" data-d="'+x[1]+'">'+x[0]+'<i></i></button>'}).join('');
  var list=evs.length?evs.map(evCard).join(''):'<div class="sub">В этот день событий нет</div>';
  var f=libById(1);
- function lc(x,pos){return '<button class="lcard" data-act="item" data-id="'+x.id+'"><div class="ph" style="background-size:300% auto;background-position:'+pos+'"></div><div class="tx"><small>'+TYPE[x.type][0]+'</small><b>'+esc(x.title)+'</b></div></button>'}
+ function lc(x,img){return '<button class="lcard" data-act="item" data-id="'+x.id+'"><div class="ph" style="background-image:url('+img+');background-size:cover;background-position:center"></div><div class="tx"><small>'+TYPE[x.type][0]+'</small><b>'+esc(x.title)+'</b></div></button>'}
  return hdr()+'<p class="hello">Рада видеть тебя. Начнём с твоего вкуса.</p>'+
- '<div class="tiles">'+tile(['260%','22% 8%'],'play','Начни<br>здесь','start')+tile(['300%','86% 40%'],'clip','Моя карта<br>вкуса','taste')+tile(['280%','78% 50%'],'chat','Правила<br>и общение','rules')+'</div>'+
+ '<div class="tiles">'+tile(['img/v2/07-inside-live.png','cover','50% 45%'],'play','Начни<br>здесь','start')+tile(['img/v2/10-inside-pocket-sommelier.png','cover','80% 40%'],'clip','Моя карта<br>вкуса','taste')+tile(['img/v2/09-inside-games-community.jpg','cover','50% 50%'],'chat','Правила<br>и общение','rules')+'</div>'+
  '<div class="search">'+ic('search')+'<input id="homeQ" placeholder="Поиск по Академии..." aria-label="Поиск"></div>'+
  sech('На этой неделе','<span class="arrows"><button data-act="weeknav" aria-label="Назад">'+ic('cl')+'</button><button data-act="weeknav" aria-label="Вперёд">'+ic('cr')+'</button></span>')+
  '<div class="sub">Месяц 1 · Неделя 1 · Как я чувствую вино</div><div class="days">'+days+'</div>'+list+
  sech('Актуальное',moreLink('Все материалы','lib'))+
  '<button class="feature" data-act="item" data-id="1"><span class="pill">'+ic('play')+TYPE[f.type][0]+'</span><div class="in-f"><div class="eyebrow">Моя карта вкуса · Первый месяц</div><h3>'+esc(f.title)+'</h3><div class="meta"><span>'+f.sub+'</span><b>Открыть'+ic('up',15)+'</b></div></div></button>'+
  sech('В библиотеке',moreLink('Всё','lib'))+
- '<div class="lcards">'+lc(libById(2),'86% 36%')+lc(libById(3),'20% 10%')+'</div>'+
+ '<div class="lcards">'+lc(libById(2),'img/v2/08-inside-library.png')+lc(libById(3),'img/v2/10-inside-pocket-sommelier.png')+'</div>'+
  sech('Встречи со мной',moreLink('Программа','events'))+
  '<div class="meet"><div class="eyebrow">'+ic('video')+'Финал первого месяца</div><h3>'+esc(FINAL.title).replace('. ','.<br>')+'</h3><p><b style="color:var(--white)">'+FINAL.sub+'</b><br>'+FINAL.text+'</p><button class="primary" data-act="final">О событии'+ic('up',18)+'</button></div>'+
  sech('Под рукой')+'<div class="handy"><button class="hbtn" data-act="go" data-v="chat">'+ic('chat')+'Чат</button><button class="hbtn" data-act="go" data-v="fav">'+ic('heart')+'Избранное</button>'+
@@ -679,14 +565,14 @@ function favView(){
 
 /* старт, правила, анкета */
 function startView(){
- function st(n,h,p){return '<div><b>'+n+'</b><span><span style="font:600 13px Manrope;color:#fff">'+h+'</span><br><span class="soft small">'+p+'</span></span></div>'}
+ function st(n,h,p){return '<div><b>'+n+'</b><span><span style="font:600 13px AcademySans;color:#fff">'+h+'</span><br><span class="soft small">'+p+'</span></span></div>'}
  return back('home','Главная')+'<h1 class="pagehead">Начни здесь</h1><div class="paper stack"><p class="muted">Привет! Я рада, что ты здесь. Академия — это не про «правильное» вино, а про твой вкус. Вот как начать:</p>'+
  '<div class="steps">'+st('01','Заполни карту вкуса','3 вопроса, чтобы я подобрала материалы.')+st('02','Посмотри первую лекцию','«Как мы чувствуем вино», 20–25 минут.')+st('03','Загляни в события','Эфиры и программа недели.')+st('04','Подключи бота','Напоминания придут в Telegram, MAX или ВКонтакте.')+'</div>'+
  '<button class="primary" data-act="go" data-v="taste">Заполнить карту вкуса'+ic('right',18)+'</button></div>';
 }
 function rulesView(){
  return back('home','Главная')+'<h1 class="pagehead">Правила и общение</h1><div class="paper stack"><p class="muted">Чтобы в чате было приятно, договоримся о нескольких простых вещах:</p>'+
- ['Уважаем друг друга и разные вкусы: «нравится» и «не нравится» — это не «правильно» и «неправильно».','Без рекламы, ссылок на магазины и продажи алкоголя.','Личные данные других участников не публикуем.','Если что-то не так, пишите модератору или в поддержку.'].map(function(r,i){return '<div class="row" style="align-items:flex-start"><span class="gold" style="font:400 20px Prata,serif">0'+(i+1)+'</span><span class="soft">'+r+'</span></div>'}).join('')+
+ ['Уважаем друг друга и разные вкусы: «нравится» и «не нравится» — это не «правильно» и «неправильно».','Без рекламы, ссылок на магазины и продажи алкоголя.','Личные данные других участников не публикуем.','Если что-то не так, пишите модератору или в поддержку.'].map(function(r,i){return '<div class="row" style="align-items:flex-start"><span class="gold" style="font:400 20px AcademySerif,serif">0'+(i+1)+'</span><span class="soft">'+r+'</span></div>'}).join('')+
  '<button class="primary" data-act="go" data-v="chat">Перейти в чат'+ic('right',18)+'</button></div>';
 }
 function tasteView(){
@@ -718,13 +604,13 @@ function profileView(){
  var exp=S.role==='expired';
  var st=exp?'<span class="badge bad">Закончилась</span>':'<span class="badge ok">Активна</span>';
  var ma=[['tg','Telegram','TG'],['max','MAX','MX'],['vk','ВКонтакте','ВК']],any=S.mess.tg||S.mess.max||S.mess.vk;
- var pays=exp?[['30.03.2026','6 месяцев','8 900 ₽']]:[['05.10.2026','3 месяца','4 900 ₽'],['05.07.2026','1 месяц','1 900 ₽']];
+ var pays=exp?[['01.08.2026','2 месяца','1 881 ₽']]:[['05.10.2026','2 месяца','1 881 ₽'],['05.08.2026','1 месяц','990 ₽']];
  return hdr()+'<h1 class="pagehead" style="margin-bottom:6px">Профиль</h1>'+(isStaff()?'<button class="primary sm" style="margin:8px 0" data-act="admin">Открыть админпанель'+ic('up',16)+'</button>':'')+
  '<div class="paper" style="margin-top:12px"><div class="row between"><h2 style="font-size:22px">Подписка</h2>'+st+'</div><div style="margin-top:8px">'+
- '<div class="kv"><span>Тариф</span><b>'+(exp?'6 месяцев':'3 месяца')+'</b></div><div class="kv"><span>Действует до</span><b>'+(exp?'30.09.2026':'05.01.2027')+'</b></div>'+
- '<div class="kv"><span>Следующее списание</span><b>'+(exp||!S.autopay?'—':'05.01.2027 · 4 900 ₽')+'</b></div><div class="kv"><span>Карта</span><b>Visa •• 4242</b></div>'+
+ '<div class="kv"><span>Тариф</span><b>'+'2 месяца'+'</b></div><div class="kv"><span>Действует до</span><b>'+(exp?'30.09.2026':'05.12.2026')+'</b></div>'+
+ '<div class="kv"><span>Следующее списание</span><b>'+(exp||!S.autopay?'—':'05.12.2026 · 1 881 ₽')+'</b></div><div class="kv"><span>Карта</span><b>Visa •• 4242</b></div>'+
  '<div class="kv"><span>Автопродление</span><span class="sw '+(S.autopay&&!exp?'on':'')+'" data-act="autopay" role="switch"></span></div></div>'+
- '<button class="primary center" style="margin-top:16px" data-act="renew">'+(exp?'Возобновить подписку':'Продлить или сменить тариф')+'</button></div>'+
+ '<p class="soft small" style="margin-top:12px">На время активной подписки вам доступны все материалы клуба: архив прошлых месяцев и новые публикации.</p>'+'<button class="primary center" style="margin-top:16px" data-act="renew">'+(exp?'Возобновить подписку':'Продлить или сменить тариф')+'</button></div>'+
  '<h2 class="sec">Мессенджеры</h2>'+(any?'':'<div class="banner">Подключите бота, чтобы получать напоминания об эфирах и оплатах.</div>')+
  '<div class="dark">'+ma.map(function(m){return '<div class="mrow"><span class="ic">'+m[2]+'</span><span class="grow"><b style="font-size:13px">'+m[1]+'</b><div class="soft small">'+(S.mess[m[0]]?'Подключён':'Не подключён')+'</div></span><button class="'+(S.mess[m[0]]?'ghost':'primary')+' sm" data-act="mess" data-m="'+m[0]+'">'+(S.mess[m[0]]?'Отключить':'Подключить')+'</button></div>'}).join('')+'</div>'+
  '<h2 class="sec">Быстрые ссылки</h2><div class="handy"><button class="hbtn" data-act="go" data-v="fav">'+ic('heart')+'Избранное</button><button class="hbtn" data-act="go" data-v="support">'+ic('head')+'Поддержка</button></div>'+
@@ -870,44 +756,72 @@ function admStaff(){
  dt([['Сотрудник',function(s){return s.name}],['Роль',sel],['',act]],STAFF,{card:function(s){return '<b>'+s.name+'</b><div style="margin:10px 0">'+sel(s)+'</div>'+act(s)}});
 }
 
-/* ============ ВХОД / ОПЛАТА ============ */
-function dots(n){return '<div class="stepdots">'+[1,2,3,4].map(function(i){return '<i class="'+(i<=n?'on':'')+'"></i>'}).join('')+'</div>'}
+/* ============ ВХОД / ОФОРМЛЕНИЕ ЗАКАЗА ============ */
+// Сколько минут действует заказ. Для проверки откройте страницу с ?ttl=0.3 (это 18 секунд).
+var ORDER_TTL_MIN=(function(){var v=parseFloat(new URLSearchParams(location.search).get('ttl'));return v>0?v:30})();
 function mx(){return '<button class="x" data-act="mclose" aria-label="Закрыть">'+ic('x',17)+'</button>'}
-function flowEmail(mode){
- S.join={mode:mode,tariff:S.tariff};
- openModal(mx()+'<h2>'+(mode==='login'?'Войти в приложение':'Присоединиться')+'</h2><p class="muted" style="margin-bottom:14px">Вход по email. Если ты здесь впервые, аккаунт создаётся после подтверждения адреса.</p>'+(mode==='join'?dots(1):'')+
- '<div class="field"><label>Твой email</label><input class="in" id="fEmail" type="email" placeholder="you@example.com" autocomplete="email"></div><button class="primary" data-act="f-email">Получить код'+ic('right',18)+'</button>');
+function flowEmail(){
+ S.join={mode:'login',tariff:S.tariff};
+ openModal(mx()+'<h2>Вход для участников</h2><p class="muted" style="margin-bottom:14px">Введите email, на который оформлена подписка. Мы отправим код подтверждения, пароль не нужен.</p>'+
+ '<div class="field"><label>Email</label><input class="in" id="fEmail" type="email" placeholder="you@example.com" autocomplete="email"></div><button class="primary" data-act="f-email">Получить код'+ic('right',18)+'</button>');
 }
 function flowCode(){
- openModal(mx()+'<h2>Код из письма</h2><p class="muted" style="margin-bottom:14px">Мы отправили 6 цифр на '+esc(S.emailDemo)+'. Код действует 10 минут.</p>'+(S.join.mode==='join'?dots(2):'')+
- '<div class="field"><label>Код подтверждения</label><input class="in" id="fCode" inputmode="numeric" maxlength="6" placeholder="••••••" style="letter-spacing:.4em;font-size:22px;text-align:center"></div><p class="muted" style="margin-bottom:14px">Демо: подойдёт любой код из 6 цифр, например 123456.</p><button class="primary" data-act="f-code">Продолжить'+ic('right',18)+'</button>');
+ openModal(mx()+'<h2>Код из письма</h2><p class="muted" style="margin-bottom:14px">Мы отправили 6 цифр на '+esc(S.emailDemo)+'. Код действует 10 минут.</p>'+
+ '<div class="field"><label>Код подтверждения</label><input class="in" id="fCode" inputmode="numeric" maxlength="6" placeholder="••••••" style="letter-spacing:.4em;font-size:22px;text-align:center"></div><p class="muted" style="margin-bottom:14px">Демо: подойдёт любой код из 6 цифр, например 123456.</p><button class="primary" data-act="f-code">Войти'+ic('right',18)+'</button>');
 }
-function flowConsent(){
- var t=tById(S.join.tariff);
- openModal(mx()+'<h2>Согласия</h2><p class="muted" style="margin-bottom:6px">Документы подписываются отдельно.</p>'+dots(3)+
- TARIFFS.map(function(x){return '<label class="topt '+(x.id===S.join.tariff?'on':'')+'"><input type="radio" name="tf" '+(x.id===S.join.tariff?'checked':'')+' data-act="tf" data-t="'+x.id+'"><span class="grow"><b>'+x.name+'</b><div class="soft small">'+perMonth(x)+' в месяц</div></span><b>'+rub(x.price)+'</b></label>'}).join('')+
- '<div style="height:10px"></div>'+
+/* окно оформления: имя, email, телефон и согласия */
+function flowCheckout(){
+ var t=tById(S.tariff),o=S.order||{};
+ openModal(mx()+'<h2>Оформление заказа</h2>'+
+ '<div class="sumline"><div><b>Подписка на '+t.name+'</b><div class="soft small">все материалы клуба на время подписки</div></div><b>'+rub(t.price)+'</b></div>'+
+ '<div class="field"><label>Имя</label><input class="in" id="cName" autocomplete="name" placeholder="Как к вам обращаться" value="'+esc(o.name||'')+'"></div>'+
+ '<div class="field"><label>Email</label><input class="in" id="cEmail" type="email" autocomplete="email" placeholder="you@example.com" value="'+esc(o.email||'')+'"></div>'+
+ '<div class="field"><label>Телефон</label><input class="in" id="cPhone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" value="'+esc(o.phone||'')+'"></div>'+
  '<label class="chk"><input type="checkbox" id="cPd"><span>Я согласен(на) на <span class="link" data-act="doc" data-d="cons">обработку персональных данных</span> и ознакомлен(а) с <span class="link" data-act="doc" data-d="pd">политикой</span> *</span></label>'+
  '<label class="chk"><input type="checkbox" id="cOffer"><span>Принимаю <span class="link" data-act="doc" data-d="offer">оферту</span> *</span></label>'+
- '<label class="chk"><input type="checkbox" id="cAuto" checked><span>Согласен(на) на автоматическое списание '+rub(t.price)+' каждые '+(t.months===1?'месяц':t.months===12?'12 месяцев':t.months+' мес.')+', отключить можно в профиле *</span></label>'+
+ '<label class="chk"><input type="checkbox" id="cAuto" checked><span>Согласен(на) на автоматическое списание '+rub(t.price)+' каждые '+(t.months===1?'месяц':t.months+' мес.')+', отключить можно в профиле *</span></label>'+
  '<label class="chk"><input type="checkbox" id="cMkt"><span>Хочу получать <span class="link" data-act="doc" data-d="mkt">рекламные и информационные рассылки</span> (необязательно)</span></label>'+
- '<div id="fErr" class="small" style="color:var(--bad);min-height:20px;margin-bottom:6px"></div><button class="primary" data-act="f-consent">Перейти к оплате'+ic('right',18)+'</button>');
+ '<div id="fErr" class="small" style="color:var(--bad);min-height:20px;margin-bottom:6px"></div><button class="primary" data-act="f-checkout">Перейти к оплате'+ic('right',18)+'</button>');
 }
-function flowPay(){
- var t=tById(S.join.tariff);
- openModal(mx()+'<h2>Оплата</h2>'+(S.join.mode==='join'?dots(4):'')+'<div class="kv"><span>Тариф</span><b>'+t.name+'</b></div><div class="kv"><span>К оплате</span><b>'+rub(t.price)+'</b></div>'+
- '<div class="banner" style="margin-top:14px">Здесь откроется страница платёжной системы. Данные карты вводятся там, приложение их не видит и не хранит.</div><button class="primary" data-act="f-pay">Оплатить '+rub(t.price)+' (демо)'+ic('right',18)+'</button>');
+/* окно заказа: сколько времени осталось на оплату */
+function fmtLeft(){var s=Math.max(0,Math.round((S.order.expiresAt-Date.now())/1000));return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+s%60).slice(-2)}
+function stopTimer(){if(S.timerId){clearInterval(S.timerId);S.timerId=null}}
+function startTimer(){
+ stopTimer();
+ S.timerId=setInterval(function(){
+  var el=$('#orderTimer');if(!el){stopTimer();return}
+  var left=S.order.expiresAt-Date.now();
+  if(left<=0){stopTimer();flowExpired();return}
+  el.textContent=fmtLeft();el.classList.toggle('low',left<5*60000);
+ },1000);
+}
+function flowOrder(){
+ var o=S.order,t=tById(o.tariff);
+ openModal(mx()+'<h2>Заказ оформлен</h2><p class="muted" style="margin-bottom:4px">Оплатите заказ, чтобы открыть доступ. Пока идёт время, заказ сохранён за вами.</p>'+
+ '<div class="timer"><span class="small soft">Осталось на оплату</span><b id="orderTimer">'+fmtLeft()+'</b></div>'+
+ '<div class="kv"><span>Тариф</span><b>'+t.name+'</b></div>'+
+ (o.name?'<div class="kv"><span>Имя</span><b>'+esc(o.name)+'</b></div>':'')+
+ '<div class="kv"><span>Email</span><b>'+esc(o.email)+'</b></div>'+
+ '<div class="kv"><span>К оплате</span><b>'+rub(t.price)+'</b></div>'+
+ '<div class="banner" style="margin-top:14px">Здесь откроется страница платёжной системы. Данные карты вводятся там, приложение их не видит и не хранит.</div>'+
+ '<button class="primary" data-act="f-pay">Оплатить '+rub(t.price)+' (демо)'+ic('right',18)+'</button>'+
+ (o.mode==='new'?'<button class="ghost" style="margin-top:10px" data-act="f-edit">Изменить данные</button>':'')+
+ '<p class="muted small" style="margin-top:14px">Если оплата не завершится, мы пришлём ссылку на оплату на '+esc(o.email)+'.</p>');
+ startTimer();
+}
+function flowExpired(){
+ openModal(mx()+'<div style="text-align:center"><div style="color:var(--gold);margin:6px 0 12px">'+ic('lock',34)+'</div><h2 style="padding:0">Время заказа истекло</h2><p class="muted" style="margin:10px 0 18px">Заказ больше не действует. Оформите его заново, это займёт минуту.</p></div>'+
+ '<button class="primary center" data-act="f-redo">Оформить заново</button>');
 }
 function flowDone(){
- openModal('<div style="text-align:center"><div style="color:var(--gold);margin:6px 0 12px">'+ic('wine',40)+'</div><h2 style="padding:0">Добро пожаловать в Академию</h2><p class="muted" style="margin:10px 0 18px">Оплата прошла, доступ открыт. Подключите бота, чтобы получать напоминания об эфирах и оплатах.</p></div>'+
+ openModal('<div style="text-align:center"><div style="color:var(--gold);margin:6px 0 12px">'+ic('wine',40)+'</div><h2 style="padding:0">Добро пожаловать в Академию</h2><p class="muted" style="margin:10px 0 18px">Оплата прошла, доступ открыт. Подключите бота, чтобы получать напоминания об эфирах и оплате.</p></div>'+
  '<div class="stack"><button class="ghost" data-act="mess-join" data-m="tg">Подключить Telegram</button><button class="ghost" data-act="mess-join" data-m="max">Подключить MAX</button><button class="ghost" data-act="mess-join" data-m="vk">Подключить ВКонтакте</button><button class="primary center" data-act="enter">Войти в приложение</button></div>');
 }
 
 /* ============ ДЕЙСТВИЯ ============ */
 document.addEventListener('click',function(ev){
  var a=ev.target.closest('[data-act]');if(!a)return;
- var d=a.dataset,act=d.act;
- if(act==='tf'){S.join.tariff=d.t;S.tariff=d.t;flowConsent();return}
+ if(a.tagName==='A')ev.preventDefault();var d=a.dataset,act=d.act;
  if(act==='rn'){S.tariff=d.t;S.join.tariff=d.t;document.querySelectorAll('#modalBox .topt').forEach(function(l){l.classList.toggle('on',l.querySelector('input').dataset.t===d.t)});return}
  if(act==='tq'){S.tq[+d.i]=d.v;document.querySelectorAll('input[name=tq'+d.i+']').forEach(function(r){r.closest('.opt').classList.toggle('on',r.dataset.v===d.v)});return}
  switch(act){
@@ -916,10 +830,9 @@ document.addEventListener('click',function(ev){
    render();break;
   case 'reage':S.under18=false;S.ageOk=false;render();break;
   case 'scroll':var el=document.getElementById(d.t);el&&el.scrollIntoView({block:'start'});break;
-  case 'ptariff':
-   S.tariff=d.t;var t=tById(d.t);$('#kn-price').textContent=rub(t.price);$('#kn-pnote').textContent=perMonth(t)+' в месяц · цены демонстрационные, итоговые утвердит заказчик';
-   document.querySelectorAll('.kn-periods button').forEach(function(b){b.classList.toggle('on',b.dataset.t===d.t)});break;
-  case 'join':if(S.under18){toast('Вступление доступно только с 18 лет');return}flowEmail('join');break;
+  case 'checkout':
+   if(S.under18){toast('Вступление доступно только с 18 лет');return}
+   var rch=document.querySelector('input[name="subscription-months"]:checked');S.tariff='m'+(rch?rch.value:'1');flowCheckout();break;
   case 'login':flowEmail('login');break;
   case 'mclose':closeModal();break;
   case 'f-email':
@@ -927,12 +840,20 @@ document.addEventListener('click',function(ev){
    S.emailDemo=em;flowCode();break;
   case 'f-code':
    if(($('#fCode').value||'').length<6){$('#fCode').style.borderColor='#ff8c98';return}
-   if(S.join.mode==='login'){closeModal();S.role='member';S.view='home';$('#roleSel').value='member';render();toast('С возвращением!')}else flowConsent();break;
-  case 'f-consent':
-   if(!($('#cPd').checked&&$('#cOffer').checked&&$('#cAuto').checked)){$('#fErr').textContent='Отметьте согласие на обработку данных, оферту и автосписание';return}
-   S.mkt=$('#cMkt').checked;S.autopay=true;flowPay();break;
+   closeModal();S.role='member';S.view='home';$('#roleSel').value='member';render();toast('С возвращением!');break;
+  case 'f-checkout':
+   var nm=($('#cName').value||'').trim(),em2=($('#cEmail').value||'').trim(),ph=($('#cPhone').value||'').replace(/\D/g,'');
+   var err=!nm?'Введите имя':!/^\S+@\S+\.\S+$/.test(em2)?'Проверьте email':ph.length<10?'Введите номер телефона полностью':!($('#cPd').checked&&$('#cOffer').checked&&$('#cAuto').checked)?'Отметьте согласие на обработку данных, оферту и автосписание':'';
+   if(err){$('#fErr').textContent=err;return}
+   S.mkt=$('#cMkt').checked;S.autopay=true;
+   S.order={mode:'new',tariff:S.tariff,name:nm,email:em2,phone:$('#cPhone').value,createdAt:Date.now(),expiresAt:Date.now()+ORDER_TTL_MIN*60000};
+   flowOrder();break;
+  case 'f-edit':stopTimer();flowCheckout();break;
   case 'f-pay':
-   if(S.join.mode==='renew'){closeModal();S.role='member';$('#roleSel').value='member';S.view='profile';render();toast('Подписка оформлена')}else flowDone();break;
+   stopTimer();
+   if(S.order&&S.order.mode==='renew'){closeModal();S.role='member';$('#roleSel').value='member';S.view='profile';render();toast('Подписка оформлена')}else flowDone();break;
+  case 'f-redo':
+   if(S.order&&S.order.mode==='renew'){S.order.expiresAt=Date.now()+ORDER_TTL_MIN*60000;flowOrder()}else flowCheckout();break;
   case 'enter':closeModal();S.role='member';S.view='home';$('#roleSel').value='member';render();break;
   case 'mess-join':S.mess[d.m]=true;toast('Откроется бот и привяжет аккаунт ('+({tg:'Telegram',max:'MAX',vk:'ВКонтакте'}[d.m])+')');break;
   case 'doc':openModal(mx()+'<h2>'+DOCS[d.d]+'</h2><p class="muted" style="margin:10px 0 18px">Здесь будет открываться утверждённый документ. Его текст и реквизиты пока не добавлены; тексты предоставляет заказчик (лучше проверить у юриста).</p><button class="primary center" data-act="mclose">Понятно</button>');break;
@@ -963,7 +884,7 @@ document.addEventListener('click',function(ev){
   case 'renew':
    S.join={mode:'renew',tariff:S.tariff};
    openModal(mx()+'<h2>'+(S.role==='expired'?'Возобновить подписку':'Продлить или сменить тариф')+'</h2><p class="muted" style="margin-bottom:14px">Выберите срок.</p>'+TARIFFS.map(function(x){return '<label class="topt '+(x.id===S.tariff?'on':'')+'"><input type="radio" name="rn" '+(x.id===S.tariff?'checked':'')+' data-act="rn" data-t="'+x.id+'"><span class="grow"><b>'+x.name+'</b><div class="soft small">'+perMonth(x)+' в месяц</div></span><b>'+rub(x.price)+'</b></label>'}).join('')+'<button class="primary" style="margin-top:10px" data-act="f-pay-go">Перейти к оплате'+ic('right',18)+'</button>');break;
-  case 'f-pay-go':flowPay();break;
+  case 'f-pay-go':S.order={mode:'renew',tariff:S.tariff,email:'anna@mail.ru',createdAt:Date.now(),expiresAt:Date.now()+ORDER_TTL_MIN*60000};flowOrder();break;
   case 'newticket':
    var s=($('#tSubj').value||'').trim(),tx=($('#tText').value||'').trim();if(!s||!tx){toast('Заполните тему и сообщение');return}
    S.myTickets.unshift({id:200+S.myTickets.length,subj:s,st:'new',msgs:[['u',tx]]});render();toast('Обращение отправлено');break;
