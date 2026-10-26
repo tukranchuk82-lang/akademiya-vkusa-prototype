@@ -302,7 +302,7 @@ body.landing #demo select{max-width:170px;font-size:11px;padding:4px 8px;border:
 .support__ask{margin:0 0 20px}
 .faq__ask{margin-top:22px}
 .faq__ask p{font-size:14px;line-height:1.6;margin:0 0 12px}
-.ask-fab{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:45;display:none;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:var(--gold);color:var(--deep);font:700 13px/1.2 AcademySans,sans-serif;box-shadow:0 0 10px rgba(242,238,230,.55),0 0 25px rgba(242,238,230,.38),0 4px 18px rgba(0,0,0,.4)}
+.ask-fab{position:fixed;right:max(14px,calc(50vw - 240px + 14px));bottom:max(14px,env(safe-area-inset-bottom));z-index:45;display:none;align-items:center;justify-content:center;width:52px;height:52px;padding:0;border-radius:50%;background:var(--gold);color:var(--deep);box-shadow:0 0 10px rgba(242,238,230,.55),0 0 25px rgba(242,238,230,.38),0 4px 18px rgba(0,0,0,.4)}
 .ask-fab.on{display:inline-flex}
 body:not(.landing) .ask-fab{display:none}
 .askbtn{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--white);text-decoration:none}
@@ -461,7 +461,7 @@ function ageGate(){
 }
 
 /* ----- лендинг-витрина: вёрстка клиента (vitrina.css и vitrina.js), логика прототипа ----- */
-function landing(){return '<div class="vt">'+VITRINA_HTML+'</div><button type="button" class="ask-fab" data-act="ask">'+ic('chat',18)+'Задать вопрос</button>'}
+function landing(){return '<div class="vt">'+VITRINA_HTML+'</div><button type="button" class="ask-fab" data-act="ask" aria-label="Задать вопрос" title="Задать вопрос">'+ic('chat',24)+'</button>'}
 function askFab(){var f=document.querySelector('.ask-fab');if(!f)return;var s=document.querySelector('.support'),near=s&&s.getBoundingClientRect().top<window.innerHeight*0.7;f.classList.toggle('on',window.scrollY>window.innerHeight*0.8&&!near)}
 window.addEventListener('scroll',askFab,{passive:true});
 function afterLanding(){askFab();
@@ -778,7 +778,7 @@ function flowAsk(){
  openModal(mx()+'<h2>Задать вопрос</h2><p class="muted" style="margin-bottom:16px">Выберите мессенджер. Откроется чат-бот, там можно написать свой вопрос, и мы ответим.</p>'+
  '<div class="stack">'+Object.keys(BOT_LINKS).map(function(k){var b=BOT_LINKS[k];
   return '<a class="askbtn" href="'+b[2]+'" target="_blank" rel="noopener"><span class="ic">'+b[1]+'</span><span class="grow"><b>'+b[0]+'</b><span class="soft small" style="display:block">Открыть чат-бота</span></span>'+ic('up',18)+'</a>'}).join('')+'</div>'+
- '<p class="muted small" style="margin-top:16px">Ссылка откроется в новой вкладке. Бот работает в выбранном мессенджере.</p>');
+'');
 }
 
 /* ============ ВХОД / ОФОРМЛЕНИЕ ЗАКАЗА ============ */
