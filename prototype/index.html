@@ -299,6 +299,8 @@ body.landing{padding-top:0}
 body.landing #demo{top:8px;left:8px;right:auto;width:auto;height:34px;padding:0 6px;gap:0;border:1px solid rgba(242,238,230,.35);border-radius:999px;background:rgba(20,3,10,.72);backdrop-filter:blur(6px)}
 body.landing #demo b{display:none}
 body.landing #demo select{max-width:170px;font-size:11px;padding:4px 8px;border:0;border-radius:999px;background:transparent}
+.support .action,.faq .action{font-size:20px;min-height:52px;padding:12px 14px}
+.faq .action--secondary{font-size:17px;min-height:48px}
 .support__ask{margin:0 0 20px}
 .faq__ask{margin-top:22px}
 .faq__ask p{font-size:14px;line-height:1.6;margin:0 0 12px}
@@ -777,7 +779,7 @@ var BOT_LINKS={
 function flowAsk(){
  openModal(mx()+'<h2>Задать вопрос</h2><p class="muted" style="margin-bottom:16px">Выберите мессенджер. Откроется чат-бот, там можно написать свой вопрос, и мы ответим.</p>'+
  '<div class="stack">'+Object.keys(BOT_LINKS).map(function(k){var b=BOT_LINKS[k];
-  return '<a class="askbtn" href="'+b[2]+'" target="_blank" rel="noopener"><span class="ic">'+b[1]+'</span><span class="grow"><b>'+b[0]+'</b><span class="soft small" style="display:block">Открыть чат-бота</span></span>'+ic('up',18)+'</a>'}).join('')+'</div>'+
+  return '<a class="askbtn" href="'+b[2]+'" target="_blank" rel="noopener"><span class="ic">'+b[1]+'</span><span class="grow"><b>'+b[0]+'</b></span>'+ic('up',18)+'</a>'}).join('')+'</div>'+
 '');
 }
 
