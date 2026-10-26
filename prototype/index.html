@@ -299,6 +299,16 @@ body.landing{padding-top:0}
 body.landing #demo{top:8px;left:8px;right:auto;width:auto;height:34px;padding:0 6px;gap:0;border:1px solid rgba(242,238,230,.35);border-radius:999px;background:rgba(20,3,10,.72);backdrop-filter:blur(6px)}
 body.landing #demo b{display:none}
 body.landing #demo select{max-width:170px;font-size:11px;padding:4px 8px;border:0;border-radius:999px;background:transparent}
+.support__ask{margin:0 0 20px}
+.faq__ask{margin-top:22px}
+.faq__ask p{font-size:14px;line-height:1.6;margin:0 0 12px}
+.ask-fab{position:fixed;right:14px;bottom:max(14px,env(safe-area-inset-bottom));z-index:45;display:none;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;background:var(--gold);color:var(--deep);font:700 13px/1.2 AcademySans,sans-serif;box-shadow:0 0 10px rgba(242,238,230,.55),0 0 25px rgba(242,238,230,.38),0 4px 18px rgba(0,0,0,.4)}
+.ask-fab.on{display:inline-flex}
+body:not(.landing) .ask-fab{display:none}
+.askbtn{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--white);text-decoration:none}
+.askbtn:hover{border-color:var(--gold)}
+.askbtn .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;border:1px solid var(--line);color:var(--gold);flex:none}
+.askbtn b{font-weight:700;display:block}
 </style>
 </head>
 <body>
@@ -451,8 +461,10 @@ function ageGate(){
 }
 
 /* ----- лендинг-витрина: вёрстка клиента (vitrina.css и vitrina.js), логика прототипа ----- */
-function landing(){return '<div class="vt">'+VITRINA_HTML+'</div>'}
-function afterLanding(){
+function landing(){return '<div class="vt">'+VITRINA_HTML+'</div><button type="button" class="ask-fab" data-act="ask">'+ic('chat',18)+'Задать вопрос</button>'}
+function askFab(){var f=document.querySelector('.ask-fab');if(!f)return;var s=document.querySelector('.support'),near=s&&s.getBoundingClientRect().top<window.innerHeight*0.7;f.classList.toggle('on',window.scrollY>window.innerHeight*0.8&&!near)}
+window.addEventListener('scroll',askFab,{passive:true});
+function afterLanding(){askFab();
  var r=document.querySelector('input[name="subscription-months"][value="'+S.tariff.slice(1)+'"]');if(r)r.checked=true;
  var btn=document.querySelector('.subscription [data-act=checkout]');
  if(btn&&S.under18){
@@ -756,6 +768,19 @@ function admStaff(){
  dt([['Сотрудник',function(s){return s.name}],['Роль',sel],['',act]],STAFF,{card:function(s){return '<b>'+s.name+'</b><div style="margin:10px 0">'+sel(s)+'</div>'+act(s)}});
 }
 
+/* ============ ВОПРОС ЧЕРЕЗ ЧАТ-БОТА ============ */
+var BOT_LINKS={
+ tg:['Telegram','TG','https://bot.christella.ru/r/5354c4b11d50754aec293fc0134fb234_1'],
+ max:['MAX','MX','https://bot.christella.ru/r/5354c4b11d50754aec293fc0134fb234_20'],
+ vk:['ВКонтакте','ВК','https://bot.christella.ru/5354c4b11d50754aec293fc0134fb234_0_f']
+};
+function flowAsk(){
+ openModal(mx()+'<h2>Задать вопрос</h2><p class="muted" style="margin-bottom:16px">Выберите мессенджер. Откроется чат-бот, там можно написать свой вопрос, и мы ответим.</p>'+
+ '<div class="stack">'+Object.keys(BOT_LINKS).map(function(k){var b=BOT_LINKS[k];
+  return '<a class="askbtn" href="'+b[2]+'" target="_blank" rel="noopener"><span class="ic">'+b[1]+'</span><span class="grow"><b>'+b[0]+'</b><span class="soft small" style="display:block">Открыть чат-бота</span></span>'+ic('up',18)+'</a>'}).join('')+'</div>'+
+ '<p class="muted small" style="margin-top:16px">Ссылка откроется в новой вкладке. Бот работает в выбранном мессенджере.</p>');
+}
+
 /* ============ ВХОД / ОФОРМЛЕНИЕ ЗАКАЗА ============ */
 // Сколько минут действует заказ. Для проверки откройте страницу с ?ttl=0.3 (это 18 секунд).
 var ORDER_TTL_MIN=(function(){var v=parseFloat(new URLSearchParams(location.search).get('ttl'));return v>0?v:30})();
@@ -834,6 +859,7 @@ document.addEventListener('click',function(ev){
    if(S.under18){toast('Вступление доступно только с 18 лет');return}
    var rch=document.querySelector('input[name="subscription-months"]:checked');S.tariff='m'+(rch?rch.value:'1');flowCheckout();break;
   case 'login':flowEmail('login');break;
+  case 'ask':flowAsk();break;
   case 'mclose':closeModal();break;
   case 'f-email':
    var em=($('#fEmail').value||'').trim();if(!/^\S+@\S+\.\S+$/.test(em)){$('#fEmail').style.borderColor='#ff8c98';return}
