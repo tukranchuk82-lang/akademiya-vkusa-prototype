@@ -311,15 +311,75 @@ body:not(.landing) .ask-fab{display:none}
 .askbtn:hover{border-color:var(--gold)}
 .askbtn .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;border:1px solid var(--line);color:var(--gold);flex:none}
 .askbtn b{font-weight:700;display:block}
+
+/* --- наполнение клуба --- */
+#demo select+select{margin-left:0}
+body.landing #dateSel{display:none}
+.days button{gap:3px}.days button small{font-size:11px;opacity:.85}
+.countdown{border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:18px 20px;margin-bottom:6px;text-align:center}
+.countdown p{font-size:13px;color:var(--soft);margin:8px 0 6px}
+.countdown b{display:block;font:400 28px/1.2 AcademySerif,serif;color:var(--white)}
+.countdown.on{border-color:var(--gold)}
+.countdown.on p{margin:6px 0 0;color:var(--gold)}
+.plaque{display:flex;align-items:center;gap:12px;padding:16px;border:1px dashed var(--line);border-radius:16px;margin-bottom:10px;color:var(--soft);font-size:14px}
+.plaque.on{border:1px solid var(--gold);color:var(--white)}
+.plaque svg{color:var(--gold);flex:none}
+.st{flex:none;font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--soft);white-space:nowrap}
+.st-open{border-color:var(--ok);color:var(--ok)}
+.st-rec{border-color:var(--gold);color:var(--gold)}
+.st-done{opacity:.7}
+.item.locked{opacity:.62;cursor:default}
+.item.locked .go{color:var(--soft)}
+.letters{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 18px}
+.letters button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);color:var(--gold);font:600 13px AcademySans}
+.dl{margin-bottom:6px}
+.dletter{font:400 34px AcademySerif,serif;color:var(--gold);margin:18px 0 8px;scroll-margin-top:64px}
+.term{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:10px}
+.term b{font:400 19px AcademySerif,serif;display:block;margin-bottom:6px}
+.term p{font-size:13px;line-height:1.75;color:var(--soft)}
+.rescard{position:relative;border:1px solid var(--line);border-radius:20px;padding:22px 22px 24px;margin-bottom:14px;background:linear-gradient(150deg,#4a1a2c,var(--panel) 60%);overflow:hidden}
+.rescard.route{background:linear-gradient(150deg,#3b2330,var(--panel) 60%)}
+.rescard h2{font-size:30px;line-height:1.15;margin:8px 0 12px;letter-spacing:-.02em}
+.rescard p{font-size:13.5px;line-height:1.8;color:var(--soft)}
+.rescard .num{position:absolute;right:16px;top:16px;color:var(--gold);opacity:.9}
+.wrapchips{display:flex;flex-wrap:wrap;gap:8px}
+.chip.on2{border-color:var(--gold);color:var(--white)}
+.sect{position:relative;border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:18px;margin-bottom:12px;overflow:hidden}
+.sect h3{font:400 21px AcademySerif,serif;margin-bottom:6px}
+.sect.lock .sect-in{filter:blur(6px);pointer-events:none;user-select:none}
+.sect-veil{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--gold);background:rgba(28,9,16,.35)}
+.sect-veil b{font:600 13px AcademySans;color:var(--white)}
+.note{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.note p{font-size:13.5px;line-height:1.7;margin:4px 0 8px}
+.nbtn{display:flex;gap:14px;flex-wrap:wrap}
+.nbtn button{color:var(--gold);font-size:12px;font-weight:600}
+.ta{width:100%;background:var(--bg);color:var(--white);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:13.5px/1.6 AcademySans,sans-serif}
+.howto{margin:8px 0 0 18px;font-size:13.5px;line-height:1.8;color:var(--soft)}
+.howto li+li{margin-top:4px}
+
+/* --- страница документа --- */
+#docview{position:fixed;inset:0;z-index:100;background:var(--bg);overflow:auto;display:none}
+#docview.on{display:block}
+.docbar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;max-width:720px;margin:0 auto;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+.docbar button{color:var(--gold);font-weight:600;font-size:13px;padding:8px 0}
+.docbody{max-width:720px;margin:0 auto;padding:22px 20px 64px}
+.docbody h1{font-size:30px;line-height:1.2;letter-spacing:-.02em;margin-top:6px}
+.docbody h2{font:400 21px/1.3 AcademySerif,serif;margin:28px 0 10px}
+.docbody p{font-size:14px;line-height:1.85;color:var(--soft);margin-bottom:10px}
+.docbody ul{margin:0 0 12px 20px}
+.docbody li{font-size:14px;line-height:1.8;color:var(--soft);margin-bottom:4px}
 </style>
 </head>
 <body>
-<div id="demo"><b>Прототип</b><select id="roleSel" aria-label="Режим просмотра"></select></div>
+<div id="demo"><b>Прототип</b><select id="roleSel" aria-label="Режим просмотра"></select><select id="dateSel" aria-label="Дата для просмотра"></select></div>
 <div id="app"></div>
 <div id="modal"><div class="box" id="modalBox"></div></div>
+<div id="docview" role="dialog" aria-modal="true" aria-label="Документ"></div>
 <div id="toast"></div>
 
 <script src="vitrina.js"></script>
+<script src="club.js"></script>
+<script src="docs.js"></script>
 <script>
 /* ============ ИКОНКИ ============ */
 var IC = {
@@ -361,37 +421,6 @@ var TARIFFS=[
   {id:'m2',name:'2 месяца',short:'2 мес',months:2,price:1881,old:4980},
   {id:'m3',name:'3 месяца',short:'3 мес',months:3,price:2673,old:7470}
 ];
-var TYPE={lecture:['Лекция + практика','play'],cards:['Карточки + практика','clip'],mini:['Мини-лекция','video'],check:['Чек-лист','ccheck'],guide:['Гид','file'],recipe:['Рецепт и сочетание','utensils'],record:['Запись эфира','video']};
-var LIB=[
- {id:1,type:'lecture',title:'Как мы чувствуем вино',sub:'20–25 минут · Неделя 1',video:true,tags:['вкус','основы'],
-  body:['Как работают вкус, аромат и послевкусие и почему один и тот же бокал два человека описывают по-разному.','В практической части вы сразу применяете это на своём вине: нужен один бокал и 20 минут.']},
- {id:2,type:'cards',title:'Сенсорная калибровка',sub:'Неделя 1',video:false,tags:['практика','вкус'],
-  body:['Набор карточек, который помогает договориться с самим собой о словах: что такое «кислинка», «танин», «тело».','Распечатайте или держите на экране рядом с бокалом.']},
- {id:3,type:'mini',title:'Откуда берутся ароматы',sub:'10 минут · Неделя 1',video:true,tags:['аромат','основы'],
-  body:['Короткая лекция: откуда в бокале берутся фрукты, специи и дым, и как отличать их друг от друга.']},
- {id:4,type:'check',title:'Итоги недели 1: моя карта вкуса',sub:'Неделя 1',video:false,tags:['чек-лист','итоги'],
-  body:['Короткий чек-лист: что я заметила в бокале, что мне нравится, что хочу попробовать дальше.','Сохраните ответы: на их основе в следующий месяц подберём материалы.']},
- {id:5,type:'guide',title:'Вино для себя',sub:'Гид',video:false,tags:['выбор','гид'],
-  body:['Ориентиры для выбора вина, которые можно сохранить и использовать в магазине и ресторане.']},
- {id:6,type:'recipe',title:'Ужин и вино',sub:'Рецепт и подача',video:false,tags:['рецепт','сочетание'],
-  body:['Рецепт, подача и объяснение того, как собрать сочетание блюда и вина.']},
- {id:7,type:'lecture',title:'Как понять свой вкус',sub:'Видео и разбор',video:true,tags:['вкус','выбор'],
-  body:['Учимся замечать, что нравится в бокале, и выбирать вино осознаннее.']},
- {id:8,type:'record',title:'Запись: старт Академии',sub:'Запись эфира',video:true,tags:['эфир'],
-  body:['Запись вводного эфира: как устроена Академия и что вас ждёт в первый месяц.']}
-];
-var DAYS=[['Пн',12],['Вт',13],['Ср',14],['Чт',15],['Пт',16],['Сб',17],['Вс',18]];
-var TODAY=12;
-var EVENTS=[
- {id:1,day:12,time:'',type:'pub',title:'Старт. Что я люблю сейчас?',sub:'Приветствие + анкета',go:{view:'taste'}},
- {id:2,day:13,time:'12:00',type:'pub',title:'Как мы чувствуем вино',sub:'Лекция (в записи)',go:{lib:1}},
- {id:3,day:14,time:'',type:'pub',title:'Сенсорная калибровка',sub:'Карточки + практика',go:{lib:2}},
- {id:4,day:15,time:'20:00',type:'live',title:'А у вас как?',sub:'Разборы · прямой эфир',go:{lib:7},link:'https://example.com/live/4'},
- {id:5,day:16,time:'19:30',type:'event',title:'Какое вино выберете вы?',sub:'Игра в чате'},
- {id:6,day:17,time:'18:00',type:'live',title:'Моя карта вкуса',sub:'Разборы · прямой эфир',go:{lib:3},link:'https://example.com/live/6'},
- {id:7,day:18,time:'',type:'pub',title:'Итоги недели',sub:'Неделя 1',go:{lib:4}}
-];
-var FINAL={id:99,title:'Готовим вместе. Финал месяца',sub:'Неделя 4 · Суббота',text:'Дата, время и формат уточняются.'};
 var MEMBERS=[
  {id:1,name:'Анна Смирнова',email:'anna@mail.ru',plan:'2 месяца',until:'05.12.2026',status:'active',autopay:true,m:{tg:1,max:0,vk:1},card:'Visa •• 4242',mkt:'05.10.2026',pay:[['05.10.2026','1 881 ₽','Успешно','1']]},
  {id:2,name:'Мария Козлова',email:'maria@gmail.com',plan:'1 месяц',until:'16.10.2026',status:'grace',autopay:true,m:{tg:1,max:0,vk:0},card:'МИР •• 7788',mkt:null,pay:[['16.09.2026','990 ₽','Успешно','1'],['16.10.2026','990 ₽','Не прошло','2']]},
@@ -417,16 +446,11 @@ var BCASTS=[
  {when:'7 окт, 18:30',aud:'Все в клубе',ch:'TG, MAX, ВК',n:312}
 ];
 var DOCS={pd:'Политика обработки персональных данных',cons:'Согласие на обработку персональных данных',mkt:'Согласие на рекламные и информационные рассылки',offer:'Оферта'};
-var NOTIFS=['Сегодня в 19:00 эфир: как мы чувствуем вино','В библиотеке новая мини-лекция «Откуда берутся ароматы»','Ближайшее списание — через 3 дня'];
+var NOTIFS=['Академия вкуса откроется 1 ноября. Напомним в боте','В библиотеке открыт «Винный словарь без снобизма»','Раздел «Ощущения» в карте вкуса откроется 2 ноября'];
 var ROLES=[['visitor','Посетитель (не вошёл)'],['member','Участник клуба'],['expired','Участник: подписка закончилась'],['moderator','Модератор'],['admin','Администратор'],['techspec','Техспец'],['owner','Владелец']];
-var TASTE_Q=[
- ['Что вам ближе всего в вине?',['Учусь разбираться','Хочу выбирать без ошибок','Ищу сочетания с едой','Просто люблю вкусно жить']],
- ['Как часто вы открываете бутылку?',['Почти каждый день','По выходным','По праздникам','Редко']],
- ['Что хотите получать в Академии?',['Подборки вин','Разборы сочетаний с едой','Гиды и чек-листы','Эфиры и дегустации']]
-];
 
 /* ============ СОСТОЯНИЕ ============ */
-var S={role:'visitor',view:'landing',ageOk:false,under18:false,day:TODAY,libType:'all',q:'',topic:'Общий',tab:'members',openMember:null,openTicket:null,rail:false,
+var S={role:'visitor',view:'landing',ageOk:false,under18:false,day:null,week:null,demo:null,notes:[],consents:[],welcomed:false,editTaste:false,libType:'all',q:'',topic:'Общий',tab:'members',openMember:null,openTicket:null,rail:false,
  autopay:true,mess:{tg:true,max:false,vk:false},mkt:true,tariff:'m1',join:null,fav:{1:true},taste:null,tq:{},
  myTickets:[{id:1,subj:'Как подключить MAX?',st:'done',msgs:[['u','Как подключить MAX?'],['s','Профиль → Мессенджеры → «Подключить».']]}],chatDel:{},sent:[],emailDemo:''};
 function isStaff(){return ['moderator','admin','techspec','owner'].indexOf(S.role)>-1}
@@ -444,8 +468,6 @@ function openModal(h){$('#modalBox').innerHTML=h;$('#modal').classList.add('on')
 function closeModal(){stopTimer();$('#modal').classList.remove('on')}
 function go(v,extra){S.view=v;if(extra)for(var k in extra)S[k]=extra[k];render();window.scrollTo(0,0)}
 function tById(id){return TARIFFS.filter(function(t){return t.id===id})[0]}
-function libById(id){return LIB.filter(function(x){return x.id===id})[0]}
-function dayName(d){return DAYS.filter(function(x){return x[1]===d})[0][0]}
 
 /* ============ РЕНДЕР ============ */
 function render(){
@@ -478,13 +500,13 @@ function afterLanding(){askFab();
 }
 
 /* ----- оболочка приложения ----- */
-var LOCKED=['home','lib','item','events','event','chat','fav','start','taste','rules'];
+var LOCKED=['home','lib','item','dict','events','event','chat','fav','start','taste','rules'];
 function shell(){
  var v=S.view,body='';
  if(S.role==='expired'&&LOCKED.indexOf(v)>-1) body=paywall();
- else body=({home:home,lib:libView,item:itemView,events:eventsView,event:eventView,chat:chatView,profile:profileView,fav:favView,support:supportView,ticket:ticketView,start:startView,taste:tasteView,rules:rulesView}[v]||home)();
+ else body=({home:home,lib:libView,item:itemView,events:eventsView,event:eventView,chat:chatView,profile:profileView,fav:favView,support:supportView,ticket:ticketView,start:startView,taste:tasteView,rules:rulesView,dict:dictView}[v]||home)();
  var tabs=[['home','home','Главная'],['lib','book','Библиотека'],['events','cal','События'],['chat','chat','Чат'],['profile','user','Профиль']];
- var cur=({item:'lib',event:'events',fav:'profile',support:'profile',ticket:'profile',start:'home',taste:'home',rules:'home'})[v]||v;
+ var cur=({item:'lib',event:'events',fav:'profile',support:'profile',ticket:'profile',start:'home',taste:'home',rules:'home',dict:'lib'})[v]||v;
  return '<div class="col"><div class="app">'+body+'</div><nav class="nav">'+tabs.map(function(t){return '<button class="'+(cur===t[0]?'on':'')+'" data-act="go" data-v="'+t[0]+'">'+ic(t[1],22)+t[2]+'</button>'}).join('')+'</nav></div>';
 }
 function hdr(){
@@ -502,102 +524,179 @@ function moreLink(t,v){return '<button class="more" data-act="go" data-v="'+v+'"
 
 /* главная */
 function tile(bg,icon,label,v){return '<button class="tile" style="background-image:url('+bg[0]+');background-size:'+bg[1]+';background-position:'+bg[2]+'" data-act="go" data-v="'+v+'"><span class="ic">'+ic(icon)+'</span><b>'+label+'</b></button>'}
+function cdBlock(){
+ if(!clubOpened())return '<div class="countdown"><p style="margin-top:0">До открытия клуба «Академия вкуса» осталось</p><b class="cd-val">'+untilOpen()+'</b></div>';
+ return '<div class="countdown on"><div class="eyebrow">Тема ноября</div><b>Моя карта вкуса</b><p>Академия вкуса открыта!</p></div>';
+}
 function home(){
- var d=S.day||TODAY,evs=EVENTS.filter(function(e){return e.day===d});
- var days=DAYS.map(function(x){var has=EVENTS.some(function(e){return e.day===x[1]});return '<button class="'+(d===x[1]?'on ':'')+(has?'has':'')+'" data-act="day" data-d="'+x[1]+'">'+x[0]+'<i></i></button>'}).join('');
+ var wi=curWeek(),w=WEEKS[wi],d=curDay(),evs=eventsOn(d),t=nowISO();
+ var days=weekDays(wi).map(function(x){var has=eventsOn(x).length>0;return '<button class="'+(d===x?'on ':'')+(has?'has':'')+'" data-act="day" data-d="'+x+'">'+WD[isoWd(x)]+'<small>'+(+x.slice(8))+'</small><i></i></button>'}).join('');
  var list=evs.length?evs.map(evCard).join(''):'<div class="sub">В этот день событий нет</div>';
- var f=libById(1);
- function lc(x,img){return '<button class="lcard" data-act="item" data-id="'+x.id+'"><div class="ph" style="background-image:url('+img+');background-size:cover;background-position:center"></div><div class="tx"><small>'+TYPE[x.type][0]+'</small><b>'+esc(x.title)+'</b></div></button>'}
- return hdr()+'<p class="hello">Рада видеть тебя. Начнём с твоего вкуса.</p>'+
+ var fx=null;evs.forEach(function(e){var l=libById(e.id);if(l&&libOpen(l)&&!fx)fx=l});if(!fx)fx=libById(1);
+ function lc(x,img){return '<button class="lcard" data-act="item" data-id="'+x.id+'"><div class="ph" style="background-image:url('+img+');background-size:cover;background-position:center"></div><div class="tx"><small>'+TYPE[x.kind][0]+'</small><b>'+esc(x.title)+'</b></div></button>'}
+ var fin=EVENTS.filter(function(e){return e.title==='Готовим вместе'})[0];
+ return hdr()+'<h1 class="pagehead" style="margin:6px 0 12px">Добро пожаловать!</h1>'+cdBlock()+'<p class="hello">Рада видеть тебя. Начнём с твоего вкуса.</p>'+
  '<div class="tiles">'+tile(['img/v2/07-inside-live.png','cover','50% 45%'],'play','Начни<br>здесь','start')+tile(['img/v2/10-inside-pocket-sommelier.png','cover','80% 40%'],'clip','Моя карта<br>вкуса','taste')+tile(['img/v2/09-inside-games-community.jpg','cover','50% 50%'],'chat','Правила<br>и общение','rules')+'</div>'+
  '<div class="search">'+ic('search')+'<input id="homeQ" placeholder="Поиск по Академии..." aria-label="Поиск"></div>'+
- sech('На этой неделе','<span class="arrows"><button data-act="weeknav" aria-label="Назад">'+ic('cl')+'</button><button data-act="weeknav" aria-label="Вперёд">'+ic('cr')+'</button></span>')+
- '<div class="sub">Месяц 1 · Неделя 1 · Как я чувствую вино</div><div class="days">'+days+'</div>'+list+
+ sech('На этой неделе','<span class="arrows"><button data-act="weeknav" data-dir="-1" aria-label="Назад">'+ic('cl')+'</button><button data-act="weeknav" data-dir="1" aria-label="Вперёд">'+ic('cr')+'</button></span>')+
+ '<div class="sub">'+(w.n?'Месяц 1 · ':'')+w.label+' · '+w.theme+'</div><div class="days">'+days+'</div>'+list+
  sech('Актуальное',moreLink('Все материалы','lib'))+
- '<button class="feature" data-act="item" data-id="1"><span class="pill">'+ic('play')+TYPE[f.type][0]+'</span><div class="in-f"><div class="eyebrow">Моя карта вкуса · Первый месяц</div><h3>'+esc(f.title)+'</h3><div class="meta"><span>'+f.sub+'</span><b>Открыть'+ic('up',15)+'</b></div></div></button>'+
+ '<button class="feature" data-act="item" data-id="'+fx.id+'"><span class="pill">'+ic(TYPE[fx.kind][1])+TYPE[fx.kind][0]+'</span><div class="in-f"><div class="eyebrow">Академия вкуса · Ноябрь</div><h3>'+esc(fx.title)+'</h3><div class="meta"><span>'+fx.sub+'</span><b>Открыть'+ic('up',15)+'</b></div></div></button>'+
  sech('В библиотеке',moreLink('Всё','lib'))+
- '<div class="lcards">'+lc(libById(2),'img/v2/08-inside-library.png')+lc(libById(3),'img/v2/10-inside-pocket-sommelier.png')+'</div>'+
+ '<div class="lcards">'+lc(libById(1),'img/v2/08-inside-library.png')+lc(libById(2),'img/v2/10-inside-pocket-sommelier.png')+'</div>'+
  sech('Встречи со мной',moreLink('Программа','events'))+
- '<div class="meet"><div class="eyebrow">'+ic('video')+'Финал первого месяца</div><h3>'+esc(FINAL.title).replace('. ','.<br>')+'</h3><p><b style="color:var(--white)">'+FINAL.sub+'</b><br>'+FINAL.text+'</p><button class="primary" data-act="final">О событии'+ic('up',18)+'</button></div>'+
+ '<div class="meet"><div class="eyebrow">'+ic('video')+'Финал первого месяца</div><h3>Готовим вместе.<br>Финал месяца</h3><p><b style="color:var(--white)">Суббота, 28 ноября · Прямой эфир</b><br>Время начала сообщим заранее.</p><button class="primary" data-act="event" data-id="'+fin.id+'">О событии'+ic('up',18)+'</button></div>'+
  sech('Под рукой')+'<div class="handy"><button class="hbtn" data-act="go" data-v="chat">'+ic('chat')+'Чат</button><button class="hbtn" data-act="go" data-v="fav">'+ic('heart')+'Избранное</button>'+
  '<button class="hbtn" data-act="go" data-v="profile">'+ic('ccheck')+'Подписка</button><button class="hbtn" data-act="go" data-v="support">'+ic('head')+'Поддержка</button></div>';
 }
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function weekLine(w){return(w.n?'Ноябрь · ':'')+w.label+' · '+w.theme+' · '+fmtDay(w.from)+' — '+fmtDay(w.to)}
+function stBadge(st){return '<span class="st st-'+st[0]+'">'+st[1]+'</span>'}
+
 function evCard(e){
- var badge=e.type==='live'?'<span class="badge live">Эфир</span> ':'';
- var inner=(e.time?'<span class="tm">'+e.time+'</span>':'')+'<span class="grow"><b>'+badge+esc(e.title)+'</b><span class="s">'+esc(e.sub)+'</span></span>'+(e.go?'<span class="go">'+ic('cr')+'</span>':'');
- return e.go?'<button class="item" data-act="event" data-id="'+e.id+'">'+inner+'</button>':'<div class="item nolink">'+inner+'</div>';
+ if(e.kind==='plaque')return '<div class="plaque'+(e.open?' on':'')+'">'+ic(e.open?'wine':'lock',20)+'<b>'+esc(e.title)+'</b></div>';
+ return '<button class="item" data-act="event" data-id="'+e.id+'"><span class="grow"><b>'+esc(e.title)+'</b><span class="s">'+TYPE[e.kind][0]+'</span></span>'+stBadge(evStatus(e))+'<span class="go">'+ic('cr')+'</span></button>';
 }
 function eventsView(){
- var chips=DAYS.map(function(d){return '<button class="chip '+(S.day===d[1]?'on':'')+'" data-act="day" data-d="'+d[1]+'">'+d[0]+' '+d[1]+(d[1]===TODAY?' •':'')+'</button>'}).join('')+'<button class="chip '+(S.day===0?'on':'')+'" data-act="day" data-d="0">Вся неделя</button>';
- var days=DAYS.filter(function(d){return S.day===0||S.day===d[1]}).map(function(d){
-  var evs=EVENTS.filter(function(e){return e.day===d[1]});
-  return '<div class="dayh">'+d[0]+', '+d[1]+' октября'+(d[1]===TODAY?'<span class="today">СЕГОДНЯ</span>':'')+'</div>'+(evs.length?evs.map(evCard).join(''):'<div class="sub">В этот день событий нет</div>');
+ var wi=curWeek(),w=WEEKS[wi],all=S.day==='all',t=nowISO();
+ var wchips=WEEKS.map(function(x){return '<button class="chip '+(wi===x.n?'on':'')+'" data-act="week" data-w="'+x.n+'">'+x.label+'</button>'}).join('');
+ var dchips=weekDays(wi).map(function(x){return '<button class="chip '+(!all&&curDay()===x?'on':'')+'" data-act="day" data-d="'+x+'">'+WD[isoWd(x)]+' '+(+x.slice(8))+(x===t?' •':'')+'</button>'}).join('')+'<button class="chip '+(all?'on':'')+'" data-act="day" data-d="all">Вся неделя</button>';
+ var list=weekDays(wi).filter(function(x){return all||x===curDay()}).map(function(x){
+  var evs=eventsOn(x);
+  return '<div class="dayh">'+WD[isoWd(x)]+', '+fmtDay(x)+(x===t?'<span class="today">СЕГОДНЯ</span>':'')+'</div>'+(evs.length?evs.map(evCard).join(''):'<div class="sub">В этот день событий нет</div>');
  }).join('');
- return hdr()+'<h1 class="pagehead">События</h1><div class="sub">Месяц 1 · Неделя 1 · 12–18 октября</div><div class="chips">'+chips+'</div>'+days+
- sech('Дальше в программе')+'<div class="meet"><div class="eyebrow">'+ic('video')+'Финал первого месяца</div><h3>'+esc(FINAL.title).replace('. ','.<br>')+'</h3><p>'+FINAL.sub+'. '+FINAL.text+'</p><button class="primary" data-act="final">О событии'+ic('up',18)+'</button></div>';
+ return hdr()+'<h1 class="pagehead">События</h1><div class="sub">'+weekLine(w)+'</div><div class="chips">'+wchips+'</div><div class="chips">'+dchips+'</div>'+list+
+ '<p class="sub" style="margin-top:20px">Время начала событий объявляем заранее, в приложении и в боте.</p>';
 }
 function eventView(){
- if(S.eid===99){
-  return back('events','События')+'<div class="stack" style="margin-top:8px"><div class="eyebrow">Финал первого месяца</div><h1 style="font-size:32px;line-height:1.2">'+esc(FINAL.title)+'</h1><div class="sub">'+FINAL.sub+'</div>'+
-  '<div class="video"><div class="play">'+ic('play',26)+'</div><div class="cap">'+FINAL.text+'</div></div><div class="paper prose"><p>Подводим итоги первого месяца и готовим вместе: блюдо и вино, которые вы подберёте сами по своей карте вкуса.</p><p>'+FINAL.text+' Мы напомним в приложении и в боте, как только всё утвердим.</p></div>'+
-  '<button class="primary center" data-act="remind">Напомнить мне</button></div>';
- }
- var e=EVENTS.filter(function(x){return x.id===S.eid})[0];if(!e)return eventsView();
- var live=e.type==='live',l=e.go&&e.go.lib?libById(e.go.lib):null;
- return back('events','События')+'<div class="stack" style="margin-top:8px"><div>'+(live?'<span class="badge live">Прямой эфир</span>':'<span class="badge">Публикация</span>')+'<h1 style="font-size:32px;line-height:1.2;margin-top:12px">'+esc(e.title)+'</h1>'+
- '<div class="sub" style="margin-top:6px">'+dayName(e.day)+', '+e.day+' октября'+(e.time?' · '+e.time+' (мск)':'')+' · '+esc(e.sub)+'</div></div>'+
- (live?'<div class="video"><div class="play">'+ic('play',26)+'</div><div class="cap">Эфир начнётся в '+e.time+'. Трансляция идёт на внешней площадке</div></div><button class="primary" data-act="watch">Смотреть эфир'+ic('up',18)+'</button><button class="ghost" data-act="ics">Добавить в календарь</button>'
-   :(l&&l.video?'<div class="video"><div class="play">'+ic('play',26)+'</div><div class="cap">Видео</div></div>':''))+
- (l?'<div><div class="sub" style="margin-bottom:8px">Материал в библиотеке</div><button class="item" data-act="item" data-id="'+l.id+'"><span class="grow"><b>'+esc(l.title)+'</b><span class="s">'+TYPE[l.type][0]+'</span></span><span class="go">'+ic('cr')+'</span></button></div>':'')+
- '<div class="sub">После эфира запись появится в библиотеке.</div></div>';
+ var e=evById(S.eid);if(!e)return eventsView();
+ var st=evStatus(e),l=libById(e.id),live=e.kind==='live'||e.kind==='qa';
+ return back('events','События')+'<div class="stack" style="margin-top:8px"><div>'+stBadge(st)+' <span class="badge">'+TYPE[e.kind][0]+'</span>'+
+ '<h1 style="font-size:32px;line-height:1.2;margin-top:12px">'+esc(e.title)+'</h1>'+
+ '<div class="sub" style="margin-top:6px">'+cap(WD_FULL[isoWd(e.d)])+', '+fmtDay(e.d)+' · '+WEEKS[e.week].label+'. '+WEEKS[e.week].theme+'</div></div>'+
+ (live?'<div class="video"><div class="play">'+ic('play',26)+'</div><div class="cap">'+(st[0]==='soon'?'Время начала сообщим заранее':'Трансляция идёт на внешней площадке')+'</div></div>'+
+   (st[0]==='open'?'<button class="primary" data-act="watch">Смотреть эфир'+ic('up',18)+'</button>':st[0]==='soon'?'<button class="primary center" data-act="remind">Напомнить мне</button>':'')+
+   (st[0]==='soon'||st[0]==='open'?'<button class="ghost" data-act="ics">Добавить в календарь</button>':''):'')+
+ (l?(libOpen(l)?'<div><div class="sub" style="margin-bottom:8px">Материал в библиотеке</div><button class="item" data-act="item" data-id="'+l.id+'"><span class="grow"><b>'+esc(l.title)+'</b><span class="s">'+TYPE[l.kind][0]+'</span></span><span class="go">'+ic('cr')+'</span></button></div>'
+  :'<div class="paper soft small">Материал в библиотеке откроется '+fmtDay(e.d)+'.</div>'):'')+
+ (live&&st[0]!=='soon'&&e.rec?'<div class="sub">Запись эфира появится в библиотеке.</div>':'')+'</div>';
 }
 
 /* библиотека */
 function libView(){
- var types=[['all','Все']].concat(Object.keys(TYPE).map(function(k){return[k,TYPE[k][0]]}));
- var chips=types.map(function(t){return '<button class="chip '+(S.libType===t[0]?'on':'')+'" data-act="libtype" data-t="'+t[0]+'">'+t[1]+'</button>'}).join('');
+ var chips=LIB_GROUPS.map(function(t){return '<button class="chip '+(S.libType===t[0]?'on':'')+'" data-act="libtype" data-t="'+t[0]+'">'+t[1]+'</button>'}).join('');
  return hdr()+'<h1 class="pagehead">Библиотека</h1><div class="search" style="margin-top:0">'+ic('search')+'<input id="q" placeholder="Поиск по названию и меткам" value="'+esc(S.q)+'"></div><div class="chips" style="margin-top:10px">'+chips+'</div><div id="libList">'+libList()+'</div>';
 }
 function libList(){
  var q=S.q.toLowerCase();
- var items=LIB.filter(function(x){return(S.libType==='all'||x.type===S.libType)&&(!q||x.title.toLowerCase().indexOf(q)>-1||x.tags.join(' ').indexOf(q)>-1)});
+ var items=LIB.filter(function(x){return(S.libType==='all'||TYPE[x.kind][2]===S.libType)&&(!q||x.title.toLowerCase().indexOf(q)>-1||x.tags.join(' ').indexOf(q)>-1)});
  if(!items.length)return '<div class="sub" style="text-align:center;padding:24px 0">Ничего не найдено</div>';
- return items.map(function(x){return '<button class="item" data-act="item" data-id="'+x.id+'"><span class="grow"><span class="s">'+TYPE[x.type][0]+'</span><b>'+esc(x.title)+'</b><span class="s">'+x.sub+'</span></span>'+(S.fav[x.id]?'<span class="gold">'+ic('heart',18).replace('<svg','<svg style="fill:var(--gold)"')+'</span>':'')+'<span class="go">'+ic('cr')+'</span></button>'}).join('');
+ return items.map(function(x){
+  if(!libOpen(x))return '<div class="item locked" data-act="locked" data-date="'+x.date+'"><span class="grow"><span class="s">'+TYPE[x.kind][0]+'</span><b>'+esc(x.title)+'</b><span class="s">'+x.sub+'</span></span><span class="st st-soon">Скоро</span><span class="go">'+ic('lock',18)+'</span></div>';
+  return '<button class="item" data-act="item" data-id="'+x.id+'"><span class="grow"><span class="s">'+TYPE[x.kind][0]+'</span><b>'+esc(x.title)+'</b><span class="s">'+x.sub+'</span></span>'+(S.fav[x.id]?'<span class="gold">'+ic('heart',18).replace('<svg','<svg style="fill:var(--gold)"')+'</span>':'')+'<span class="go">'+ic('cr')+'</span></button>';
+ }).join('');
 }
 function itemView(){
  var x=libById(S.iid);if(!x)return libView();
- return back('lib','Библиотека')+'<div class="stack" style="margin-top:8px"><div><span class="badge">'+TYPE[x.type][0]+'</span><h1 style="font-size:32px;line-height:1.2;margin-top:12px">'+esc(x.title)+'</h1><div class="sub" style="margin-top:6px">'+x.sub+'</div></div>'+
- (x.video?'<div class="video"><div class="play">'+ic('play',26)+'</div><div class="cap">Видео · защищённое воспроизведение</div></div>':'')+
- '<div class="paper prose">'+x.body.map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'+
+ if(x.kind==='dict')return dictView();
+ if(!libOpen(x))return back('lib','Библиотека')+'<div class="paper stack" style="text-align:center;margin-top:24px"><div style="color:var(--gold)">'+ic('lock',34)+'</div><h2 style="font-size:26px">'+esc(x.title)+'</h2><p class="muted">Материал откроется '+fmtDay(x.date)+'. Мы напомним в боте.</p></div>';
+ var body=x.kind==='tips'
+  ?['Здесь будут короткие подсказки Кристины: как выбрать вино, как подавать и хранить, на что смотреть в магазине и ресторане.','Раздел наполняется, тексты передаст Кристина.']
+  :['Здесь будет материал этого дня: '+(x.kind==='lecture'?'запись лекции':x.kind==='cards'?'карточки и практическое задание':x.kind==='game'?'правила игры':x.kind==='recap'?'итоги и вопросы для карты вкуса':'видео, разбор или задание')+'.','Содержание добавит Кристина в админке: видео, текст и файлы.'];
+ return back('lib','Библиотека')+'<div class="stack" style="margin-top:8px"><div><span class="badge">'+TYPE[x.kind][0]+'</span><h1 style="font-size:32px;line-height:1.2;margin-top:12px">'+esc(x.title)+'</h1><div class="sub" style="margin-top:6px">'+x.sub+'</div></div>'+
+ (['lecture','analysis','tasting','live','qa'].indexOf(x.kind)>-1?'<div class="video"><div class="play">'+ic('play',26)+'</div><div class="cap">Видео · защищённое воспроизведение</div></div>':'')+
+ '<div class="paper prose">'+body.map(function(p){return '<p>'+esc(p)+'</p>'}).join('')+'</div>'+
+ (x.practice?'<div class="paper stack"><b style="font:400 19px AcademySerif,serif">Попробовала? Занеси наблюдения в карту вкуса</b><p class="soft small">Что заметила, что понравилось, что хочется повторить. Запись сохранится в разделе карты и в избранном.</p><button class="primary" data-act="notenew" data-sec="'+sectionOfWeek(x.week)+'" data-from="'+esc(x.title)+'">Добавить в карту'+ic('right',18)+'</button></div>':'')+
  '<button class="heart '+(S.fav[x.id]?'on':'')+'" data-act="fav" data-id="'+x.id+'">'+ic('heart',20)+(S.fav[x.id]?'В избранном':'Добавить в избранное')+'</button>'+
  '<div>'+x.tags.map(function(t){return '<span class="tag">#'+t+'</span>'}).join('')+'</div></div>';
 }
+function dictList(q){
+ q=(q||'').toLowerCase().trim();
+ var out=DICT.map(function(g){
+  var terms=g[1].filter(function(t){return!q||t[0].toLowerCase().indexOf(q)>-1||t[1].toLowerCase().indexOf(q)>-1});
+  if(!terms.length)return '';
+  return '<div class="dl" id="dl-'+g[0]+'"><div class="dletter">'+g[0]+'</div>'+terms.map(function(t){return '<div class="term"><b>'+esc(t[0])+'</b><p>'+esc(t[1])+'</p></div>'}).join('')+'</div>';
+ }).join('');
+ return out||'<div class="sub" style="text-align:center;padding:24px 0">Такого слова пока нет</div>';
+}
+function dictView(){
+ var letters=DICT.map(function(g){return '<button data-act="dletter" data-l="'+g[0]+'">'+g[0]+'</button>'}).join('');
+ return back('lib','Библиотека')+'<h1 class="pagehead">Винный словарь без снобизма</h1>'+
+ '<p class="soft" style="font-size:13.5px;line-height:1.8;margin-bottom:14px">Апелласьон, танины, декантация, терруар... Вино разговаривает на своём языке. Но чтобы его понимать, совсем не обязательно учить энциклопедию наизусть. Мы собрали слова, которые действительно пригодятся тебе в магазине, ресторане и на дегустации. Открывай, когда встретишь незнакомое слово.</p>'+
+ '<div class="search" style="margin-top:0">'+ic('search')+'<input id="dq" placeholder="Найти слово" autocomplete="off"></div><div class="letters">'+letters+'</div><div id="dictList">'+dictList('')+'</div>'+
+ '<button class="heart '+(S.fav[1]?'on':'')+'" style="margin-top:18px" data-act="fav" data-id="1">'+ic('heart',20)+(S.fav[1]?'В избранном':'Добавить в избранное')+'</button>';
+}
+function noteHtml(n){
+ return '<div class="note"><div class="soft small">'+(n.from?'из «'+esc(n.from)+'»':'моё наблюдение')+'</div><p>'+esc(n.text).replace(/\n/g,'<br>')+'</p><div class="nbtn"><button data-act="notecopy" data-id="'+n.id+'">Копировать</button><button data-act="notefav" data-id="'+n.id+'">'+(n.fav?'★ В избранном':'☆ В избранное')+'</button><button data-act="notedel" data-id="'+n.id+'">Удалить</button></div></div>';
+}
 function favView(){
- var items=LIB.filter(function(x){return S.fav[x.id]});
- return back('home','Главная')+'<h1 class="pagehead">Избранное</h1>'+(items.length?items.map(function(x){return '<button class="item" data-act="item" data-id="'+x.id+'"><span class="grow"><span class="s">'+TYPE[x.type][0]+'</span><b>'+esc(x.title)+'</b></span><span class="go">'+ic('cr')+'</span></button>'}).join(''):'<div class="sub">Пока пусто. Нажмите сердечко в любом материале.</div>');
+ var items=LIB.filter(function(x){return S.fav[x.id]&&libOpen(x)}),notes=S.notes.filter(function(n){return n.fav});
+ return back('home','Главная')+'<h1 class="pagehead">Избранное</h1>'+
+ (items.length?items.map(function(x){return '<button class="item" data-act="item" data-id="'+x.id+'"><span class="grow"><span class="s">'+TYPE[x.kind][0]+'</span><b>'+esc(x.title)+'</b></span><span class="go">'+ic('cr')+'</span></button>'}).join(''):'')+
+ (notes.length?sech('Из карты вкуса')+notes.map(noteHtml).join(''):'')+
+ (!items.length&&!notes.length?'<div class="sub">Пока пусто. Нажмите сердечко в любом материале или звёздочку у наблюдения в карте вкуса.</div>':'');
 }
 
 /* старт, правила, анкета */
 function startView(){
- function st(n,h,p){return '<div><b>'+n+'</b><span><span style="font:600 13px AcademySans;color:#fff">'+h+'</span><br><span class="soft small">'+p+'</span></span></div>'}
- return back('home','Главная')+'<h1 class="pagehead">Начни здесь</h1><div class="paper stack"><p class="muted">Привет! Я рада, что ты здесь. Академия — это не про «правильное» вино, а про твой вкус. Вот как начать:</p>'+
- '<div class="steps">'+st('01','Заполни карту вкуса','3 вопроса, чтобы я подобрала материалы.')+st('02','Посмотри первую лекцию','«Как мы чувствуем вино», 20–25 минут.')+st('03','Загляни в события','Эфиры и программа недели.')+st('04','Подключи бота','Напоминания придут в Telegram, MAX или ВКонтакте.')+'</div>'+
- '<button class="primary" data-act="go" data-v="taste">Заполнить карту вкуса'+ic('right',18)+'</button></div>';
+ function st(n,h,p,btn){return '<div><b>'+n+'</b><span class="grow"><span style="font:600 14px AcademySans;color:#fff">'+h+'</span><br><span class="soft small" style="line-height:1.7">'+p+'</span>'+(btn?'<br>'+btn:'')+'</span></div>'}
+ var b=function(act,v,t){return '<button class="ghost" style="margin-top:10px;min-height:44px" data-act="'+act+'"'+(v?' data-v="'+v+'"':'')+'>'+t+'</button>'};
+ return back('home','Главная')+'<div class="eyebrow" style="margin-top:14px">Академия вкуса · Добро пожаловать</div><h1 class="pagehead" style="margin-top:6px">Ну что, начнём жить со вкусом?</h1>'+
+ '<div class="paper stack"><p class="muted"><b style="color:var(--white)">Рада видеть тебя в Академии вкуса!</b></p>'+
+ '<p class="muted">Здесь мы будем не просто узнавать новое о вине, а пробовать, сравнивать, экспериментировать с едой, разгадывать винные загадки и учиться доверять собственным ощущениям.</p>'+
+ '<p class="muted">Я буду делиться знаниями, разбирать ваши винные ситуации и приглашать на гастрономические встречи.</p>'+
+ '<p class="muted">А в конце первого месяца у тебя появится собственная карта вкуса — чтобы выбирать вино уже не наугад.</p>'+
+ '<p class="muted">Но сначала — пять маленьких шагов.</p></div>'+
+ sech('Пять шагов соучастника')+'<div class="paper steps">'+
+ st('01','Добавь Академию на экран телефона','Чтобы клуб всегда был под рукой, установи в телефоне ярлык веб-приложения.',b('howto','','Как установить'))+
+ st('02','Подключи уведомления','Это можно сделать в разделе «Профиль». Выбирай удобный мессенджер и подключи бота Академии вкуса. Так ты не пропустишь новые материалы, дегустации и встречи.',b('go','profile','Открыть профиль'))+
+ st('03','Регулярно заглядывай в «События»','Там живёт вся программа месяца: лекции, практики, игры и встречи. Выбирай интересное и планируй свои маленькие винные приключения.',b('go','events','Открыть события'))+
+ st('04','Начни заполнять карту вкуса','Ответь на несколько простых вопросов, чтобы подобрать материалы, которые будут интересны и полезны именно тебе.','<button class="primary" style="margin-top:10px" data-act="go" data-v="taste">Заполнить карту вкуса'+ic('right',18)+'</button>')+
+ st('05','Наслаждайся!','Здесь не будет экзаменов, оценок, неудобных вопросов и неправильных ответов. Пробуй новое, общайся, задавай вопросы и получай удовольствие от открытий.')+'</div>';
 }
 function rulesView(){
- return back('home','Главная')+'<h1 class="pagehead">Правила и общение</h1><div class="paper stack"><p class="muted">Чтобы в чате было приятно, договоримся о нескольких простых вещах:</p>'+
- ['Уважаем друг друга и разные вкусы: «нравится» и «не нравится» — это не «правильно» и «неправильно».','Без рекламы, ссылок на магазины и продажи алкоголя.','Личные данные других участников не публикуем.','Если что-то не так, пишите модератору или в поддержку.'].map(function(r,i){return '<div class="row" style="align-items:flex-start"><span class="gold" style="font:400 20px AcademySerif,serif">0'+(i+1)+'</span><span class="soft">'+r+'</span></div>'}).join('')+
+ function r(n,h){return '<div class="row" style="align-items:flex-start"><span class="gold" style="font:400 20px AcademySerif,serif">'+n+'</span><span class="soft grow" style="line-height:1.7">'+h+'</span></div>'}
+ return back('home','Главная')+'<h1 class="pagehead">Правила и общение</h1><div class="paper stack"><p class="muted">Здесь можно быть собой. В Академии вкуса мы исследуем вино с любопытством, а не соревнуемся в знаниях. Можно задавать простые вопросы, делиться открытиями, рассказывать о неудачных покупках и не соглашаться с чужими вкусовыми предпочтениями.</p>'+
+ '<p class="muted">Главное — уважать друг друга. Чтобы в чате было приятно, договоримся о нескольких простых вещах:</p>'+
+ r('01','Уважаем друг друга и разные вкусы: «нравится» и «не нравится» — это не «правильно» и «неправильно».')+
+ r('02','Без рекламы, ссылок на магазины и продажи алкоголя.')+
+ r('03','Личные данные других участников не публикуем.')+
+ r('04','Если что-то не так, пишите модератору или в поддержку.<br><span class="small">Время работы поддержки: уточняется.</span>')+
+ r('05','<b style="color:var(--white)">Как задать вопрос Кристине</b><br><span class="gold">#Кристина</span> — твой вопрос сомелье. Хочешь задать вопрос Кристине? Напиши его в общем чате и добавь хэштег #Кристина. В рубрике «Час сомелье» Кристина будет отвечать на выбранные вопросы — так, чтобы было интересно и полезно. Индивидуальный ответ на каждое сообщение не гарантируется.')+
+ '<div class="pin" style="margin:0">Пример сообщения:<br>#Кристина Почему мне нравится один Совиньон Блан, а другой кажется слишком кислым? От чего это зависит?</div>'+
  '<button class="primary" data-act="go" data-v="chat">Перейти в чат'+ic('right',18)+'</button></div>';
 }
-function tasteView(){
- if(S.taste){
-  return back('home','Главная')+'<h1 class="pagehead">Моя карта вкуса</h1><div class="paper stack"><div class="eyebrow">Готово</div><p class="muted">Я подобрала для тебя материалы первого месяца. Ответы сохранены, и я учту их в рассылках, если ты подписана.</p>'+
-  S.taste.map(function(a,i){return '<div class="kv"><span>'+TASTE_Q[i][0]+'</span><b style="text-align:right">'+esc(a)+'</b></div>'}).join('')+'</div>'+
-  sech('Для тебя')+[1,2,3].map(function(id){var x=libById(id);return '<button class="item" data-act="item" data-id="'+id+'"><span class="grow"><span class="s">'+TYPE[x.type][0]+'</span><b>'+esc(x.title)+'</b></span><span class="go">'+ic('cr')+'</span></button>'}).join('')+
-  '<button class="ghost" style="margin-top:8px" data-act="retaste">Пройти заново</button>';
- }
- var q=TASTE_Q.map(function(qq,i){return '<div class="q"><h3>'+qq[0]+'</h3>'+qq[1].map(function(o){return '<label class="opt '+(S.tq[i]===o?'on':'')+'"><input type="radio" name="tq'+i+'" '+(S.tq[i]===o?'checked':'')+' data-act="tq" data-i="'+i+'" data-v="'+esc(o)+'">'+o+'</label>'}).join('')+'</div>'}).join('');
- return back('home','Главная')+'<h1 class="pagehead">Моя карта вкуса</h1><p class="sub">Приветствие + анкета · 3 вопроса</p>'+q+'<button class="primary center" data-act="tastedone">Показать мою карту</button>';
+function qHtml(q,i){
+ return '<div class="q"><h3>'+(i+1)+'. '+q.t+'</h3><div class="sub" style="margin-bottom:10px">'+q.hint+'</div>'+q.o.map(function(o,oi){
+  var on=q.multi?(S.tq[i]||[]).indexOf(oi)>-1:S.tq[i]===oi;
+  return '<label class="opt '+(on?'on':'')+'"><input type="'+(q.multi?'checkbox':'radio')+'" name="tq'+i+'" '+(on?'checked':'')+' data-act="tq" data-i="'+i+'" data-v="'+oi+'">'+o+'</label>';
+ }).join('')+'</div>';
+}
+function tasteView(){return S.taste&&!S.editTaste?tasteResult():tasteForm()}
+function tasteForm(){
+ return back('home','Главная')+'<h1 class="pagehead">Моя карта вкуса</h1>'+
+ '<div class="video" style="margin-bottom:14px"><div class="play">'+ic('play',26)+'</div><div class="cap">Приветственное видео</div></div>'+
+ '<div class="paper stack" style="margin-bottom:20px"><p class="muted">Ответь на несколько вопросов. Здесь нет правильных и неправильных ответов — только твои предпочтения.</p><p class="muted">В конце ты получишь свой первый винный профиль. А по мере знакомства с вином мы будем уточнять и расширять твою карту.</p><div class="sub" style="margin:0">5–7 минут · Можно вернуться и изменить ответы</div></div>'+
+ TASTE_Q.map(qHtml).join('')+'<button class="primary center" data-act="tastedone">Показать мою карту</button>'+
+ (S.taste?'<button class="ghost" style="margin-top:10px" data-act="canceledit">Отмена</button>':'');
+}
+function sectionCard(s){
+ var open=nowISO()>=s.from,notes=S.notes.filter(function(n){return n.sec===s.k});
+ return '<div class="sect'+(open?'':' lock')+'"><div class="sect-in"><h3>'+s.t+'</h3><p class="soft small" style="line-height:1.7">'+s.q+'</p>'+notes.map(noteHtml).join('')+
+ '<button class="ghost" style="margin-top:10px;min-height:44px" data-act="notenew" data-sec="'+s.k+'">Добавить наблюдение</button></div>'+
+ (open?'':'<div class="sect-veil">'+ic('lock',22)+'<b>Откроется '+fmtDay(s.from)+'</b></div>')+'</div>';
+}
+function tasteResult(){
+ var a=S.taste,ex=EXPERIENCE[a[0]],rt=ROUTES[a[4]],like=a[3]||[];
+ var rec=rt[2].map(function(t){var l=libByTitle(t);return l?'<button class="chip" data-act="item" data-id="'+l.id+'">'+esc(t)+(libOpen(l)?'':' · скоро')+'</button>':''}).join('');
+ return back('home','Главная')+'<h1 class="pagehead">Твоя карта вкуса. Начало.</h1>'+
+ '<div class="rescard"><div class="eyebrow">Твой винный опыт</div><h2>'+ex[0]+'</h2><p>'+ex[1]+'</p><span class="num">'+ic('wine',28)+'</span></div>'+
+ '<div class="rescard route"><div class="eyebrow">Твой маршрут</div><h2>'+rt[0]+'</h2><p>'+rt[1]+'</p><div class="sub" style="margin:14px 0 8px">Тебе особенно понравится:</div><div class="wrapchips">'+rec+'</div><span class="num">'+ic('gauge',28)+'</span></div>'+
+ (like.length?'<div class="paper"><div class="eyebrow" style="margin-bottom:10px">Тебе интересно</div><div class="wrapchips">'+like.map(function(i){return '<span class="chip on2">'+TASTE_Q[3].o[i]+'</span>'}).join('')+'</div></div>':'')+
+ '<div class="paper stack" style="margin-top:14px"><b style="font:400 22px AcademySerif,serif">Твоя первая карта вкуса готова!</b><p class="muted">Это только начало. В течение месяца мы будем пробовать, сравнивать и уточнять твои предпочтения.</p><p class="muted">Каждую неделю в карте появится новый раздел: ощущения, ароматы, выбор вина и гастрономические сочетания.</p><p class="muted">А пока можно начать с материалов, которые уже ждут тебя в библиотеке.</p><button class="primary" data-act="go" data-v="lib">Перейти в библиотеку'+ic('right',18)+'</button></div>'+
+ sech('Разделы карты')+'<p class="sub">Новые разделы открываются по неделям. Наблюдения сохраняются за тобой.</p>'+SECTIONS.map(sectionCard).join('')+
+ sech('Мои ответы')+'<div class="paper">'+TASTE_Q.map(function(q,i){var v=q.multi?(a[i]||[]).map(function(k){return q.o[k]}).join('; '):q.o[a[i]];return '<div class="kv"><span>'+q.t+'</span><b style="text-align:right">'+esc(v)+'</b></div>'}).join('')+'</div>'+
+ '<button class="ghost" style="margin-top:14px" data-act="edittaste">Изменить ответы</button><button class="ghost" style="margin-top:10px" data-act="retaste">Пройти заново</button>';
 }
 
 /* чат */
@@ -629,7 +728,7 @@ function profileView(){
  '<div class="dark">'+ma.map(function(m){return '<div class="mrow"><span class="ic">'+m[2]+'</span><span class="grow"><b style="font-size:13px">'+m[1]+'</b><div class="soft small">'+(S.mess[m[0]]?'Подключён':'Не подключён')+'</div></span><button class="'+(S.mess[m[0]]?'ghost':'primary')+' sm" data-act="mess" data-m="'+m[0]+'">'+(S.mess[m[0]]?'Отключить':'Подключить')+'</button></div>'}).join('')+'</div>'+
  '<h2 class="sec">Быстрые ссылки</h2><div class="handy"><button class="hbtn" data-act="go" data-v="fav">'+ic('heart')+'Избранное</button><button class="hbtn" data-act="go" data-v="support">'+ic('head')+'Поддержка</button></div>'+
  '<h2 class="sec">История платежей</h2><div class="dark">'+pays.map(function(p){return '<div class="kv"><span>'+p[0]+' · '+p[1]+'</span><b>'+p[2]+' · успешно</b></div>'}).join('')+'</div>'+
- '<h2 class="sec">Согласия и документы</h2><div class="dark"><div class="kv"><span class="link" data-act="doc" data-d="cons">Обработка ПД</span><b class="small">подписано 05.10.2026</b></div><div class="kv"><span class="link" data-act="doc" data-d="offer">Оферта</span><b class="small">подписана 05.10.2026</b></div>'+
+ '<h2 class="sec">Согласия и документы</h2><div class="dark">'+consRow('cons','Обработка ПД','подписано 05.10.2026')+consRow('pd','Политика','ознакомлен(а) 05.10.2026')+consRow('offer','Оферта','подписана 05.10.2026')+
  '<div class="kv"><span class="link" data-act="doc" data-d="mkt">Рассылки</span><span class="sw '+(S.mkt?'on':'')+'" data-act="mkt" role="switch"></span></div></div>'+
  '<p class="soft small" style="margin:10px 0 16px">Без согласия на рассылки мы не присылаем рекламу. Служебные уведомления об оплате и доступе приходят всегда.</p>'+
  '<button class="ghost" data-act="install">Добавить на главный экран</button><div style="text-align:center;margin-top:18px"><span class="link small" data-act="logout">Выйти</span></div>';
@@ -723,7 +822,7 @@ function drawer(){
  function b(label,perm,act,cls){return '<button class="'+(cls||'ghost')+' sm '+(can(perm)?'':'denied')+'" data-act="'+act+'" '+(can(perm)?'':'disabled')+'>'+label+'</button>'}
  return '<button class="dr-dim" data-act="closem" aria-label="Закрыть"></button><div class="drawer"><div class="row between"><h2>'+esc(m.name)+'</h2><button data-act="closem" aria-label="Закрыть" style="font-size:26px">×</button></div><div class="soft small">'+esc(m.email)+'</div><div style="margin:10px 0"><span class="badge '+st[1]+'">'+st[0]+'</span> '+mini(m.m)+'</div>'+
  '<div class="dark"><div class="kv"><span>Тариф</span><b>'+m.plan+'</b></div><div class="kv"><span>Доступ до</span><b>'+m.until+'</b></div><div class="kv"><span>Автопродление</span><b>'+(m.autopay?'Включено':'Выключено')+'</b></div><div class="kv"><span>Карта (маска)</span><b>'+m.card+'</b></div></div>'+
- '<h2 class="sec" style="font-size:18px">Согласия</h2><div class="dark"><div class="kv"><span>Обработка ПД</span><b class="small">подписано</b></div><div class="kv"><span>Оферта</span><b class="small">подписана</b></div><div class="kv"><span>Рассылки</span><b class="small" style="text-align:right">'+(m.mkt?'подписано '+m.mkt:'не подписано · рассылки не шлём')+'</b></div></div>'+
+ '<h2 class="sec" style="font-size:18px">Журнал согласий</h2><div class="dark">'+consJournal(m)+'</div>'+
  '<h2 class="sec" style="font-size:18px">История платежей</h2><div class="dark">'+pays+'</div><h2 class="sec" style="font-size:18px">Действия</h2><div class="btnrow">'+
  b('Выдать доступ','access','grant','primary')+b('Закрыть доступ','access','close','primary danger')+b(m.autopay?'Выключить автосписание':'Включить автосписание','access','toggleauto')+b('Продлить вручную','extend','extend')+b('Возврат','refund','refund')+b('Платёжная ссылка','paylink','paylink')+'</div>'+
  (S.role==='admin'?'<p class="soft small" style="margin-top:10px">Часть действий недоступна администратору. Это настраивается, решение заказчика.</p>':'')+'<p class="soft small" style="margin-top:14px">Полные номера карт не хранятся и не показываются, только маска из платёжной системы.</p></div>';
@@ -782,6 +881,53 @@ function flowAsk(){
   return '<a class="askbtn" href="'+b[2]+'" target="_blank" rel="noopener"><span class="ic">'+b[1]+'</span><span class="grow"><b>'+b[0]+'</b></span>'+ic('up',18)+'</a>'}).join('')+'</div>'+
 '');
 }
+
+/* ============ ДОКУМЕНТЫ И ЖУРНАЛ СОГЛАСИЙ ============ */
+/* Каждое действие с галочкой пишется в журнал: документ, редакция, время, согласие или отзыв, где совершено.
+   В боевой версии это таблица consents в базе (user_id, document, edition, granted, at, source, ip, user_agent). */
+var CONS_LABEL={cons:'Обработка ПД',pd:'Политика',offer:'Оферта',mkt:'Рассылки',auto:'Автосписание'};
+function fmtTs(iso){var t=new Date(Date.parse(iso)+3*3600e3).toISOString();return t.slice(8,10)+'.'+t.slice(5,7)+'.'+t.slice(0,4)+' '+t.slice(11,16)}
+function lastConsent(doc){var r=S.consents.filter(function(c){return c.doc===doc});return r[r.length-1]}
+function logConsent(doc,granted,how){
+ var l=lastConsent(doc);if(l&&!!l.granted===!!granted)return;
+ S.consents.push({doc:doc,ed:DOC_TEXT[doc]?DOC_TEXT[doc].ed:'',at:new Date().toISOString(),granted:!!granted,how:how});saveState();
+}
+function consRow(doc,label,def){var c=lastConsent(doc);return '<div class="kv"><span class="link" data-act="doc" data-d="'+doc+'">'+label+'</span><b class="small" style="text-align:right">'+(c?(c.granted?'подписано ':'отозвано ')+fmtTs(c.at):def)+'</b></div>'}
+function consJournal(m){
+ var d0=m.pay&&m.pay.length?m.pay[0][0]:'—',ed='ред. 18.09.2026';
+ var rows='<div class="kv"><span>Обработка ПД</span><b class="small">подписано '+d0+' · '+ed+'</b></div><div class="kv"><span>Политика</span><b class="small">ознакомлен(а) '+d0+' · '+ed+'</b></div><div class="kv"><span>Оферта</span><b class="small">подписана '+d0+'</b></div>'+
+  (m.autopay?'<div class="kv"><span>Автосписание</span><b class="small">подписано '+d0+'</b></div>':'')+
+  '<div class="kv"><span>Рассылки</span><b class="small" style="text-align:right">'+(m.mkt?'подписано '+m.mkt+' · '+ed:'не подписано · рассылки не шлём')+'</b></div>';
+ if(m.id===1&&S.consents.length)rows+='<div class="sub" style="margin:12px 0 4px">Новые записи журнала (из этого прототипа)</div>'+S.consents.map(function(c){return '<div class="kv"><span>'+CONS_LABEL[c.doc]+(c.ed?' · ред. '+c.ed:'')+'</span><b class="small" style="text-align:right">'+(c.granted?'согласие':'отзыв')+' · '+fmtTs(c.at)+'<br><span class="soft">'+c.how+'</span></b></div>'}).join('');
+ return rows;
+}
+function docBody(key){
+ var D=DOC_TEXT[key];
+ if(!D)return '<h1>'+DOCS[key]+'</h1><div class="paper" style="margin-top:18px"><p class="muted">Документ готовится юристом. Как только текст будет утверждён, он появится на этой странице, а галочка согласия в окне оформления начнёт записываться в журнал вместе с номером редакции.</p></div>';
+ var t=D.title.split(' ');var head=t[0].charAt(0)+t[0].slice(1).toLowerCase(),rest=t.slice(1).join(' ');
+ var out='<div class="eyebrow">Академия вкуса</div><h1>'+head+'</h1><p style="margin-top:8px">'+esc(rest)+'</p><div class="sub" style="margin:8px 0 18px">Редакция от '+D.ed+'</div>';
+ var ul=false;
+ D.blocks.forEach(function(b){
+  if(b[0]==='li'){if(!ul){out+='<ul>';ul=true}out+='<li>'+esc(b[1])+'</li>';return}
+  if(ul){out+='</ul>';ul=false}
+  out+=b[0]==='h'?'<h2>'+esc(b[1])+'</h2>':'<p>'+esc(b[1])+'</p>';
+ });
+ if(ul)out+='</ul>';
+ var c=lastConsent(key);
+ if(c)out+='<div class="paper small" style="margin-top:22px">Ваше действие: '+(c.granted?'согласие подписано ':'согласие отозвано ')+fmtTs(c.at)+', редакция от '+c.ed+'.</div>';
+ return out;
+}
+function openDoc(key){
+ var el=$('#docview');
+ el.innerHTML='<div class="docbar"><button data-act="docclose">‹ Назад</button><button class="small" data-act="doccopy" data-d="'+key+'">Скопировать ссылку</button></div><div class="docbody">'+docBody(key)+'</div>';
+ el.classList.add('on');el.scrollTop=0;document.body.style.overflow='hidden';
+ try{history.replaceState(null,'','#doc='+key)}catch(x){}
+}
+function closeDoc(){
+ $('#docview').classList.remove('on');document.body.style.overflow='';
+ try{history.replaceState(null,'',location.pathname+location.search)}catch(x){}
+}
+function docFromHash(){var m=/^#doc=(pd|cons|mkt|offer)$/.exec(location.hash);if(m)openDoc(m[1]);else if($('#docview').classList.contains('on'))closeDoc()}
 
 /* ============ ВХОД / ОФОРМЛЕНИЕ ЗАКАЗА ============ */
 // Сколько минут действует заказ. Для проверки откройте страницу с ?ttl=0.3 (это 18 секунд).
@@ -850,7 +996,10 @@ document.addEventListener('click',function(ev){
  var a=ev.target.closest('[data-act]');if(!a)return;
  if(a.tagName==='A')ev.preventDefault();var d=a.dataset,act=d.act;
  if(act==='rn'){S.tariff=d.t;S.join.tariff=d.t;document.querySelectorAll('#modalBox .topt').forEach(function(l){l.classList.toggle('on',l.querySelector('input').dataset.t===d.t)});return}
- if(act==='tq'){S.tq[+d.i]=d.v;document.querySelectorAll('input[name=tq'+d.i+']').forEach(function(r){r.closest('.opt').classList.toggle('on',r.dataset.v===d.v)});return}
+ if(act==='tq'){var qi=+d.i,qq=TASTE_Q[qi];
+  if(qq.multi){var arr=S.tq[qi]||[],oi=+d.v,k=arr.indexOf(oi);if(a.checked){if(k<0)arr.push(oi)}else if(k>-1)arr.splice(k,1);S.tq[qi]=arr}
+  else S.tq[qi]=+d.v;
+  document.querySelectorAll('input[name=tq'+qi+']').forEach(function(r){r.closest('.opt').classList.toggle('on',r.checked)});saveState();return}
  switch(act){
   case 'age':
    if(d.v==='1'){S.ageOk=true;S.under18=false;try{localStorage.setItem('age18','1')}catch(x){}}else{S.under18=true;S.ageOk=false}
@@ -874,6 +1023,7 @@ document.addEventListener('click',function(ev){
    var err=!nm?'Введите имя':!/^\S+@\S+\.\S+$/.test(em2)?'Проверьте email':ph.length<10?'Введите номер телефона полностью':!($('#cPd').checked&&$('#cOffer').checked&&$('#cAuto').checked)?'Отметьте согласие на обработку данных, оферту и автосписание':'';
    if(err){$('#fErr').textContent=err;return}
    S.mkt=$('#cMkt').checked;S.autopay=true;
+   var how='Окно оформления заказа';logConsent('cons',1,how);logConsent('pd',1,how);logConsent('offer',1,how);logConsent('auto',1,how);if(S.mkt)logConsent('mkt',1,how);
    S.order={mode:'new',tariff:S.tariff,name:nm,email:em2,phone:$('#cPhone').value,createdAt:Date.now(),expiresAt:Date.now()+ORDER_TTL_MIN*60000};
    flowOrder();break;
   case 'f-edit':stopTimer();flowCheckout();break;
@@ -882,17 +1032,37 @@ document.addEventListener('click',function(ev){
    if(S.order&&S.order.mode==='renew'){closeModal();S.role='member';$('#roleSel').value='member';S.view='profile';render();toast('Подписка оформлена')}else flowDone();break;
   case 'f-redo':
    if(S.order&&S.order.mode==='renew'){S.order.expiresAt=Date.now()+ORDER_TTL_MIN*60000;flowOrder()}else flowCheckout();break;
-  case 'enter':closeModal();S.role='member';S.view='home';$('#roleSel').value='member';render();break;
+  case 'enter':closeModal();S.role='member';S.view=S.welcomed?'home':'start';S.welcomed=true;saveState();$('#roleSel').value='member';render();break;
   case 'mess-join':S.mess[d.m]=true;toast('Откроется бот и привяжет аккаунт ('+({tg:'Telegram',max:'MAX',vk:'ВКонтакте'}[d.m])+')');break;
-  case 'doc':openModal(mx()+'<h2>'+DOCS[d.d]+'</h2><p class="muted" style="margin:10px 0 18px">Здесь будет открываться утверждённый документ. Его текст и реквизиты пока не добавлены; тексты предоставляет заказчик (лучше проверить у юриста).</p><button class="primary center" data-act="mclose">Понятно</button>');break;
+  case 'doc':openDoc(d.d);break;
+  case 'docclose':closeDoc();break;
+  case 'doccopy':var du=location.href.split('#')[0]+'#doc='+d.d;try{navigator.clipboard.writeText(du);toast('Ссылка скопирована')}catch(x){toast(du)}break;
   case 'go':go(d.v);break;
-  case 'day':S.day=+d.d;render();break;
-  case 'weeknav':toast('Другие недели появятся по мере публикации программы');break;
+  case 'day':S.day=d.d;render();break;
+  case 'week':S.week=+d.w;S.day=null;render();break;
+  case 'weeknav':S.week=Math.min(WEEKS.length-1,Math.max(0,curWeek()+(+d.dir)));S.day=null;render();break;
+  case 'locked':toast('Откроется '+fmtDay(d.date));break;
+  case 'howto':openModal(mx()+'<h2>Инструкция по установке веб-приложения</h2><div class="stack" style="margin-top:12px"><div><div class="eyebrow">Для iPhone (Safari)</div><ol class="howto"><li>Открой Академию вкуса в Safari.</li><li>Нажми кнопку «Поделиться» (квадрат со стрелкой).</li><li>Выбери «На экран Домой» / «Add to Home Screen». Если пункта не видно, прокрути список действий.</li><li>Нажми «Добавить». Если доступна опция открытия как веб-приложения, оставь её включённой.</li></ol></div><div><div class="eyebrow">Для Android (Chrome)</div><ol class="howto"><li>Открой Академию вкуса в Chrome.</li><li>Нажми меню с тремя точками.</li><li>Выбери «Установить приложение» или «Добавить на главный экран» — название зависит от сайта и браузера.</li><li>Подтверди установку.</li></ol></div><p class="soft small" style="line-height:1.7">Если сайт открыт внутри Telegram или Instagram и нужного пункта нет, сначала открой его во внешнем браузере.</p><button class="primary center" data-act="mclose">Понятно</button></div>');break;
+  case 'dletter':var dl=document.getElementById('dl-'+d.l);dl&&dl.scrollIntoView({block:'start'});break;
+  case 'edittaste':S.editTaste=true;render();window.scrollTo(0,0);break;
+  case 'canceledit':S.editTaste=false;render();window.scrollTo(0,0);break;
+  case 'notenew':
+   var opens=SECTIONS.filter(function(s){return nowISO()>=s.from});
+   if(!opens.length){toast('Первый раздел карты откроется '+fmtDay(SECTIONS[0].from));return}
+   var want=opens.some(function(s){return s.k===d.sec})?d.sec:opens[opens.length-1].k;
+   openModal(mx()+'<h2>Наблюдение в карту вкуса</h2>'+(d.from?'<p class="soft small" style="margin-top:6px">из «'+esc(d.from)+'»</p>':'')+'<div class="stack" style="margin-top:12px"><select id="nSec" class="ta">'+opens.map(function(s){return '<option value="'+s.k+'"'+(s.k===want?' selected':'')+'>'+s.t+'</option>'}).join('')+'</select><textarea id="nText" class="ta" rows="5" placeholder="Что вы заметили, почувствовали, поняли"></textarea><div id="nErr" class="small" style="color:var(--bad)"></div><button class="primary center" data-act="notesave" data-from="'+esc(d.from||'')+'">Сохранить в карту</button></div>');break;
+  case 'notesave':
+   var ntx=($('#nText').value||'').trim();if(!ntx){$('#nErr').textContent='Напишите несколько слов';return}
+   S.notes.push({id:Date.now(),sec:$('#nSec').value,from:d.from||'',text:ntx,fav:false});saveState();closeModal();
+   if(S.view!=='taste'){S.view='taste';S.editTaste=false}render();toast('Наблюдение сохранено в карте вкуса');break;
+  case 'notecopy':var nn=S.notes.filter(function(x){return x.id===+d.id})[0];
+   try{navigator.clipboard.writeText(nn.text);toast('Скопировано')}catch(x){toast('Не удалось скопировать')}break;
+  case 'notefav':var n2=S.notes.filter(function(x){return x.id===+d.id})[0];n2.fav=!n2.fav;saveState();render();toast(n2.fav?'Добавлено в избранное':'Убрано из избранного');break;
+  case 'notedel':S.notes=S.notes.filter(function(x){return x.id!==+d.id});saveState();render();toast('Наблюдение удалено');break;
   case 'bell':openModal(mx()+'<h2>Уведомления</h2><div style="margin-top:10px">'+NOTIFS.map(function(n){return '<div class="notif">'+n+'</div>'}).join('')+'</div>');break;
   case 'event':
-   S.eid=+d.id;var evt=EVENTS.filter(function(x){return x.id===S.eid})[0];
+   S.eid=+d.id;var evt=evById(S.eid);
    if(evt&&evt.go&&evt.go.view){go(evt.go.view)}else go('event');break;
-  case 'final':S.eid=99;go('event');break;
   case 'remind':toast('Напомним, когда определим дату');break;
   case 'item':S.iid=+d.id;go('item');break;
   case 'fav':S.fav[+d.id]=!S.fav[+d.id];render();toast(S.fav[+d.id]?'Добавлено в избранное':'Убрано из избранного');break;
@@ -903,11 +1073,12 @@ document.addEventListener('click',function(ev){
    CHAT[S.topic].push({u:'Вы',me:1,t:v});render();setTimeout(function(){var i=$('#msgIn');i&&i.focus()},0);break;
   case 'del':S.chatDel[d.k]=1;render();toast('Сообщение удалено, запись в журнале');break;
   case 'tastedone':
-   if(Object.keys(S.tq).length<TASTE_Q.length){toast('Ответьте на все три вопроса');return}
-   S.taste=TASTE_Q.map(function(q,i){return S.tq[i]});render();toast('Карта вкуса сохранена, ответы переданы в Salebot');break;
-  case 'retaste':S.taste=null;S.tq={};render();break;
+   var miss=TASTE_Q.some(function(q,i){return q.multi?!(S.tq[i]&&S.tq[i].length):S.tq[i]==null});
+   if(miss){toast('Ответьте на все вопросы');return}
+   S.taste=TASTE_Q.map(function(q,i){return q.multi?S.tq[i].slice().sort():S.tq[i]});S.editTaste=false;saveState();render();window.scrollTo(0,0);toast('Карта вкуса сохранена, ответы переданы в Salebot');break;
+  case 'retaste':S.taste=null;S.tq={};S.editTaste=false;saveState();render();window.scrollTo(0,0);break;
   case 'autopay':if(S.role==='expired'){toast('Сначала возобновите подписку');return}S.autopay=!S.autopay;render();toast(S.autopay?'Автопродление включено':'Автопродление выключено. Доступ сохранится до конца срока');break;
-  case 'mkt':S.mkt=!S.mkt;render();toast(S.mkt?'Согласие на рассылки подписано':'Согласие отозвано, статус передан в Salebot');break;
+  case 'mkt':S.mkt=!S.mkt;logConsent('mkt',S.mkt,'Профиль');render();toast(S.mkt?'Согласие на рассылки подписано':'Согласие отозвано, статус передан в Salebot');break;
   case 'mess':S.mess[d.m]=!S.mess[d.m];render();toast(S.mess[d.m]?'Откроется бот для привязки аккаунта':'Мессенджер отключён');break;
   case 'renew':
    S.join={mode:'renew',tariff:S.tariff};
@@ -948,13 +1119,15 @@ document.addEventListener('click',function(ev){
   case 'addstaff':toast('Откроется форма назначения: email и роль');break;
  }
 });
-document.addEventListener('input',function(e){if(e.target.id==='q'){S.q=e.target.value;$('#libList').innerHTML=libList()}});
+document.addEventListener('input',function(e){if(e.target.id==='q'){S.q=e.target.value;$('#libList').innerHTML=libList()}if(e.target.id==='dq'){$('#dictList').innerHTML=dictList(e.target.value)}});
 document.addEventListener('keydown',function(e){
  if(e.key!=='Enter')return;
  if(e.target.id==='msgIn'){e.preventDefault();var b=document.querySelector('[data-act=send]');b&&b.click()}
  if(e.target.id==='homeQ'){e.preventDefault();S.q=e.target.value;go('lib')}
 });
 $('#modal').addEventListener('click',function(e){if(e.target.id==='modal')closeModal()});
+window.addEventListener('hashchange',docFromHash);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#docview').classList.contains('on'))closeDoc()});
 
 var sel=$('#roleSel');
 sel.innerHTML=ROLES.map(function(r){return '<option value="'+r[0]+'">'+r[1]+'</option>'}).join('');
@@ -965,6 +1138,15 @@ sel.addEventListener('change',function(){
  render();window.scrollTo(0,0);
 });
 try{S.ageOk=localStorage.getItem('age18')==='1'}catch(x){}
+function saveState(){try{localStorage.setItem('akademiya_state',JSON.stringify({tq:S.tq,taste:S.taste,notes:S.notes,fav:S.fav,welcomed:S.welcomed,consents:S.consents}))}catch(x){}}
+function loadState(){try{var j=JSON.parse(localStorage.getItem('akademiya_state')||'null');if(j){S.tq=j.tq||{};S.taste=j.taste||null;S.notes=j.notes||[];S.fav=j.fav||S.fav;S.welcomed=!!j.welcomed;S.consents=j.consents||[]}}catch(x){}}
+loadState();
+docFromHash();
+var dsel=$('#dateSel');
+var DEMO_DATES=[['','Сегодня (реальная дата)'],['2026-10-28','28 окт · до старта'],['2026-11-01','1 ноя · клуб открыт'],['2026-11-02','2 ноя · неделя 1'],['2026-11-04','4 ноя · неделя 1'],['2026-11-10','10 ноя · неделя 2'],['2026-11-17','17 ноя · неделя 3'],['2026-11-28','28 ноя · финал месяца'],['2026-11-30','30 ноя · месяц завершён']];
+dsel.innerHTML=DEMO_DATES.map(function(r){return '<option value="'+r[0]+'">'+r[1]+'</option>'}).join('');
+dsel.addEventListener('change',function(){S.demo=dsel.value||null;S.week=null;S.day=null;render();window.scrollTo(0,0)});
+setInterval(function(){document.querySelectorAll('.cd-val').forEach(function(el){el.textContent=untilOpen()})},20000);
 render();
 </script>
 </body>
