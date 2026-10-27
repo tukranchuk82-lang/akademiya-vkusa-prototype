@@ -368,6 +368,15 @@ body.landing #dateSel{display:none}
 .docbody p{font-size:14px;line-height:1.85;color:var(--soft);margin-bottom:10px}
 .docbody ul{margin:0 0 12px 20px}
 .docbody li{font-size:14px;line-height:1.8;color:var(--soft);margin-bottom:4px}
+
+/* --- телефон --- */
+.field{position:relative}
+.phone{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:8px}
+.phone select.in{padding-right:6px;font-size:14px}
+.in.err{border-color:var(--bad);color:var(--bad);box-shadow:0 0 0 1px var(--bad),0 0 14px rgba(255,140,152,.35)}
+.tip{display:none;position:absolute;right:0;top:calc(100% - 4px);z-index:6;max-width:100%;padding:9px 12px;border-radius:10px;background:var(--deep);border:1px solid var(--bad);color:var(--bad);font-size:12px;line-height:1.5;box-shadow:0 8px 20px rgba(0,0,0,.5)}
+.tip.on{display:block}
+.tip:before{content:'';position:absolute;right:36px;top:-6px;width:10px;height:10px;background:var(--deep);border-left:1px solid var(--bad);border-top:1px solid var(--bad);transform:rotate(45deg)}
 </style>
 </head>
 <body>
@@ -380,6 +389,7 @@ body.landing #dateSel{display:none}
 <script src="vitrina.js"></script>
 <script src="club.js"></script>
 <script src="docs.js"></script>
+<script src="phone.js"></script>
 <script>
 /* ============ ИКОНКИ ============ */
 var IC = {
@@ -942,6 +952,25 @@ function flowCode(){
  openModal(mx()+'<h2>Код из письма</h2><p class="muted" style="margin-bottom:14px">Мы отправили 6 цифр на '+esc(S.emailDemo)+'. Код действует 10 минут.</p>'+
  '<div class="field"><label>Код подтверждения</label><input class="in" id="fCode" inputmode="numeric" maxlength="6" placeholder="••••••" style="letter-spacing:.4em;font-size:22px;text-align:center"></div><p class="muted" style="margin-bottom:14px">Демо: подойдёт любой код из 6 цифр, например 123456.</p><button class="primary" data-act="f-code">Войти'+ic('right',18)+'</button>');
 }
+/* телефон: страна выбирается из списка, номер проверяется по формату страны */
+function phonePlaceholder(cc){return cc.other?'код страны и номер':phoneFormat(cc,cc.id==='RU'?'9001234567':'1234567890123'.slice(0,cc.max))}
+function setPhoneErr(msg){var i=$('#cPhone'),t=$('#phTip');if(!i||!t)return;i.classList.toggle('err',!!msg);t.textContent=msg||'';t.classList.toggle('on',!!msg)}
+function phoneUpdate(final){
+ var sel=$('#cCountry'),inp=$('#cPhone'),cc=countryById(sel.value),raw=inp.value,digits=raw.replace(/\D/g,''),msg='';
+ var letters=/[^\d\s\-().+]/.test(raw);
+ if(/^\s*\+/.test(raw)){
+  var m=countryByPrefix(digits,cc.other?{}:cc);
+  if(m){if(m!==cc){sel.value=m.id;cc=m;inp.placeholder=phonePlaceholder(cc)}digits=digits.slice(cc.dial.length)}
+  else if(digits.length<4){setPhoneErr('');return{ok:false,cc:cc,digits:''}}
+ }else if(cc.id==='RU'&&/^[78]/.test(digits))digits=digits.slice(1);
+ else if(cc.id==='KZ'&&(/^8/.test(digits)||(digits.length===11&&/^7/.test(digits))))digits=digits.slice(1);
+ if(digits.length>cc.max){digits=digits.slice(0,cc.max);msg='Лишние цифры: '+(cc.other?'в номере не больше 15 цифр':'для страны «'+cc.name+'» нужно '+lenText(cc)+', код страны уже выбран')+'. Укажите мобильный номер'}
+ else if(letters)msg='В номере только цифры';
+ else msg=phoneCheck(cc,digits,final);
+ var f=phoneFormat(cc,digits);if(inp.value!==f)inp.value=f;
+ setPhoneErr(msg);
+ return{ok:!msg&&digits.length>=cc.min,cc:cc,digits:digits};
+}
 /* окно оформления: имя, email, телефон и согласия */
 function flowCheckout(){
  var t=tById(S.tariff),o=S.order||{};
@@ -949,7 +978,7 @@ function flowCheckout(){
  '<div class="sumline"><div><b>Подписка на '+t.name+'</b><div class="soft small">все материалы клуба на время подписки</div></div><b>'+rub(t.price)+'</b></div>'+
  '<div class="field"><label>Имя</label><input class="in" id="cName" autocomplete="name" placeholder="Как к вам обращаться" value="'+esc(o.name||'')+'"></div>'+
  '<div class="field"><label>Email</label><input class="in" id="cEmail" type="email" autocomplete="email" placeholder="you@example.com" value="'+esc(o.email||'')+'"></div>'+
- '<div class="field"><label>Телефон</label><input class="in" id="cPhone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00" value="'+esc(o.phone||'')+'"></div>'+
+ '<div class="field"><label>Мобильный телефон</label><div class="phone"><select class="in" id="cCountry" aria-label="Страна">'+COUNTRIES.map(function(c){return '<option value="'+c.id+'"'+(c.id===(o.cc||'RU')?' selected':'')+'>'+c.name+(c.dial?' +'+c.dial:'')+'</option>'}).join('')+'</select><input class="in" id="cPhone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="'+phonePlaceholder(countryById(o.cc||'RU'))+'" value="'+(o.pd?phoneFormat(countryById(o.cc||'RU'),o.pd):'')+'"></div><div class="tip" id="phTip" role="alert"></div><span class="soft small" style="line-height:1.5">Укажите номер мобильного телефона</span></div>'+
  '<label class="chk"><input type="checkbox" id="cPd"><span>Я согласен(на) на <span class="link" data-act="doc" data-d="cons">обработку персональных данных</span> и ознакомлен(а) с <span class="link" data-act="doc" data-d="pd">политикой</span> *</span></label>'+
  '<label class="chk"><input type="checkbox" id="cOffer"><span>Принимаю <span class="link" data-act="doc" data-d="offer">оферту</span> *</span></label>'+
  '<label class="chk"><input type="checkbox" id="cAuto" checked><span>Согласен(на) на автоматическое списание '+rub(t.price)+' каждые '+(t.months===1?'месяц':t.months+' мес.')+', отключить можно в профиле *</span></label>'+
@@ -992,7 +1021,15 @@ function flowDone(){
 }
 
 /* ============ ДЕЙСТВИЯ ============ */
+var planT=0;
 document.addEventListener('click',function(ev){
+ var plan=ev.target.closest('.plan');
+ if(plan){
+  var pr=plan.querySelector('input');pr.checked=true;
+  if(Date.now()-planT<400)return;planT=Date.now();
+  if(S.under18){toast('Вступление доступно только с 18 лет');return}
+  S.tariff='m'+pr.value;flowCheckout();return;
+ }
  var a=ev.target.closest('[data-act]');if(!a)return;
  if(a.tagName==='A')ev.preventDefault();var d=a.dataset,act=d.act;
  if(act==='rn'){S.tariff=d.t;S.join.tariff=d.t;document.querySelectorAll('#modalBox .topt').forEach(function(l){l.classList.toggle('on',l.querySelector('input').dataset.t===d.t)});return}
@@ -1019,12 +1056,12 @@ document.addEventListener('click',function(ev){
    if(($('#fCode').value||'').length<6){$('#fCode').style.borderColor='#ff8c98';return}
    closeModal();S.role='member';S.view='home';$('#roleSel').value='member';render();toast('С возвращением!');break;
   case 'f-checkout':
-   var nm=($('#cName').value||'').trim(),em2=($('#cEmail').value||'').trim(),ph=($('#cPhone').value||'').replace(/\D/g,'');
-   var err=!nm?'Введите имя':!/^\S+@\S+\.\S+$/.test(em2)?'Проверьте email':ph.length<10?'Введите номер телефона полностью':!($('#cPd').checked&&$('#cOffer').checked&&$('#cAuto').checked)?'Отметьте согласие на обработку данных, оферту и автосписание':'';
-   if(err){$('#fErr').textContent=err;return}
+   var nm=($('#cName').value||'').trim(),em2=($('#cEmail').value||'').trim(),pr=phoneUpdate(true);
+   var err=!nm?'Введите имя':!/^\S+@\S+\.\S+$/.test(em2)?'Проверьте email':!pr.ok?'Проверьте номер телефона':!($('#cPd').checked&&$('#cOffer').checked&&$('#cAuto').checked)?'Отметьте согласие на обработку данных, оферту и автосписание':'';
+   if(err){$('#fErr').textContent=err;if(err==='Проверьте номер телефона')$('#cPhone').focus();return}
    S.mkt=$('#cMkt').checked;S.autopay=true;
    var how='Окно оформления заказа';logConsent('cons',1,how);logConsent('pd',1,how);logConsent('offer',1,how);logConsent('auto',1,how);if(S.mkt)logConsent('mkt',1,how);
-   S.order={mode:'new',tariff:S.tariff,name:nm,email:em2,phone:$('#cPhone').value,createdAt:Date.now(),expiresAt:Date.now()+ORDER_TTL_MIN*60000};
+   S.order={mode:'new',tariff:S.tariff,name:nm,email:em2,cc:pr.cc.id,pd:pr.digits,phone:(pr.cc.other?'+':'+'+pr.cc.dial+' ')+phoneFormat(pr.cc,pr.digits),createdAt:Date.now(),expiresAt:Date.now()+ORDER_TTL_MIN*60000};
    flowOrder();break;
   case 'f-edit':stopTimer();flowCheckout();break;
   case 'f-pay':
@@ -1120,6 +1157,9 @@ document.addEventListener('click',function(ev){
  }
 });
 document.addEventListener('input',function(e){if(e.target.id==='q'){S.q=e.target.value;$('#libList').innerHTML=libList()}if(e.target.id==='dq'){$('#dictList').innerHTML=dictList(e.target.value)}});
+document.addEventListener('input',function(e){if(e.target.id==='cPhone')phoneUpdate(false)});
+document.addEventListener('change',function(e){if(e.target.id==='cCountry'){$('#cPhone').placeholder=phonePlaceholder(countryById(e.target.value));phoneUpdate(false);$('#cPhone').focus()}});
+document.addEventListener('focusout',function(e){if(e.target.id==='cPhone'&&e.target.value)phoneUpdate(true)});
 document.addEventListener('keydown',function(e){
  if(e.key!=='Enter')return;
  if(e.target.id==='msgIn'){e.preventDefault();var b=document.querySelector('[data-act=send]');b&&b.click()}
