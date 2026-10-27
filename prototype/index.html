@@ -377,12 +377,52 @@ body.landing #dateSel{display:none}
 .tip{display:none;position:absolute;right:0;top:calc(100% - 4px);z-index:6;max-width:100%;padding:9px 12px;border-radius:10px;background:var(--deep);border:1px solid var(--bad);color:var(--bad);font-size:12px;line-height:1.5;box-shadow:0 8px 20px rgba(0,0,0,.5)}
 .tip.on{display:block}
 .tip:before{content:'';position:absolute;right:36px;top:-6px;width:10px;height:10px;background:var(--deep);border-left:1px solid var(--bad);border-top:1px solid var(--bad);transform:rotate(45deg)}
+
+/* --- письма --- */
+.mail{background:#f6f2ea;color:#2a1a20;border-radius:12px;padding:20px 22px;font:14px/1.7 AcademySans,sans-serif;text-align:left}
+.mail p{margin:0 0 12px;color:#2a1a20}
+.mail .msub{font-size:12px;color:#6b5560;border-bottom:1px solid #e0d6c7;padding-bottom:10px;margin-bottom:14px}
+.mail .msub b{color:#2a1a20}
+.mail .var{background:#ecdfc6;border-radius:4px;padding:0 4px}
+.mail .mkv{border:1px solid #e0d6c7;border-radius:10px;padding:4px 14px;margin:0 0 14px;background:#fffdf8}
+.mail .mkv>div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid #eee5d6}
+.mail .mkv>div:last-child{border:0}
+.mail .mkv span{color:#6b5560}
+.mail .mbtn{display:inline-block;background:#260e16;color:#f2eee6;padding:12px 22px;border-radius:10px;font-weight:700}
+.mail .mli{margin:0 0 6px 4px}
+.mail .mguide{background:#fffdf8;border:1px solid #e0d6c7;border-radius:10px;padding:12px 16px 2px;margin:0 0 12px}
+.mail .mguide ol{margin:0 0 12px 20px;padding:0}
+.mail .mguide li{margin-bottom:4px}
+.mail .mcode{font:400 30px AcademySerif,serif;letter-spacing:.12em}
+.mail a,.mail .link{color:#6b2340;text-decoration:underline}
+.mail .mfoot{border-top:1px solid #e0d6c7;margin-top:16px;padding-top:12px;font-size:12px;color:#6b5560;line-height:1.6}
+#modal2{position:fixed;inset:0;z-index:120;background:rgba(10,2,6,.78);display:none;align-items:flex-end;justify-content:center}
+#modal2.on{display:flex}
+#modal2 .box{width:100%;max-width:440px;max-height:92vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0;padding:24px 22px 30px;animation:up .25s ease}
+@media(min-width:640px){#modal2{align-items:center}#modal2 .box{border-radius:20px;border-bottom:1px solid var(--line)}}
+#modal2 .x{float:right;width:40px;height:40px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--white);background:var(--bg)}
+#modal2 h2{font-size:25px;margin-bottom:8px;letter-spacing:-.02em;padding-right:50px}
+#modal2 .muted{color:var(--soft);font-size:12.5px;line-height:1.8}
+
+/* --- журнал писем --- */
+.mstat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0}
+.mstat>div{border:1px solid var(--line);border-radius:12px;padding:10px 10px;min-width:0;background:rgba(242,238,230,.04);text-align:left}
+.mstat b{display:block;font:400 26px AcademySerif,serif}
+.mstat span{display:block;font-size:11px;line-height:1.35;color:var(--soft)}
+.mcard .badge{white-space:nowrap;flex:none}
+.mstat .bad{border-color:var(--bad)}.mstat .bad b{color:var(--bad)}
+.merr{margin-top:8px;padding:9px 11px;border:1px solid var(--bad);border-radius:10px;background:rgba(255,140,152,.08);color:var(--bad);font-size:12px;line-height:1.55;max-width:340px}
+.merr b{font-weight:700}
+
+.mcard{display:block;width:100%;text-align:left;border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--panel);margin-bottom:12px;color:var(--white)}
+.mcard:hover{border-color:var(--gold)}
 </style>
 </head>
 <body>
 <div id="demo"><b>Прототип</b><select id="roleSel" aria-label="Режим просмотра"></select><select id="dateSel" aria-label="Дата для просмотра"></select></div>
 <div id="app"></div>
 <div id="modal"><div class="box" id="modalBox"></div></div>
+<div id="modal2"><div class="box" id="modalBox2"></div></div>
 <div id="docview" role="dialog" aria-modal="true" aria-label="Документ"></div>
 <div id="toast"></div>
 
@@ -390,6 +430,7 @@ body.landing #dateSel{display:none}
 <script src="club.js"></script>
 <script src="docs.js"></script>
 <script src="phone.js"></script>
+<script src="mails.js"></script>
 <script>
 /* ============ ИКОНКИ ============ */
 var IC = {
@@ -417,6 +458,7 @@ var IC = {
  gauge:'<path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/>',
  users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
  card:'<rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/>',
+ mail:'<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
  send:'<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>',
  shield:'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>',
  shieldcheck:'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
@@ -460,7 +502,7 @@ var NOTIFS=['Академия вкуса откроется 1 ноября. На
 var ROLES=[['visitor','Посетитель (не вошёл)'],['member','Участник клуба'],['expired','Участник: подписка закончилась'],['moderator','Модератор'],['admin','Администратор'],['techspec','Техспец'],['owner','Владелец']];
 
 /* ============ СОСТОЯНИЕ ============ */
-var S={role:'visitor',view:'landing',ageOk:false,under18:false,day:null,week:null,demo:null,notes:[],consents:[],welcomed:false,editTaste:false,libType:'all',q:'',topic:'Общий',tab:'members',openMember:null,openTicket:null,rail:false,
+var S={role:'visitor',view:'landing',ageOk:false,under18:false,day:null,week:null,demo:null,notes:[],consents:[],mailLog:[],mailTab:'log',mailF:'all',mailTpl:null,mailQ:'',welcomed:false,editTaste:false,libType:'all',q:'',topic:'Общий',tab:'members',openMember:null,openTicket:null,rail:false,
  autopay:true,mess:{tg:true,max:false,vk:false},mkt:true,tariff:'m1',join:null,fav:{1:true},taste:null,tq:{},
  myTickets:[{id:1,subj:'Как подключить MAX?',st:'done',msgs:[['u','Как подключить MAX?'],['s','Профиль → Мессенджеры → «Подключить».']]}],chatDel:{},sent:[],emailDemo:''};
 function isStaff(){return ['moderator','admin','techspec','owner'].indexOf(S.role)>-1}
@@ -475,6 +517,8 @@ function rub(n){return n.toLocaleString('ru-RU')+' ₽'}
 function perMonth(t){return rub(Math.round(t.price/t.months))}
 function toast(t){var el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove('on')},2400)}
 function openModal(h){$('#modalBox').innerHTML=h;$('#modal').classList.add('on')}
+function openModal2(h){$('#modalBox2').innerHTML=h;$('#modal2').classList.add('on')}
+function closeModal2(){$('#modal2').classList.remove('on');if(location.hash==='#ask'){try{history.replaceState(null,'',location.pathname+location.search)}catch(x){}}}
 function closeModal(){stopTimer();$('#modal').classList.remove('on')}
 function go(v,extra){S.view=v;if(extra)for(var k in extra)S[k]=extra[k];render();window.scrollTo(0,0)}
 function tById(id){return TARIFFS.filter(function(t){return t.id===id})[0]}
@@ -757,7 +801,7 @@ function ticketView(){
 /* ----- админпанель (схема «Шпаргалки»: слева сайдбар / узкий бар на телефоне) ----- */
 var ADM_GROUPS=[
  {title:'Аудитория',items:[['overview','Обзор','gauge','members'],['members','Участники','users','members'],['payments','Оплаты','card','payments']]},
- {title:'Работа',items:[['bcast','Рассылки','send','bcast'],['support','Поддержка','head','support'],['content','Контент','layout','content'],['chatmod','Модерация чата','shield','chatmod']]},
+ {title:'Работа',items:[['bcast','Рассылки','send','bcast'],['support','Поддержка','head','support'],['content','Контент','layout','content'],['mails','Письма','mail','content'],['chatmod','Модерация чата','shield','chatmod']]},
  {title:'Настройки',items:[['staff','Сотрудники','shieldcheck','staff']]}
 ];
 var ADM_USER={owner:['ВК','Владелец клуба'],techspec:['ТС','Технический специалист'],admin:['АД','Администратор Дарья'],moderator:['МО','Модератор Алина']};
@@ -799,7 +843,7 @@ function admin(){
   return '<div class="suser"><div class="u"><span class="av">'+u[0]+'</span>'+(open?'<div class="grow"><div class="nm">'+u[1]+'</div><div class="rl">'+roleName+'</div></div>':'')+'</div>'+
    (open?'<div class="btns"><button data-act="go" data-v="home">В приложение</button><button data-act="logout">Выйти</button></div>':'')+'</div>';
  }
- var body=({overview:admOverview,members:admMembers,payments:admPayments,bcast:admBcast,support:admSupport,content:admContent,chatmod:admChat,staff:admStaff}[S.tab])();
+ var body=({overview:admOverview,members:admMembers,payments:admPayments,bcast:admBcast,support:admSupport,content:admContent,mails:admMails,chatmod:admChat,staff:admStaff}[S.tab])();
  return '<div class="ash">'+
   '<aside class="side"><div class="brand-a"><span class="eb">Админ-панель</span><b>Академия вкуса</b></div><nav>'+nav(false)+'</nav>'+user(true)+'</aside>'+
   (S.rail?'<button class="rail-dim" data-act="rail" aria-label="Закрыть меню"></button>':'')+
@@ -872,11 +916,140 @@ function admChat(){
  dt([['Автор',function(x){return x.a}],['Сообщение',function(x){return esc(x.t)}],['Тема',function(x){return '#'+x.th}],['Жалоба',function(x){return x.c}],['',btns]],f,
   {card:function(x){return '<div class="l1"><b>'+x.a+'</b><span class="soft small">#'+x.th+' · '+x.c+'</span></div><div class="l2" style="color:var(--white)">'+esc(x.t)+'</div><div style="margin-top:10px">'+btns()+'</div>'}});
 }
+function admMails(){return (S.mailTab==='tpl')?mailTplView():mailLogView()}
+function mailTplView(){
+ return ph('mail','Письма','Служебные письма участникам. Отправляются с адреса клуба, реклама в них не допускается. Выделенные слова подставляются автоматически.')+mailTabs()+
+ MAILS.map(function(m){
+  return '<div class="dark" style="padding:18px;margin-bottom:16px"><div class="row" style="justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px"><div><b style="font:400 20px AcademySerif,serif">'+m.name+'</b>'+(m.draft?' <span class="badge">черновик</span>':'')+'<div class="soft small" style="margin-top:4px">'+m.when+'</div></div>'+
+   '<button class="ghost sm" data-act="mailtest" data-id="'+m.id+'">Отправить тестовое письмо мне</button></div>'+mailHtml(m)+'</div>';
+ }).join('')+'<p class="soft small">Править тексты писем можно будет здесь же. Изменения записываются с датой и именем сотрудника.</p>';
+}
 function admStaff(){
  function sel(s){return '<select class="in" style="min-height:38px;padding:6px 10px"'+(s.role==='Владелец'?' disabled':'')+'>'+['Владелец','Техспец','Администратор','Модератор'].map(function(r){return '<option'+(r===s.role?' selected':'')+'>'+r+'</option>'}).join('')+'</select>'}
  function act(s){return s.role==='Владелец'?'<span class="soft small">нельзя снять</span>':'<button class="ghost sm" data-act="demoted">Разжаловать</button>'}
  return ph('shieldcheck','Сотрудники','Назначать и разжаловать могут Техспец и Владелец. Роль Владельца снять нельзя.','<button class="primary sm" data-act="addstaff">Назначить сотрудника</button>')+
  dt([['Сотрудник',function(s){return s.name}],['Роль',sel],['',act]],STAFF,{card:function(s){return '<b>'+s.name+'</b><div style="margin:10px 0">'+sel(s)+'</div>'+act(s)}});
+}
+
+/* ============ ПИСЬМА ============ */
+function mailText(s){
+ return esc(s).replace(/\[\[ask:(.+?)\]\]/g,'<a class="link" href="#ask" data-act="ask">$1</a>').replace(/\{(\w+)\}/g,function(m,k){return '<span class="var" title="подставляется автоматически: '+(MAIL_VARS[k]||k)+'">'+esc(MAIL_SAMPLE[k]||m)+'</span>'})
+}
+function mailHtml(m){
+ var body=m.blocks.map(function(b){
+  if(b[0]==='p')return '<p>'+mailText(b[1])+'</p>';
+  if(b[0]==='li')return '<p class="mli">• '+mailText(b[1])+'</p>';
+  if(b[0]==='kv')return '<div class="mkv">'+b[1].map(function(r){return '<div><span>'+r[0]+'</span><b>'+mailText(r[1])+'</b></div>'}).join('')+'</div>';
+  if(b[0]==='btn')return '<p><span class="mbtn">'+b[1]+'</span></p>';
+  if(b[0]==='code')return '<p class="mcode">'+mailText(b[1])+'</p>';
+  if(b[0]==='guide')return '<div class="mguide">'+b[1].map(function(g,gi){
+   if(!g[1])return '<p><b>'+g[0]+'</b></p>';
+   return '<p><b>'+g[0]+'</b></p><ol>'+g[1].map(function(s){return '<li>'+esc(s)+'</li>'}).join('')+'</ol>'+(g[2]?'<p>'+esc(g[2])+'</p>':'');
+  }).join('')+'</div>';
+  return '';
+ }).join('');
+ return '<div class="mail"><div class="msub"><span>Тема:</span> <b>'+esc(m.subject)+'</b></div>'+body+
+  '<div class="mfoot">Академия вкуса · Кристина Никитичева'+(m.foot?'<br>'+m.foot:'')+(m.docs?' <span class="link" data-act="doc" data-d="offer">Оферта</span> · <span class="link" data-act="doc" data-d="pd">Политика обработки данных</span>':'')+'</div></div>';
+}
+function mailById(id){return MAILS.filter(function(m){return m.id===id})[0]}
+
+/* ============ ЖУРНАЛ ПИСЕМ ============ */
+/* В боевой версии строки пишет сервер (таблица email_log): время отправки, доставки и просмотра, код отказа.
+   Здесь строки появляются сами, когда в прототипе что-то оплачиваешь или запрашиваешь код. */
+function logMail(tpl,email,name,sentMs){
+ var t=sentMs||Date.now();
+ var r={id:t,to:email,name:name||'',tpl:tpl,sent:new Date(t).toISOString(),delivered:new Date(t+3000).toISOString(),opened:null,live:1};
+ S.mailLog.unshift(r);saveState();return r;
+}
+function fmtTs2(iso){if(!iso)return '—';var t=new Date(Date.parse(iso)+3*3600e3).toISOString();return t.slice(8,10)+'.'+t.slice(5,7)+' '+t.slice(11,19)}
+function mailStatus(r){
+ if(r.err)return['bad','Ошибка '+r.err.code];
+ if(r.retry)return['warn','Повтор отправки'];
+ if(r.opened)return['ok','Прочитано'];
+ if(r.delivered)return['ok','Доставлено'];
+ return['','Отправлено'];
+}
+function mailErrHtml(r){
+ var e=r.err||r.retry;if(!e)return '';var d=MAIL_ERR[e.code]||['Отказ почтового сервера',''];
+ return '<div class="merr"><b>'+esc(d[0])+'</b><br>'+esc(d[1])+(r.retry?'<br>Следующая попытка: '+fmtTs2(r.retry.next):'')+'</div>';
+}
+function mailTabs(){
+ return '<div class="chips">'+[['log','Журнал отправки'],['tpl','Тексты писем']].map(function(t){return '<button class="chip '+((S.mailTab||'log')===t[0]?'on':'')+'" data-act="mailtab" data-t="'+t[0]+'">'+t[1]+'</button>'}).join('')+'</div>';
+}
+/* поиск по почте с допуском опечаток: 2–3 символа в имени ящика, домен без учёта зоны (com, ru, net) */
+function mailTol(n){return n<=2?0:n<=4?1:n<=7?2:3}
+/* расстояние Дамерау-Левенштейна: вставка, пропуск, замена и перестановка соседних букв — по одной правке */
+function dlDist(a,b){
+ var i,j,d=[];
+ for(i=0;i<=a.length;i++){d[i]=[i]}
+ for(j=0;j<=b.length;j++)d[0][j]=j;
+ for(i=1;i<=a.length;i++)for(j=1;j<=b.length;j++){
+  var c=a.charAt(i-1)===b.charAt(j-1)?0:1;
+  d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+c);
+  if(i>1&&j>1&&a.charAt(i-1)===b.charAt(j-2)&&a.charAt(i-2)===b.charAt(j-1))d[i][j]=Math.min(d[i][j],d[i-2][j-2]+1);
+ }
+ return d[a.length][b.length];
+}
+function likeWord(q,w){return!!q&&!!w&&(w.indexOf(q)===0||(q.length>=3&&w.indexOf(q)>-1)||dlDist(q,w)<=mailTol(q.length))}
+function likeDomain(q,d){return!q||(d.charAt(0)===q.charAt(0)&&(d.indexOf(q)===0||dlDist(q,d)<=(q.length<=4?1:2)))}
+function mailMatch(q,r){
+ q=(q||'').trim().toLowerCase();if(!q)return true;
+ var em=r.to.toLowerCase(),k=em.indexOf('@'),el=em.slice(0,k),dn=em.slice(k+1).split('.')[0],nm=(r.name||'').toLowerCase();
+ if(q.indexOf('@')>-1){var qi=q.indexOf('@');return(!q.slice(0,qi)||likeWord(q.slice(0,qi),el))&&likeDomain(q.slice(qi+1).split('.')[0],dn)}
+ if(q.indexOf('.')>-1)return likeDomain(q.split('.')[0],dn);
+ return likeWord(q,el)||likeDomain(q,dn)||nm.split(/\s+/).some(function(w){return likeWord(q,w)});
+}
+function mailRows(){
+ var f=S.mailF||'all',q=S.mailQ||'';
+ return S.mailLog.filter(function(r){
+  return(!S.mailTpl||r.tpl===S.mailTpl)&&
+   (f==='all'||(f==='err'&&(r.err||r.retry))||(f==='unread'&&!r.opened&&!r.err))&&mailMatch(q,r);
+ });
+}
+function mailWho(r){return '<b>'+esc(r.name||r.to)+'</b>'+(r.name?'<div class="soft small">'+esc(r.to)+'</div>':'')}
+function mailSt(r){var s=mailStatus(r);return '<span class="badge '+s[0]+'">'+s[1]+'</span>'+mailErrHtml(r)+(r.err?'<div style="margin-top:8px"><button class="ghost sm" data-act="mailretry" data-id="'+r.id+'">Отправить ещё раз</button></div>':'')}
+function mailListHtml(){
+ var rows=mailRows();
+ if(!rows.length)return '<div class="sub" style="padding:14px 0">'+(S.mailQ?'Ничего не нашли. Попробуйте записать адрес короче или проверьте опечатки.':'В этом фильтре ничего нет')+'</div>';
+ return (S.mailQ?'<div class="sub">Найдено: '+rows.length+'. Поиск прощает опечатки в 2–3 символа и не учитывает зону (com, ru).</div>':'')+
+  dt([['Получатель',mailWho],['Письмо',function(r){return mailById(r.tpl).name}],['Отправлено',function(r){return fmtTs2(r.sent)}],['Доставлено',function(r){return fmtTs2(r.delivered)}],['Прочитано',function(r){return fmtTs2(r.opened)}],['Статус',mailSt]],rows,{card:function(r){
+   return mailWho(r)+'<div class="soft small" style="margin:4px 0 10px">'+mailById(r.tpl).name+'</div><div class="kv"><span>Отправлено</span><b>'+fmtTs2(r.sent)+'</b></div><div class="kv"><span>Доставлено</span><b>'+fmtTs2(r.delivered)+'</b></div><div class="kv"><span>Прочитано</span><b>'+fmtTs2(r.opened)+'</b></div><div style="margin-top:10px">'+mailSt(r)+'</div>'}});
+}
+function mailCounts(tpl){
+ var rs=S.mailLog.filter(function(r){return!tpl||r.tpl===tpl});
+ var n=rs.length,dl=rs.filter(function(r){return r.delivered&&!r.err}).length,rd=rs.filter(function(r){return r.opened}).length,er=rs.filter(function(r){return r.err}).length,rt=rs.filter(function(r){return r.retry}).length;
+ return{n:n,dl:dl,rd:rd,er:er,rt:rt,pd:n?Math.round(dl/n*100):0,pr:n?Math.round(rd/n*100):0};
+}
+function mailSearchBox(){
+ return '<div class="search" style="margin:14px 0 6px">'+ic('search')+'<input id="mailQ" placeholder="Поиск по почте или имени" value="'+esc(S.mailQ||'')+'" autocomplete="off"></div>';
+}
+function mailLogView(){
+ var head=ph('mail','Письма','Сколько писем отправлено, доставлено и прочитано. Нажмите на письмо, чтобы увидеть каждую отправку отдельно.');
+ var tpl=S.mailTpl&&mailById(S.mailTpl);
+ /* внутри письма: каждая отправка, фильтры и поиск */
+ if(tpl){
+  var c=mailCounts(tpl.id);
+  return head+mailTabs()+'<button class="back" data-act="mailtpl" data-id="" style="padding:6px 0">‹ Все письма</button>'+
+   '<h2 style="font:400 24px AcademySerif,serif;margin:8px 0 4px">'+tpl.name+'</h2><div class="soft small" style="margin-bottom:12px">'+tpl.when+'</div>'+
+   '<div class="mstat"><div><b>'+c.n+'</b><span>отправлено</span></div><div><b>'+c.dl+'</b><span>доставлено, '+c.pd+'%</span></div><div><b>'+c.rd+'</b><span>прочитано, '+c.pr+'%</span></div></div>'+
+   '<div class="chips" style="margin-top:0">'+[['all','Все'],['err','Ошибки и повторы'],['unread','Не прочитаны']].map(function(x){return '<button class="chip '+((S.mailF||'all')===x[0]?'on':'')+'" data-act="mailf" data-f="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div>'+
+   mailSearchBox()+'<div id="mailList">'+mailListHtml()+'</div>'+mailNote();
+ }
+ /* верхний уровень: по одной плашке на каждое письмо; поиск ищет сразу по всем письмам */
+ var cards=MAILS.map(function(m){
+  var c=mailCounts(m.id);
+  return '<button class="mcard" data-act="mailtpl" data-id="'+m.id+'"><div class="row" style="justify-content:space-between;gap:10px"><b style="font:400 20px AcademySerif,serif">'+m.name+'</b>'+(c.er?'<span class="badge bad">Ошибок: '+c.er+'</span>':'')+'</div><div class="soft small" style="margin:4px 0 12px;text-align:left">'+m.when+'</div>'+
+   '<div class="mstat" style="margin:0"><div><b>'+c.n+'</b><span>отправлено</span></div><div><b>'+c.dl+'</b><span>доставлено, '+c.pd+'%</span></div><div><b>'+c.rd+'</b><span>прочитано, '+c.pr+'%</span></div></div>'+
+   (c.rt?'<div class="soft small" style="margin-top:10px;text-align:left">Ждут повторной отправки: '+c.rt+'</div>':'')+'<div class="gold small" style="margin-top:10px;text-align:left;font-weight:600">Посмотреть каждое письмо ›</div></button>';
+ }).join('');
+ var all=mailCounts('');
+ var searching=!!(S.mailQ&&S.mailQ.trim());
+ return head+mailTabs()+mailSearchBox()+
+  (searching?'<div id="mailList">'+mailListHtml()+'</div>':
+   '<div class="sub" style="margin:10px 0 12px">Всего отправлено: '+all.n+' · доставлено: '+all.dl+' · прочитано: '+all.rd+' · ошибок: '+all.er+'</div>'+cards+mailNote());
+}
+function mailNote(){
+ return '<div class="soft small" style="line-height:1.7;margin-top:16px"><b>Как читать статусы.</b> «Отправлено»: письмо принял почтовый сервер. «Доставлено»: сервер получателя не вернул ошибку (подтверждение приходит в течение часа). «Прочитано»: почтовая программа загрузила невидимую картинку в письме; если у человека картинки отключены, просмотр не отметится, а некоторые почтовики открывают письмо сами. Время указано по Москве.</div>';
 }
 
 /* ============ ВОПРОС ЧЕРЕЗ ЧАТ-БОТА ============ */
@@ -886,7 +1059,7 @@ var BOT_LINKS={
  vk:['ВКонтакте','ВК','https://bot.christella.ru/5354c4b11d50754aec293fc0134fb234_0_f']
 };
 function flowAsk(){
- openModal(mx()+'<h2>Задать вопрос</h2><p class="muted" style="margin-bottom:16px">Выберите мессенджер. Откроется чат-бот, там можно написать свой вопрос, и мы ответим.</p>'+
+ openModal2(mx2()+'<h2>Задать вопрос</h2><p class="muted" style="margin-bottom:16px">Выберите мессенджер. Откроется чат-бот, там можно написать свой вопрос, и мы ответим.</p>'+
  '<div class="stack">'+Object.keys(BOT_LINKS).map(function(k){var b=BOT_LINKS[k];
   return '<a class="askbtn" href="'+b[2]+'" target="_blank" rel="noopener"><span class="ic">'+b[1]+'</span><span class="grow"><b>'+b[0]+'</b></span>'+ic('up',18)+'</a>'}).join('')+'</div>'+
 '');
@@ -937,11 +1110,12 @@ function closeDoc(){
  $('#docview').classList.remove('on');document.body.style.overflow='';
  try{history.replaceState(null,'',location.pathname+location.search)}catch(x){}
 }
-function docFromHash(){var m=/^#doc=(pd|cons|mkt|offer)$/.exec(location.hash);if(m)openDoc(m[1]);else if($('#docview').classList.contains('on'))closeDoc()}
+function docFromHash(){if(location.hash==='#ask'){flowAsk();return}var m=/^#doc=(pd|cons|mkt|offer)$/.exec(location.hash);if(m)openDoc(m[1]);else if($('#docview').classList.contains('on'))closeDoc()}
 
 /* ============ ВХОД / ОФОРМЛЕНИЕ ЗАКАЗА ============ */
 // Сколько минут действует заказ. Для проверки откройте страницу с ?ttl=0.3 (это 18 секунд).
 var ORDER_TTL_MIN=(function(){var v=parseFloat(new URLSearchParams(location.search).get('ttl'));return v>0?v:30})();
+function mx2(){return '<button class="x" data-act="m2close" aria-label="Закрыть">'+ic('x',17)+'</button>'}
 function mx(){return '<button class="x" data-act="mclose" aria-label="Закрыть">'+ic('x',17)+'</button>'}
 function flowEmail(){
  S.join={mode:'login',tariff:S.tariff};
@@ -949,7 +1123,7 @@ function flowEmail(){
  '<div class="field"><label>Email</label><input class="in" id="fEmail" type="email" placeholder="you@example.com" autocomplete="email"></div><button class="primary" data-act="f-email">Получить код'+ic('right',18)+'</button>');
 }
 function flowCode(){
- openModal(mx()+'<h2>Код из письма</h2><p class="muted" style="margin-bottom:14px">Мы отправили 6 цифр на '+esc(S.emailDemo)+'. Код действует 10 минут.</p>'+
+ openModal(mx()+'<h2>Код из письма</h2><p class="muted" style="margin-bottom:14px">Мы отправили 6 цифр на '+esc(S.emailDemo)+' <span class="link" data-act="mailview" data-id="code">(посмотреть письмо)</span>. Код действует 10 минут.</p>'+
  '<div class="field"><label>Код подтверждения</label><input class="in" id="fCode" inputmode="numeric" maxlength="6" placeholder="••••••" style="letter-spacing:.4em;font-size:22px;text-align:center"></div><p class="muted" style="margin-bottom:14px">Демо: подойдёт любой код из 6 цифр, например 123456.</p><button class="primary" data-act="f-code">Войти'+ic('right',18)+'</button>');
 }
 /* телефон: страна выбирается из списка, номер проверяется по формату страны */
@@ -1008,15 +1182,16 @@ function flowOrder(){
  '<div class="banner" style="margin-top:14px">Здесь откроется страница платёжной системы. Данные карты вводятся там, приложение их не видит и не хранит.</div>'+
  '<button class="primary" data-act="f-pay">Оплатить '+rub(t.price)+' (демо)'+ic('right',18)+'</button>'+
  (o.mode==='new'?'<button class="ghost" style="margin-top:10px" data-act="f-edit">Изменить данные</button>':'')+
- '<p class="muted small" style="margin-top:14px">Если оплата не завершится, мы пришлём ссылку на оплату на '+esc(o.email)+'.</p>');
+ '<p class="muted small" style="margin-top:14px">Если оплата не завершится, через 15 минут мы пришлём ссылку на оплату на '+esc(o.email)+'. <span class="link" data-act="mailview" data-id="wait">Посмотреть письмо</span></p><p class="muted small" style="margin-top:8px">После оплаты на email придёт подтверждение. Если не нашли письмо, проверьте папку «Спам».</p>');
  startTimer();
 }
 function flowExpired(){
+ if(S.order&&!S.order.waitLogged&&S.order.mode==='new'){S.order.waitLogged=1;logMail('wait',S.order.email,S.order.name,S.order.createdAt+ORDER_TTL_MIN*30000)}
  openModal(mx()+'<div style="text-align:center"><div style="color:var(--gold);margin:6px 0 12px">'+ic('lock',34)+'</div><h2 style="padding:0">Время заказа истекло</h2><p class="muted" style="margin:10px 0 18px">Заказ больше не действует. Оформите его заново, это займёт минуту.</p></div>'+
  '<button class="primary center" data-act="f-redo">Оформить заново</button>');
 }
 function flowDone(){
- openModal('<div style="text-align:center"><div style="color:var(--gold);margin:6px 0 12px">'+ic('wine',40)+'</div><h2 style="padding:0">Добро пожаловать в Академию</h2><p class="muted" style="margin:10px 0 18px">Оплата прошла, доступ открыт. Подключите бота, чтобы получать напоминания об эфирах и оплате.</p></div>'+
+ openModal('<div style="text-align:center"><div style="color:var(--gold);margin:6px 0 12px">'+ic('wine',40)+'</div><h2 style="padding:0">Добро пожаловать в Академию</h2><p class="muted" style="margin:10px 0 18px">Оплата прошла, доступ открыт. Подключите бота, чтобы получать напоминания об эфирах и оплате.</p><p class="muted small" style="margin:-6px 0 18px">Письмо с подтверждением отправлено на ваш email. Если не нашли его, проверьте папку «Спам». <span class="link" data-act="mailview" data-id="paid">Посмотреть письмо</span></p></div>'+
  '<div class="stack"><button class="ghost" data-act="mess-join" data-m="tg">Подключить Telegram</button><button class="ghost" data-act="mess-join" data-m="max">Подключить MAX</button><button class="ghost" data-act="mess-join" data-m="vk">Подключить ВКонтакте</button><button class="primary center" data-act="enter">Войти в приложение</button></div>');
 }
 
@@ -1049,9 +1224,19 @@ document.addEventListener('click',function(ev){
   case 'login':flowEmail('login');break;
   case 'ask':flowAsk();break;
   case 'mclose':closeModal();break;
+  case 'm2close':closeModal2();break;
+  case 'mailview':var mm=mailById(d.id),el=$('#docview');
+   S.mailLog.forEach(function(r){if(r.live&&r.tpl===d.id&&!r.opened&&r.to===(S.order&&S.order.email||S.emailDemo)){r.opened=new Date().toISOString();saveState()}});
+   el.innerHTML='<div class="docbar"><button data-act="docclose">‹ Назад</button><span class="soft small">Пример письма</span></div><div class="docbody"><div class="eyebrow">'+mm.name+'</div><p class="soft small" style="margin:8px 0 16px">Так письмо придёт на '+esc(S.order&&S.order.email||'ваш email')+'.</p>'+mailHtml(mm)+'</div>';
+   el.classList.add('on');el.scrollTop=0;document.body.style.overflow='hidden';break;
+  case 'mailtab':S.mailTab=d.t;S.mailTpl=null;S.mailQ='';S.mailF='all';render();break;
+  case 'mailtpl':S.mailTpl=d.id||null;S.mailQ='';S.mailF='all';render();window.scrollTo(0,0);break;
+  case 'mailf':S.mailF=d.f;render();break;
+  case 'mailretry':toast('Письмо поставлено в очередь на повторную отправку');break;
+  case 'mailtest':toast('Тестовое письмо отправлено на ваш адрес (в прототипе имитация)');break;
   case 'f-email':
    var em=($('#fEmail').value||'').trim();if(!/^\S+@\S+\.\S+$/.test(em)){$('#fEmail').style.borderColor='#ff8c98';return}
-   S.emailDemo=em;flowCode();break;
+   S.emailDemo=em;logMail('code',em,'');flowCode();break;
   case 'f-code':
    if(($('#fCode').value||'').length<6){$('#fCode').style.borderColor='#ff8c98';return}
    closeModal();S.role='member';S.view='home';$('#roleSel').value='member';render();toast('С возвращением!');break;
@@ -1066,6 +1251,7 @@ document.addEventListener('click',function(ev){
   case 'f-edit':stopTimer();flowCheckout();break;
   case 'f-pay':
    stopTimer();
+   logMail('paid',S.order.email,S.order.name||'Анна Смирнова');
    if(S.order&&S.order.mode==='renew'){closeModal();S.role='member';$('#roleSel').value='member';S.view='profile';render();toast('Подписка оформлена')}else flowDone();break;
   case 'f-redo':
    if(S.order&&S.order.mode==='renew'){S.order.expiresAt=Date.now()+ORDER_TTL_MIN*60000;flowOrder()}else flowCheckout();break;
@@ -1160,12 +1346,19 @@ document.addEventListener('input',function(e){if(e.target.id==='q'){S.q=e.target
 document.addEventListener('input',function(e){if(e.target.id==='cPhone')phoneUpdate(false)});
 document.addEventListener('change',function(e){if(e.target.id==='cCountry'){$('#cPhone').placeholder=phonePlaceholder(countryById(e.target.value));phoneUpdate(false);$('#cPhone').focus()}});
 document.addEventListener('focusout',function(e){if(e.target.id==='cPhone'&&e.target.value)phoneUpdate(true)});
+document.addEventListener('input',function(e){
+ if(e.target.id!=='mailQ')return;
+ var was=!!(S.mailQ&&S.mailQ.trim());S.mailQ=e.target.value;var now=!!S.mailQ.trim();
+ if(S.mailTpl||was===now){var l=$('#mailList');if(l)l.innerHTML=mailListHtml();return}
+ render();var q=$('#mailQ');if(q){q.focus();q.setSelectionRange(q.value.length,q.value.length)}
+});
 document.addEventListener('keydown',function(e){
  if(e.key!=='Enter')return;
  if(e.target.id==='msgIn'){e.preventDefault();var b=document.querySelector('[data-act=send]');b&&b.click()}
  if(e.target.id==='homeQ'){e.preventDefault();S.q=e.target.value;go('lib')}
 });
 $('#modal').addEventListener('click',function(e){if(e.target.id==='modal')closeModal()});
+$('#modal2').addEventListener('click',function(e){if(e.target.id==='modal2')closeModal2()});
 window.addEventListener('hashchange',docFromHash);
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#docview').classList.contains('on'))closeDoc()});
 
@@ -1178,9 +1371,10 @@ sel.addEventListener('change',function(){
  render();window.scrollTo(0,0);
 });
 try{S.ageOk=localStorage.getItem('age18')==='1'}catch(x){}
-function saveState(){try{localStorage.setItem('akademiya_state',JSON.stringify({tq:S.tq,taste:S.taste,notes:S.notes,fav:S.fav,welcomed:S.welcomed,consents:S.consents}))}catch(x){}}
-function loadState(){try{var j=JSON.parse(localStorage.getItem('akademiya_state')||'null');if(j){S.tq=j.tq||{};S.taste=j.taste||null;S.notes=j.notes||[];S.fav=j.fav||S.fav;S.welcomed=!!j.welcomed;S.consents=j.consents||[]}}catch(x){}}
+function saveState(){try{localStorage.setItem('akademiya_state',JSON.stringify({tq:S.tq,taste:S.taste,notes:S.notes,fav:S.fav,welcomed:S.welcomed,consents:S.consents,mailLog:S.mailLog}))}catch(x){}}
+function loadState(){try{var j=JSON.parse(localStorage.getItem('akademiya_state')||'null');if(j){S.tq=j.tq||{};S.taste=j.taste||null;S.notes=j.notes||[];S.fav=j.fav||S.fav;S.welcomed=!!j.welcomed;S.consents=j.consents||[];S.mailLog=j.mailLog||[]}}catch(x){}}
 loadState();
+if(!S.mailLog.length)S.mailLog=DEMO_MAILLOG.slice();
 docFromHash();
 var dsel=$('#dateSel');
 var DEMO_DATES=[['','Сегодня (реальная дата)'],['2026-10-28','28 окт · до старта'],['2026-11-01','1 ноя · клуб открыт'],['2026-11-02','2 ноя · неделя 1'],['2026-11-04','4 ноя · неделя 1'],['2026-11-10','10 ноя · неделя 2'],['2026-11-17','17 ноя · неделя 3'],['2026-11-28','28 ноя · финал месяца'],['2026-11-30','30 ноя · месяц завершён']];
